@@ -9,4 +9,4 @@ test/ts/**/*.js
 coverage
 *.sw[op]
 .cache
-dev
+dev/
