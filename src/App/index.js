@@ -1,40 +1,52 @@
-import React from 'react';
-import Detail from '../Views/Detail';
-import Home from '../Views/Home';
+import React, { useState } from "react";
+
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import theme from '../Themes/theme';
+import dark from '../Themes/dark';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import Container from '@material-ui/core/Container';
-import { HashRouter, Switch, Route } from 'react-router-dom';
 
-const App = () => (
-    <ThemeProvider theme={theme}>
-        <AppBar position="static" color="primary" >
-            <Container maxWidth="lg">
-                <Toolbar variant="dense" style={{padding: 0}}>
-                <Typography variant="h6" color="inherit">
-                    Where in the word?
-                </Typography>
-                </Toolbar>
-            </Container>
-        </AppBar>
-        
-        <div style={{backgroundColor: 'hsl(207, 26%, 17%)', width: '100vw', minHeight: '100%', overflow: 'hidden', margin: 0}}>
-            <Container maxWidth="lg" style={{backgroundColor: 'hsl(207, 26%, 17%)', width: '100vw', minHeight: '100vh'}}>
-                <HashRouter>
-                    <Switch>
-                        <Route exact path="/" name="Search" component={Home} />
-                        <Route exact path="/detail" name="Search" component={Detail} />
-                    </Switch>
-                </HashRouter>
-            </Container>
-        </div>
+import { makeStyles } from '@material-ui/core/styles';
+import Content  from './content'
 
-    </ThemeProvider>
-);
+const useStyles = makeStyles(theme => ({
+    container: {
+        backgroundColor: theme.palette.primary.main, 
+        width: '100vw', 
+        minHeight: '100%', 
+        overflow: 'hidden', 
+        margin: 0
+    },
+}));
+
+
+const App = () => {
+
+    const [darkmode, setDarkmode] = useState(false);
+    const classes = useStyles();
+    console.log(darkmode);
+
+    return(
+        <ThemeProvider theme={darkmode ? dark : theme }>
+            <AppBar position="static" color="primary" >
+                <Container maxWidth="lg">
+                    <Toolbar variant="dense" style={{padding: 0, display: 'flex', justifyContent: 'space-between'}}>
+                    <Typography variant="h6" color="inherit">
+                        Where in the word?
+                    </Typography>
+                    <Typography variant="h6" color="inherit" onClick={()=>{setDarkmode(!darkmode)}}>
+                        Dark Mode
+                    </Typography>
+                    </Toolbar>
+                </Container>
+            </AppBar>
+            <Content />
+        </ThemeProvider>
+    )
+};
 
 export default App;
 

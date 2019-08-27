@@ -32,6 +32,7 @@ const Home = () => {
 
 	if(event.key === 'Enter'){
 		setUrl(`${todosApi}/name/${event.target.value}`);
+		setRegion('');
 	}
   }
 
@@ -39,7 +40,7 @@ const Home = () => {
 	if (event.target.value === '' || event.target.value === null) return;
 
 	setUrl(`${todosApi}/region/${event.target.value}`)
-	setRegion('');
+	setRegion(event.target.value);
 
   }
 

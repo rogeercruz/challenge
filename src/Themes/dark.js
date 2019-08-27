@@ -1,22 +1,22 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const dark = createMuiTheme({
 	typography: {
 		fontFamily: ['Nunito Sans', 'Roboto', 'sans-serif',].join(','),
 		body1: {
-			color: 'hsl(207, 26%, 17%)',
-			contrastText: 'hsl(207, 26%, 17%)',
-			textSecondary: 'hsl(207, 26%, 17%)',
+			color: '#fff',
+			contrastText: '#fff',
+			textSecondary: '#fff',
 		},
 	},
 	palette: {
 		primary: {
-			contrastText: 'hsl(207, 26%, 17%)',
+			contrastText: '#fff',
 			light: '#fff',
-			main: '#fff',
+			main: 'hsl(207, 26%, 17%)',
 			veryDark: 'hsl(207, 26%, 17%)',
-			wrapper: ' hsl(0, 0%, 98%)'
+			wrapper: 'hsl(200, 15%, 8%)',
 		},
 	},
 });
-export default responsiveFontSizes(theme);
+export default responsiveFontSizes(dark);
