@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import FlagCard from '../../Components/FlagCard'
+
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -45,16 +42,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
     backgroundColor: theme.palette.primary.main,
   },
-
-  card: {
-      backgroundColor: theme.palette.primary.main,
-  },
-  text: {
-	color: theme.palette.text.textSecondary,
-	marginTop: '6px',
-	fontSize: '12px'
-  }
-
+  
 }));
 
 function useEndpoint(req) {
@@ -164,42 +152,8 @@ const Home = () => {
 
         
       <Grid container spacing={3} style={{ marginTop: '16px'}}>
-            
 			{
-				todo.data.map( (entry ) => {
-					return (
-						<Grid item xs={12} sm={3} key={entry.numericCode}>
-							<Card className={classes.card}>
-								<CardActionArea>
-									<CardMedia
-									component="img"
-									alt="placeholder"
-									height="150"
-									image={entry.flag}
-									title="Img"
-									/>
-									<CardContent>
-									<Typography component="p" className={classes.text}>
-										{entry.name}
-									</Typography>
-									<Typography component="p" className={classes.text}>
-										Population: {entry.population}
-									</Typography>
-									<Typography component="p" className={classes.text}>
-										Region: {entry.region}
-									</Typography> 
-									<Typography component="p" className={classes.text}>
-										Capital: {entry.capital}
-									</Typography> 
-									
-									</CardContent>
-								</CardActionArea>
-							</Card>
-						</Grid>
-
-					)	
-				}
-				)
+				todo.data.map( country  => <FlagCard entry={country} key={country.numericCode} /> )
 			}
       </Grid>
 	  <Grid container spacing={3} style={{ marginTop: '16px'}}>
