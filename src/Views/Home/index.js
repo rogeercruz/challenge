@@ -8,7 +8,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import FlagCard from '../../Components/FlagCard'
+import FlagCard from '../../Components/FlagCard';
+import LazyLoad from 'react-lazyload';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -24,11 +25,14 @@ const useStyles = makeStyles(theme => ({
 	color: theme.palette.text.secondary,
 	backgroundColor: theme.palette.primary.main,
 	borderRadius: '4px',
+	float: 'right',
   },
   
   root: {
     flexGrow: 1,
-    marginTop: '40px'
+	marginTop: '32px',
+	overflow: 'hidden',
+	paddingBottom: '32px'
   },
 
   paper: {
@@ -86,7 +90,7 @@ const useEndpoint = (req) => {
 
 const Home = () => {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
+  const [region, setRegion] = useState('');
   const [open, setOpen] = React.useState(false);
   const todosApi = "https://restcountries.eu/rest/v2";
   const [url, setUrl] = useState('https://restcountries.eu/rest/v2/all');
@@ -97,15 +101,18 @@ const Home = () => {
   });
 
   const handleInputChange = (e) => {
-	console.log(event.target.value);
-	
 	if (event.target.value === '' || event.target.value === null) return;
 
-	setUrl(`${todosApi}/name/${event.target.value}`)
+	setUrl(`${todosApi}/name/${event.target.value}`);
+	setRegion('Filter by Region');
   }
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+	if (event.target.value === '' || event.target.value === null) return;
+
+	setUrl(`${todosApi}/region/${event.target.value}`)
+	setRegion(event.target.value);
+
   }
 
   const handleClose = () => {
@@ -131,39 +138,39 @@ const Home = () => {
                     inputProps={{ 'aria-label': 'search for a coutry' }}
 					onChange={handleInputChange}
 					style={{color: '#fff'}}
-
 				/>
                 </Paper>    
             </Grid>
 
             <Grid item xs={12} sm={3}>
-				<form autoComplete="off">
-					<FormControl className={classes.formControl}>
-						<Select
-							style={{borderRadius: '4px', border: 0, padding: '10px', borderRadius: '3px', color: '#fff'}}
-							open={open}
-							onClose={handleClose}
-							onOpen={handleOpen}
-							value={age}
-							onChange={handleChange}
-							displayEmpty
-						>
-							<MenuItem value="">
-								<em>Filter by Region</em>
-							</MenuItem>
-							<MenuItem value={10}>Ten</MenuItem>
-							<MenuItem value={20}>Twenty</MenuItem>
-							<MenuItem value={30}>Thirty</MenuItem>
-						</Select>
-					</FormControl>
-				</form>
+				<FormControl className={classes.formControl}>
+					<Select
+						style={{borderRadius: '4px', border: 0, padding: '10px', borderRadius: '3px', color: '#fff'}}
+						open={open}
+						onClose={handleClose}
+						onOpen={handleOpen}
+						value={region}
+						onChange={handleChange}
+						displayEmpty
+					>
+						<MenuItem value="">
+							Filter by Region
+						</MenuItem>
+
+						<MenuItem value={'Africa'}>Africa</MenuItem>
+						<MenuItem value={'Americas'}>Americas</MenuItem>
+						<MenuItem value={'Asia'}>Asia</MenuItem>
+						<MenuItem value={'Europe'}>Europe</MenuItem>
+						<MenuItem value={'Oceania'}>Oceania</MenuItem>
+					</Select>
+				</FormControl>
             </Grid>
         </Grid>
 
         
       <Grid container spacing={4} style={{ marginTop: '16px'}}>
 			{
-				countryList.data.map( country  => <FlagCard entry={country} key={country.numericCode} /> )
+				countryList.data.map( country  =>  <LazyLoad key={country.numericCode}><FlagCard entry={country} /></LazyLoad>)
 			}
       </Grid>
 	

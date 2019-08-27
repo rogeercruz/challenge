@@ -22,7 +22,7 @@ const App = () => (
             </Container>
         </AppBar>
         
-        <div style={{backgroundColor: 'hsl(207, 26%, 17%)', width: '100vw', minHeight: '100%', overflow: 'hidden'}}>
+        <div style={{backgroundColor: 'hsl(207, 26%, 17%)', width: '100vw', minHeight: '100%', overflow: 'hidden', margin: 0}}>
             <Container maxWidth="lg" style={{backgroundColor: 'hsl(207, 26%, 17%)', width: '100vw', minHeight: '100vh'}}>
                 <HashRouter>
                     <Switch>
@@ -32,9 +32,7 @@ const App = () => (
                 </HashRouter>
             </Container>
         </div>
-        
 
-        
     </ThemeProvider>
 );
 
