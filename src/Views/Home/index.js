@@ -72,7 +72,7 @@ const useEndpoint = (req) => {
 			)
 			.catch(() =>
 			setRes({
-				data: null,
+				data: [],
 				pending: false,
 				error: true,
 				complete: true
@@ -99,10 +99,9 @@ const Home = () => {
   const handleInputChange = (e) => {
 	console.log(event.target.value);
 	
-	if(event.target.value === '') return;
+	if (event.target.value === '' || event.target.value === null) return;
 
 	setUrl(`${todosApi}/name/${event.target.value}`)
-	
   }
 
   const handleChange = (event) => {
@@ -124,7 +123,7 @@ const Home = () => {
             <Grid item xs={12} sm={3}>
                 <Paper className={classes.paperSearch}>
                 <IconButton className={classes.iconButton} aria-label="search">
-                    <SearchIcon />
+                    <SearchIcon color="secondary"/>
                 </IconButton>
                 <InputBase
                     className={classes.input}

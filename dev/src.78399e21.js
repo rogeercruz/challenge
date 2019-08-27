@@ -52445,7 +52445,7 @@ var useEndpoint = function useEndpoint(req) {
       });
     }).catch(function () {
       return setRes({
-        data: null,
+        data: [],
         pending: false,
         error: true,
         complete: true
@@ -52484,7 +52484,7 @@ var Home = function Home() {
 
   var handleInputChange = function handleInputChange(e) {
     console.log(event.target.value);
-    if (event.target.value === '') return;
+    if (event.target.value === '' || event.target.value === null) return;
     setUrl("".concat(todosApi, "/name/").concat(event.target.value));
   };
 
@@ -52516,7 +52516,9 @@ var Home = function Home() {
   }, _react.default.createElement(_IconButton.default, {
     className: classes.iconButton,
     "aria-label": "search"
-  }, _react.default.createElement(_Search.default, null)), _react.default.createElement(_InputBase.default, {
+  }, _react.default.createElement(_Search.default, {
+    color: "secondary"
+  })), _react.default.createElement(_InputBase.default, {
     className: classes.input,
     placeholder: "Search for a country",
     inputProps: {
