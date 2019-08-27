@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import InputBase from '@material-ui/core/InputBase';
@@ -10,83 +9,11 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import FlagCard from '../../Components/FlagCard';
 import LazyLoad from 'react-lazyload';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { useEndpoint } from "../../Hooks/Search/effect";
+import  { useStyles } from './style';
 
-const useStyles = makeStyles(theme => ({
-  button: {
-	display: 'block',
-	marginTop: theme.spacing(2),
-  },
-	
-  formControl: {
-	margin: 0,
-	minWidth: '240px',
-	color: theme.palette.text.secondary,
-	backgroundColor: theme.palette.primary.main,
-	borderRadius: '4px',
-	float: 'right',
-  },
-  
-  root: {
-    flexGrow: 1,
-	marginTop: '32px',
-	overflow: 'hidden',
-	paddingBottom: '32px'
-  },
-
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-
-  paperSearch: {
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    backgroundColor: theme.palette.primary.main,
-  },
-  
-}));
-
-const useEndpoint = (req) => {
-	const [res, setRes] = useState({
-		data: [],
-		complete: false,
-		pending: false,
-		error: false
-	});
-
-	useEffect(
-		() => {
-		setRes({
-			data: [],
-			pending: true,
-			error: false,
-			complete: false
-		});
-		axios(req)
-			.then(res =>
-			setRes({
-				data: res.data,
-				pending: false,
-				error: false,
-				complete: true
-			})
-			)
-			.catch(() =>
-			setRes({
-				data: [],
-				pending: false,
-				error: true,
-				complete: true
-			})
-			);
-		},
-		[req.url]
-	);
-	return res;
-}
 
 const Home = () => {
   const classes = useStyles();
@@ -100,18 +27,19 @@ const Home = () => {
     url: url
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (event) => {
 	if (event.target.value === '' || event.target.value === null) return;
 
-	setUrl(`${todosApi}/name/${event.target.value}`);
-	setRegion('Filter by Region');
+	if(event.key === 'Enter'){
+		setUrl(`${todosApi}/name/${event.target.value}`);
+	}
   }
 
   const handleChange = (event) => {
 	if (event.target.value === '' || event.target.value === null) return;
 
 	setUrl(`${todosApi}/region/${event.target.value}`)
-	setRegion(event.target.value);
+	setRegion('');
 
   }
 
@@ -123,29 +51,28 @@ const Home = () => {
     setOpen(true);
   }
 
-
   return (
     <div className={classes.root}>
         <Grid container direction="row" justify="space-between" alignItems="center">
-            <Grid item xs={12} sm={3}>
+            <Grid item xs={12} sm={4}>
                 <Paper className={classes.paperSearch}>
-                <IconButton className={classes.iconButton} aria-label="search">
-                    <SearchIcon color="secondary"/>
-                </IconButton>
-                <InputBase
-                    className={classes.input}
-                    placeholder="Search for a country"
-                    inputProps={{ 'aria-label': 'search for a coutry' }}
-					onChange={handleInputChange}
-					style={{color: '#fff'}}
-				/>
+					<IconButton className={classes.iconButton} aria-label="search">
+						<SearchIcon/>
+					</IconButton>
+					<InputBase
+						className={classes.input}
+						placeholder="Search for a country"
+						inputProps={{ 'aria-label': 'search for a coutry' }}
+						onKeyPress={handleInputChange}
+						style={{color: '#fff'}}
+					/>
                 </Paper>    
             </Grid>
 
             <Grid item xs={12} sm={3}>
 				<FormControl className={classes.formControl}>
 					<Select
-						style={{borderRadius: '4px', border: 0, padding: '10px', borderRadius: '3px', color: '#fff'}}
+						style={{fontSize:'11px', borderRadius: '4px', border: 0, padding: '10px 10px 10px 30px', borderRadius: '3px', color: '#fff'}}
 						open={open}
 						onClose={handleClose}
 						onOpen={handleOpen}
@@ -153,7 +80,7 @@ const Home = () => {
 						onChange={handleChange}
 						displayEmpty
 					>
-						<MenuItem value="">
+						<MenuItem value="" >
 							Filter by Region
 						</MenuItem>
 
@@ -169,6 +96,10 @@ const Home = () => {
 
         
       <Grid container spacing={4} style={{ marginTop: '16px'}}>
+			{
+				!countryList.complete  && <div className={classes.progressContainer}> <CircularProgress className={classes.progress} /></div>
+			}
+			
 			{
 				countryList.data.map( country  =>  <LazyLoad key={country.numericCode}><FlagCard entry={country} /></LazyLoad>)
 			}

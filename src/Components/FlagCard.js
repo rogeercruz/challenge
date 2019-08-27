@@ -16,6 +16,8 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         backgroundColor: theme.palette.primary.main,
+        paddingBottom: '32px',
+        boxSizing: 'border-box',
     },
 }));
 

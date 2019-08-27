@@ -2,17 +2,7 @@ import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
 	typography: {
-		fontFamily: [
-			'-apple-system',
-			'BlinkMacSystemFont',
-			'"Segoe UI"',
-			'Roboto',
-			'Oxygen-Sans',
-			'Ubuntu',
-			'Cantarell',
-			'"Helvetica Neue"',
-			'sans-serif',
-		].join(','),
+		fontFamily: ['Nunito Sans', 'Roboto', 'sans-serif',].join(','),
 		body1: {
 			color: '#fff',
 			contrastText: 'hsl(207, 26%, 17%)',
