@@ -52356,7 +52356,9 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       backgroundColor: theme.palette.primary.main
     },
     text: {
-      color: theme.palette.text.textSecondary
+      color: theme.palette.text.textSecondary,
+      marginTop: '6px',
+      fontSize: '12px'
     }
   };
 });
@@ -52498,7 +52500,8 @@ var Home = function Home() {
     return _react.default.createElement(_Grid.default, {
       item: true,
       xs: 12,
-      sm: 3
+      sm: 3,
+      key: entry.numericCode
     }, _react.default.createElement(_Card.default, {
       className: classes.card
     }, _react.default.createElement(_CardActionArea.default, null, _react.default.createElement(_CardMedia.default, {
@@ -52510,7 +52513,16 @@ var Home = function Home() {
     }), _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, {
       component: "p",
       className: classes.text
-    }, entry.name)))));
+    }, entry.name), _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, "Population: ", entry.population), _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, "Region: ", entry.region), _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, "Capital: ", entry.capital)))));
   })), _react.default.createElement(_Grid.default, {
     container: true,
     spacing: 3,
@@ -56117,7 +56129,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64134" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58770" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

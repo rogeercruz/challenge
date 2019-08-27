@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -51,7 +50,9 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.primary.main,
   },
   text: {
-    color: theme.palette.text.textSecondary,
+	color: theme.palette.text.textSecondary,
+	marginTop: '6px',
+	fontSize: '12px'
   }
 
 }));
@@ -167,26 +168,33 @@ const Home = () => {
 			{
 				todo.data.map( (entry ) => {
 					return (
-						<Grid item xs={12} sm={3}>
-        
-						<Card className={classes.card}>
-							<CardActionArea>
-								<CardMedia
-								component="img"
-								alt="placeholder"
-								height="150"
-								image={entry.flag}
-								title="Img"
-								/>
-								<CardContent>
-								<Typography component="p" className={classes.text}>
-									{entry.name}
-								</Typography>
-								
-								</CardContent>
-							</CardActionArea>
-						</Card>
-
+						<Grid item xs={12} sm={3} key={entry.numericCode}>
+							<Card className={classes.card}>
+								<CardActionArea>
+									<CardMedia
+									component="img"
+									alt="placeholder"
+									height="150"
+									image={entry.flag}
+									title="Img"
+									/>
+									<CardContent>
+									<Typography component="p" className={classes.text}>
+										{entry.name}
+									</Typography>
+									<Typography component="p" className={classes.text}>
+										Population: {entry.population}
+									</Typography>
+									<Typography component="p" className={classes.text}>
+										Region: {entry.region}
+									</Typography> 
+									<Typography component="p" className={classes.text}>
+										Capital: {entry.capital}
+									</Typography> 
+									
+									</CardContent>
+								</CardActionArea>
+							</Card>
 						</Grid>
 
 					)	
