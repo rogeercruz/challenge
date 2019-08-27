@@ -3626,70 +3626,6 @@ function _default() {
 
   return str;
 }
-},{}],"../node_modules/warning/warning.js":[function(require,module,exports) {
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-'use strict';
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
-
-var __DEV__ = "development" !== 'production';
-
-var warning = function () {};
-
-if (__DEV__) {
-  var printWarning = function printWarning(format, args) {
-    var len = arguments.length;
-    args = new Array(len > 1 ? len - 1 : 0);
-
-    for (var key = 1; key < len; key++) {
-      args[key - 1] = arguments[key];
-    }
-
-    var argIndex = 0;
-    var message = 'Warning: ' + format.replace(/%s/g, function () {
-      return args[argIndex++];
-    });
-
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-
-  warning = function (condition, format, args) {
-    var len = arguments.length;
-    args = new Array(len > 2 ? len - 2 : 0);
-
-    for (var key = 2; key < len; key++) {
-      args[key - 2] = arguments[key];
-    }
-
-    if (format === undefined) {
-      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-    }
-
-    if (!condition) {
-      printWarning.apply(null, [format].concat(args));
-    }
-  };
-}
-
-module.exports = warning;
 },{}],"../node_modules/@material-ui/utils/esm/chainPropTypes.js":[function(require,module,exports) {
 "use strict";
 
@@ -4073,7 +4009,71 @@ var _getDisplayName = _interopRequireDefault(require("./getDisplayName"));
 var _ponyfillGlobal = _interopRequireDefault(require("./ponyfillGlobal"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./chainPropTypes":"../node_modules/@material-ui/utils/esm/chainPropTypes.js","./elementAcceptingRef":"../node_modules/@material-ui/utils/esm/elementAcceptingRef.js","./elementTypeAcceptingRef":"../node_modules/@material-ui/utils/esm/elementTypeAcceptingRef.js","./exactProp":"../node_modules/@material-ui/utils/esm/exactProp.js","./getDisplayName":"../node_modules/@material-ui/utils/esm/getDisplayName.js","./ponyfillGlobal":"../node_modules/@material-ui/utils/esm/ponyfillGlobal.js"}],"../node_modules/@material-ui/styles/esm/ThemeProvider/nested.js":[function(require,module,exports) {
+},{"./chainPropTypes":"../node_modules/@material-ui/utils/esm/chainPropTypes.js","./elementAcceptingRef":"../node_modules/@material-ui/utils/esm/elementAcceptingRef.js","./elementTypeAcceptingRef":"../node_modules/@material-ui/utils/esm/elementTypeAcceptingRef.js","./exactProp":"../node_modules/@material-ui/utils/esm/exactProp.js","./getDisplayName":"../node_modules/@material-ui/utils/esm/getDisplayName.js","./ponyfillGlobal":"../node_modules/@material-ui/utils/esm/ponyfillGlobal.js"}],"../node_modules/warning/warning.js":[function(require,module,exports) {
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+'use strict';
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var __DEV__ = "development" !== 'production';
+
+var warning = function () {};
+
+if (__DEV__) {
+  var printWarning = function printWarning(format, args) {
+    var len = arguments.length;
+    args = new Array(len > 1 ? len - 1 : 0);
+
+    for (var key = 1; key < len; key++) {
+      args[key - 1] = arguments[key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  warning = function (condition, format, args) {
+    var len = arguments.length;
+    args = new Array(len > 2 ? len - 2 : 0);
+
+    for (var key = 2; key < len; key++) {
+      args[key - 2] = arguments[key];
+    }
+
+    if (format === undefined) {
+      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+
+    if (!condition) {
+      printWarning.apply(null, [format].concat(args));
+    }
+  };
+}
+
+module.exports = warning;
+},{}],"../node_modules/@material-ui/styles/esm/ThemeProvider/nested.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11054,129 +11054,7 @@ function withStyles(stylesOrCreator, options) {
 
 var _default = withStyles;
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/Paper/Paper.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _clsx = _interopRequireDefault(require("clsx"));
-
-var _warning = _interopRequireDefault(require("warning"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = function styles(theme) {
-  var elevations = {};
-  theme.shadows.forEach(function (shadow, index) {
-    elevations["elevation".concat(index)] = {
-      boxShadow: shadow
-    };
-  });
-  return (0, _extends2.default)({
-    /* Styles applied to the root element. */
-    root: {
-      backgroundColor: theme.palette.background.paper,
-      color: theme.palette.text.primary,
-      transition: theme.transitions.create('box-shadow')
-    },
-
-    /* Styles applied to the root element if `square={false}`. */
-    rounded: {
-      borderRadius: theme.shape.borderRadius
-    }
-  }, elevations);
-};
-
-exports.styles = styles;
-
-var Paper = _react.default.forwardRef(function Paper(props, ref) {
-  var classes = props.classes,
-      classNameProp = props.className,
-      _props$component = props.component,
-      Component = _props$component === void 0 ? 'div' : _props$component,
-      _props$square = props.square,
-      square = _props$square === void 0 ? false : _props$square,
-      _props$elevation = props.elevation,
-      elevation = _props$elevation === void 0 ? 1 : _props$elevation,
-      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "component", "square", "elevation"]);
-  "development" !== "production" ? (0, _warning.default)(elevation >= 0 && elevation < 25, "Material-UI: this elevation `".concat(elevation, "` is not implemented.")) : void 0;
-  var className = (0, _clsx.default)(classes.root, classes["elevation".concat(elevation)], classNameProp, !square && classes.rounded);
-  return _react.default.createElement(Component, (0, _extends2.default)({
-    className: className,
-    ref: ref
-  }, other));
-});
-
-"development" !== "production" ? Paper.propTypes = {
-  /**
-   * The content of the component.
-   */
-  children: _propTypes.default.node,
-
-  /**
-   * Override or extend the styles applied to the component.
-   * See [CSS API](#css) below for more details.
-   */
-  classes: _propTypes.default.object.isRequired,
-
-  /**
-   * @ignore
-   */
-  className: _propTypes.default.string,
-
-  /**
-   * The component used for the root node.
-   * Either a string to use a DOM element or a component.
-   */
-  component: _propTypes.default.elementType,
-
-  /**
-   * Shadow depth, corresponds to `dp` in the spec.
-   * It accepts values between 0 and 24 inclusive.
-   */
-  elevation: _propTypes.default.number,
-
-  /**
-   * If `true`, rounded corners are disabled.
-   */
-  square: _propTypes.default.bool
-} : void 0;
-
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiPaper'
-})(Paper);
-
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","warning":"../node_modules/warning/warning.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js"}],"../node_modules/@material-ui/core/esm/Paper/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function () {
-    return _Paper.default;
-  }
-});
-
-var _Paper = _interopRequireDefault(require("./Paper"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Paper":"../node_modules/@material-ui/core/esm/Paper/Paper.js"}],"../node_modules/@material-ui/core/esm/utils/requirePropFactory.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/utils/requirePropFactory.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11640,383 +11518,63 @@ Object.defineProperty(exports, "default", {
 var _Grid = _interopRequireDefault(require("./Grid"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Grid":"../node_modules/@material-ui/core/esm/Grid/Grid.js"}],"../node_modules/@material-ui/core/esm/FormControl/formControlState.js":[function(require,module,exports) {
+},{"./Grid":"../node_modules/@material-ui/core/esm/Grid/Grid.js"}],"../node_modules/@material-ui/core/esm/utils/helpers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = formControlState;
+exports.capitalize = capitalize;
+exports.createChainedFunction = createChainedFunction;
 
-function formControlState(_ref) {
-  var props = _ref.props,
-      states = _ref.states,
-      muiFormControl = _ref.muiFormControl;
-  return states.reduce(function (acc, state) {
-    acc[state] = props[state];
-
-    if (muiFormControl) {
-      if (typeof props[state] === 'undefined') {
-        acc[state] = muiFormControl[state];
-      }
-    }
-
-    return acc;
-  }, {});
-}
-},{}],"../node_modules/@material-ui/core/esm/FormControl/FormControlContext.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useFormControl = useFormControl;
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
+var _warning = _interopRequireDefault(require("warning"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// It should to be noted that this function isn't equivalent to `text-transform: capitalize`.
+//
+// A strict capitalization should uppercase the first letter of each word a the sentence.
+// We only handle the first word.
+function capitalize(string) {
+  if ("development" !== 'production' && typeof string !== 'string') {
+    throw new Error('Material-UI: capitalize(string) expects a string argument.');
+  }
+
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 /**
- * @ignore - internal component.
+ * Safe chained function
+ *
+ * Will only create a new function if needed,
+ * otherwise will pass back existing functions or null.
+ *
+ * @param {function} functions to chain
+ * @returns {function|null}
  */
-var FormControlContext = _react.default.createContext();
-
-function useFormControl() {
-  return _react.default.useContext(FormControlContext);
-}
-
-var _default = FormControlContext;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../node_modules/@material-ui/core/esm/utils/reactHelpers.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isMuiElement = isMuiElement;
-exports.setRef = setRef;
-exports.useForkRef = useForkRef;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function isMuiElement(element, muiNames) {
-  return _react.default.isValidElement(element) && muiNames.indexOf(element.type.muiName) !== -1;
-} // TODO: Make it private only in v5
 
 
-function setRef(ref, value) {
-  if (typeof ref === 'function') {
-    ref(value);
-  } else if (ref) {
-    ref.current = value;
-  }
-}
-
-function useForkRef(refA, refB) {
-  /**
-   * This will create a new function if the ref props change and are defined.
-   * This means react will call the old forkRef with `null` and the new forkRef
-   * with the ref. Cleanup naturally emerges from this behavior
-   */
-  return _react.default.useMemo(function () {
-    if (refA == null && refB == null) {
-      return null;
-    }
-
-    return function (refValue) {
-      setRef(refA, refValue);
-      setRef(refB, refValue);
-    };
-  }, [refA, refB]);
-}
-},{"react":"../node_modules/react/index.js"}],"../node_modules/@material-ui/core/esm/utils/debounce.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = debounce;
-
-// Corresponds to 10 frames at 60 Hz.
-// A few bytes payload overhead when lodash/debounce is ~3 kB and debounce ~300 B.
-function debounce(func) {
-  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 166;
-  var timeout;
-
-  function debounced() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    } // eslint-disable-next-line consistent-this
-
-
-    var that = this;
-
-    var later = function later() {
-      func.apply(that, args);
-    };
-
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+function createChainedFunction() {
+  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
   }
 
-  debounced.clear = function () {
-    clearTimeout(timeout);
-  };
-
-  return debounced;
-}
-},{}],"../node_modules/@material-ui/core/esm/TextareaAutosize/TextareaAutosize.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _debounce = _interopRequireDefault(require("../utils/debounce"));
-
-var _reactHelpers = require("../utils/reactHelpers");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getStyleValue(computedStyle, property) {
-  return parseInt(computedStyle[property], 10) || 0;
-}
-
-var useEnhancedEffect = typeof window !== 'undefined' ? _react.default.useLayoutEffect : _react.default.useEffect;
-var styles = {
-  /* Styles applied to the shadow textarea element. */
-  shadow: {
-    // Visibility needed to hide the extra text area on iPads
-    visibility: 'hidden',
-    // Remove from the content flow
-    position: 'absolute',
-    // Ignore the scrollbar width
-    overflow: 'hidden',
-    height: 0,
-    top: 0,
-    left: 0
-  }
-};
-
-var TextareaAutosize = _react.default.forwardRef(function TextareaAutosize(props, ref) {
-  var onChange = props.onChange,
-      rows = props.rows,
-      rowsMax = props.rowsMax,
-      style = props.style,
-      value = props.value,
-      other = (0, _objectWithoutProperties2.default)(props, ["onChange", "rows", "rowsMax", "style", "value"]);
-
-  var _React$useRef = _react.default.useRef(value != null),
-      isControlled = _React$useRef.current;
-
-  var inputRef = _react.default.useRef(null);
-
-  var handleRef = (0, _reactHelpers.useForkRef)(ref, inputRef);
-
-  var shadowRef = _react.default.useRef(null);
-
-  var _React$useState = _react.default.useState({}),
-      state = _React$useState[0],
-      setState = _React$useState[1];
-
-  var syncHeight = _react.default.useCallback(function () {
-    var input = inputRef.current;
-    var computedStyle = window.getComputedStyle(input);
-    var inputShallow = shadowRef.current;
-    inputShallow.style.width = computedStyle.width;
-    inputShallow.value = input.value || props.placeholder || 'x';
-    var boxSizing = computedStyle['box-sizing'];
-    var padding = getStyleValue(computedStyle, 'padding-bottom') + getStyleValue(computedStyle, 'padding-top');
-    var border = getStyleValue(computedStyle, 'border-bottom-width') + getStyleValue(computedStyle, 'border-top-width'); // The height of the inner content
-
-    var innerHeight = inputShallow.scrollHeight - padding; // Measure height of a textarea with a single row
-
-    inputShallow.value = 'x';
-    var singleRowHeight = inputShallow.scrollHeight - padding; // The height of the outer content
-
-    var outerHeight = innerHeight;
-
-    if (rows != null) {
-      outerHeight = Math.max(Number(rows) * singleRowHeight, outerHeight);
+  return funcs.reduce(function (acc, func) {
+    if (func == null) {
+      return acc;
     }
 
-    if (rowsMax != null) {
-      outerHeight = Math.min(Number(rowsMax) * singleRowHeight, outerHeight);
-    }
-
-    outerHeight = Math.max(outerHeight, singleRowHeight); // Take the box sizing into account for applying this value as a style.
-
-    var outerHeightStyle = outerHeight + (boxSizing === 'border-box' ? padding + border : 0);
-    setState(function (prevState) {
-      // Need a large enough different to update the height.
-      // This prevents infinite rendering loop.
-      if (outerHeightStyle > 0 && Math.abs((prevState.outerHeightStyle || 0) - outerHeightStyle) > 1) {
-        return {
-          innerHeight: innerHeight,
-          outerHeight: outerHeight,
-          outerHeightStyle: outerHeightStyle
-        };
+    "development" !== "production" ? (0, _warning.default)(typeof func === 'function', 'Material-UI: invalid Argument Type, must only provide functions, undefined, or null.') : void 0;
+    return function chainedFunction() {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
       }
 
-      return prevState;
-    });
-  }, [setState, rows, rowsMax, props.placeholder]);
-
-  _react.default.useEffect(function () {
-    var handleResize = (0, _debounce.default)(function () {
-      syncHeight();
-    });
-    window.addEventListener('resize', handleResize);
-    return function () {
-      handleResize.clear();
-      window.removeEventListener('resize', handleResize);
+      acc.apply(this, args);
+      func.apply(this, args);
     };
-  }, [syncHeight]);
-
-  useEnhancedEffect(function () {
-    syncHeight();
-  });
-
-  var handleChange = function handleChange(event) {
-    if (!isControlled) {
-      syncHeight();
-    }
-
-    if (onChange) {
-      onChange(event);
-    }
-  };
-
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("textarea", (0, _extends2.default)({
-    value: value,
-    onChange: handleChange,
-    ref: handleRef // Apply the rows prop to get a "correct" first SSR paint
-    ,
-    rows: rows || 1,
-    style: (0, _extends2.default)({
-      height: state.outerHeightStyle,
-      // Need a large enough different to allow scrolling.
-      // This prevents infinite rendering loop.
-      overflow: Math.abs(state.outerHeight - state.innerHeight) <= 1 ? 'hidden' : null
-    }, style)
-  }, other)), _react.default.createElement("textarea", {
-    "aria-hidden": true,
-    className: props.className,
-    readOnly: true,
-    ref: shadowRef,
-    tabIndex: -1,
-    style: (0, _extends2.default)({}, styles.shadow, {}, style)
-  }));
-});
-
-"development" !== "production" ? TextareaAutosize.propTypes = {
-  /**
-   * @ignore
-   */
-  className: _propTypes.default.string,
-
-  /**
-   * @ignore
-   */
-  onChange: _propTypes.default.func,
-
-  /**
-   * @ignore
-   */
-  placeholder: _propTypes.default.string,
-
-  /**
-   * Minimum number of rows to display.
-   */
-  rows: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-
-  /**
-   * Maximum number of rows to display.
-   */
-  rowsMax: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-
-  /**
-   * @ignore
-   */
-  style: _propTypes.default.object,
-
-  /**
-   * @ignore
-   */
-  value: _propTypes.default.any
-} : void 0;
-var _default = TextareaAutosize;
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","../utils/debounce":"../node_modules/@material-ui/core/esm/utils/debounce.js","../utils/reactHelpers":"../node_modules/@material-ui/core/esm/utils/reactHelpers.js"}],"../node_modules/@material-ui/core/esm/TextareaAutosize/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function () {
-    return _TextareaAutosize.default;
-  }
-});
-
-var _TextareaAutosize = _interopRequireDefault(require("./TextareaAutosize"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./TextareaAutosize":"../node_modules/@material-ui/core/esm/TextareaAutosize/TextareaAutosize.js"}],"../node_modules/@material-ui/core/esm/InputBase/utils.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.hasValue = hasValue;
-exports.isFilled = isFilled;
-exports.isAdornedStart = isAdornedStart;
-
-// Supports determination of isControlled().
-// Controlled input accepts its current value as a prop.
-//
-// @see https://facebook.github.io/react/docs/forms.html#controlled-components
-// @param value
-// @returns {boolean} true if string (including '') or number (including zero)
-function hasValue(value) {
-  return value != null && !(Array.isArray(value) && value.length === 0);
-} // Determine if field is empty or filled.
-// Response determines if label is presented above field or as placeholder.
-//
-// @param obj
-// @param SSR
-// @returns {boolean} False when not present or empty string.
-//                    True when any number or string with length.
-
-
-function isFilled(obj) {
-  var SSR = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  return obj && (hasValue(obj.value) && obj.value !== '' || SSR && hasValue(obj.defaultValue) && obj.defaultValue !== '');
-} // Determine if an Input is adorned on start.
-// It's corresponding to the left with LTR.
-//
-// @param obj
-// @returns {boolean} False when no adornments.
-//                    True when adorned at the start.
-
-
-function isAdornedStart(obj) {
-  return obj.startAdornment;
+  }, function () {});
 }
-},{}],"../node_modules/@material-ui/core/esm/InputBase/InputBase.js":[function(require,module,exports) {
+},{"warning":"../node_modules/warning/warning.js"}],"../node_modules/@material-ui/core/esm/Typography/Typography.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12032,457 +11590,199 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _warning = _interopRequireDefault(require("warning"));
-
 var _clsx = _interopRequireDefault(require("clsx"));
-
-var _formControlState = _interopRequireDefault(require("../FormControl/formControlState"));
-
-var _FormControlContext = _interopRequireWildcard(require("../FormControl/FormControlContext"));
 
 var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
-var _reactHelpers = require("../utils/reactHelpers");
-
-var _TextareaAutosize = _interopRequireDefault(require("../TextareaAutosize"));
-
-var _utils = require("./utils");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _helpers = require("../utils/helpers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 var styles = function styles(theme) {
-  var light = theme.palette.type === 'light';
-  var placeholder = {
-    color: 'currentColor',
-    opacity: light ? 0.42 : 0.5,
-    transition: theme.transitions.create('opacity', {
-      duration: theme.transitions.duration.shorter
-    })
-  };
-  var placeholderHidden = {
-    opacity: '0 !important'
-  };
-  var placeholderVisible = {
-    opacity: light ? 0.42 : 0.5
-  };
   return {
     /* Styles applied to the root element. */
     root: {
-      // Mimics the default input display property used by browsers for an input.
-      fontFamily: theme.typography.fontFamily,
-      color: theme.palette.text.primary,
-      fontSize: theme.typography.pxToRem(16),
-      lineHeight: '1.1875em',
-      // Reset (19px), match the native input line-height
-      boxSizing: 'border-box',
-      // Prevent padding issue with fullWidth.
-      position: 'relative',
-      cursor: 'text',
-      display: 'inline-flex',
-      alignItems: 'center',
-      '&$disabled': {
-        color: theme.palette.text.disabled,
-        cursor: 'default'
-      }
+      margin: 0
     },
 
-    /* Styles applied to the root element if the component is a descendant of `FormControl`. */
-    formControl: {},
+    /* Styles applied to the root element if `variant="body2"`. */
+    body2: theme.typography.body2,
 
-    /* Styles applied to the root element if the component is focused. */
-    focused: {},
+    /* Styles applied to the root element if `variant="body1"`. */
+    body1: theme.typography.body1,
 
-    /* Styles applied to the root element if `disabled={true}`. */
-    disabled: {},
+    /* Styles applied to the root element if `variant="caption"`. */
+    caption: theme.typography.caption,
 
-    /* Styles applied to the root element if `startAdornment` is provided. */
-    adornedStart: {},
+    /* Styles applied to the root element if `variant="button"`. */
+    button: theme.typography.button,
 
-    /* Styles applied to the root element if `endAdornment` is provided. */
-    adornedEnd: {},
+    /* Styles applied to the root element if `variant="h1"`. */
+    h1: theme.typography.h1,
 
-    /* Styles applied to the root element if `error={true}`. */
-    error: {},
+    /* Styles applied to the root element if `variant="h2"`. */
+    h2: theme.typography.h2,
 
-    /* Styles applied to the `input` element if `margin="dense"`. */
-    marginDense: {},
+    /* Styles applied to the root element if `variant="h3"`. */
+    h3: theme.typography.h3,
 
-    /* Styles applied to the root element if `multiline={true}`. */
-    multiline: {
-      padding: "".concat(8 - 2, "px 0 ").concat(8 - 1, "px"),
-      '&$marginDense': {
-        paddingTop: 4 - 1
-      }
+    /* Styles applied to the root element if `variant="h4"`. */
+    h4: theme.typography.h4,
+
+    /* Styles applied to the root element if `variant="h5"`. */
+    h5: theme.typography.h5,
+
+    /* Styles applied to the root element if `variant="h6"`. */
+    h6: theme.typography.h6,
+
+    /* Styles applied to the root element if `variant="subtitle1"`. */
+    subtitle1: theme.typography.subtitle1,
+
+    /* Styles applied to the root element if `variant="subtitle2"`. */
+    subtitle2: theme.typography.subtitle2,
+
+    /* Styles applied to the root element if `variant="overline"`. */
+    overline: theme.typography.overline,
+
+    /* Styles applied to the root element if `variant="srOnly"`. Only accessible to screen readers. */
+    srOnly: {
+      position: 'absolute',
+      height: 1,
+      width: 1,
+      overflow: 'hidden'
     },
 
-    /* Styles applied to the root element if `fullWidth={true}`. */
-    fullWidth: {
-      width: '100%'
+    /* Styles applied to the root element if `align="left"`. */
+    alignLeft: {
+      textAlign: 'left'
     },
 
-    /* Styles applied to the `input` element. */
-    input: {
-      font: 'inherit',
-      color: 'currentColor',
-      padding: "".concat(8 - 2, "px 0 ").concat(8 - 1, "px"),
-      border: 0,
-      boxSizing: 'content-box',
-      background: 'none',
-      height: '1.1875em',
-      // Reset (19px), match the native input line-height
-      margin: 0,
-      // Reset for Safari
-      // Remove grey highlight
-      WebkitTapHighlightColor: 'transparent',
-      display: 'block',
-      // Make the flex item shrink with Firefox
-      minWidth: 0,
-      width: '100%',
-      // Fix IE 11 width issue
-      '&::-webkit-input-placeholder': placeholder,
-      '&::-moz-placeholder': placeholder,
-      // Firefox 19+
-      '&:-ms-input-placeholder': placeholder,
-      // IE 11
-      '&::-ms-input-placeholder': placeholder,
-      // Edge
-      '&:focus': {
-        outline: 0
-      },
-      // Reset Firefox invalid required input style
-      '&:invalid': {
-        boxShadow: 'none'
-      },
-      '&::-webkit-search-decoration': {
-        // Remove the padding when type=search.
-        '-webkit-appearance': 'none'
-      },
-      // Show and hide the placeholder logic
-      'label[data-shrink=false] + $formControl &': {
-        '&::-webkit-input-placeholder': placeholderHidden,
-        '&::-moz-placeholder': placeholderHidden,
-        // Firefox 19+
-        '&:-ms-input-placeholder': placeholderHidden,
-        // IE 11
-        '&::-ms-input-placeholder': placeholderHidden,
-        // Edge
-        '&:focus::-webkit-input-placeholder': placeholderVisible,
-        '&:focus::-moz-placeholder': placeholderVisible,
-        // Firefox 19+
-        '&:focus:-ms-input-placeholder': placeholderVisible,
-        // IE 11
-        '&:focus::-ms-input-placeholder': placeholderVisible // Edge
-
-      },
-      '&$disabled': {
-        opacity: 1 // Reset iOS opacity
-
-      }
+    /* Styles applied to the root element if `align="center"`. */
+    alignCenter: {
+      textAlign: 'center'
     },
 
-    /* Styles applied to the `input` element if `margin="dense"`. */
-    inputMarginDense: {
-      paddingTop: 4 - 1
+    /* Styles applied to the root element if `align="right"`. */
+    alignRight: {
+      textAlign: 'right'
     },
 
-    /* Styles applied to the `input` element if `select={true}`. */
-    inputSelect: {
-      paddingRight: 24
+    /* Styles applied to the root element if `align="justify"`. */
+    alignJustify: {
+      textAlign: 'justify'
     },
 
-    /* Styles applied to the `input` element if `multiline={true}`. */
-    inputMultiline: {
-      height: 'auto',
-      resize: 'none',
-      padding: 0
+    /* Styles applied to the root element if `align="nowrap"`. */
+    noWrap: {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap'
     },
 
-    /* Styles applied to the `input` element if `type="search"`. */
-    inputTypeSearch: {
-      // Improve type search style.
-      '-moz-appearance': 'textfield',
-      '-webkit-appearance': 'textfield'
+    /* Styles applied to the root element if `gutterBottom={true}`. */
+    gutterBottom: {
+      marginBottom: '0.35em'
     },
 
-    /* Styles applied to the `input` element if `startAdornment` is provided. */
-    inputAdornedStart: {},
+    /* Styles applied to the root element if `paragraph={true}`. */
+    paragraph: {
+      marginBottom: 16
+    },
 
-    /* Styles applied to the `input` element if `endAdornment` is provided. */
-    inputAdornedEnd: {},
+    /* Styles applied to the root element if `color="inherit"`. */
+    colorInherit: {
+      color: 'inherit'
+    },
 
-    /* Styles applied to the `input` element if `hiddenLabel={true}`. */
-    inputHiddenLabel: {}
+    /* Styles applied to the root element if `color="primary"`. */
+    colorPrimary: {
+      color: theme.palette.primary.main
+    },
+
+    /* Styles applied to the root element if `color="secondary"`. */
+    colorSecondary: {
+      color: theme.palette.secondary.main
+    },
+
+    /* Styles applied to the root element if `color="textPrimary"`. */
+    colorTextPrimary: {
+      color: theme.palette.text.primary
+    },
+
+    /* Styles applied to the root element if `color="textSecondary"`. */
+    colorTextSecondary: {
+      color: theme.palette.text.secondary
+    },
+
+    /* Styles applied to the root element if `color="error"`. */
+    colorError: {
+      color: theme.palette.error.main
+    },
+
+    /* Styles applied to the root element if `display="inline"`. */
+    displayInline: {
+      display: 'inline'
+    },
+
+    /* Styles applied to the root element if `display="block"`. */
+    displayBlock: {
+      display: 'block'
+    }
   };
 };
 
 exports.styles = styles;
-var useEnhancedEffect = typeof window === 'undefined' ? _react.default.useEffect : _react.default.useLayoutEffect;
-/**
- * `InputBase` contains as few styles as possible.
- * It aims to be a simple building block for creating an input.
- * It contains a load of style reset and some state logic.
- */
+var defaultVariantMapping = {
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  subtitle1: 'h6',
+  subtitle2: 'h6',
+  body1: 'p',
+  body2: 'p'
+};
 
-var InputBase = _react.default.forwardRef(function InputBase(props, ref) {
-  var ariaDescribedby = props['aria-describedby'],
-      autoComplete = props.autoComplete,
-      autoFocus = props.autoFocus,
+var Typography = _react.default.forwardRef(function Typography(props, ref) {
+  var _props$align = props.align,
+      align = _props$align === void 0 ? 'inherit' : _props$align,
       classes = props.classes,
-      classNameProp = props.className,
-      defaultValue = props.defaultValue,
-      disabled = props.disabled,
-      endAdornment = props.endAdornment,
-      error = props.error,
-      _props$fullWidth = props.fullWidth,
-      fullWidth = _props$fullWidth === void 0 ? false : _props$fullWidth,
-      id = props.id,
-      _props$inputComponent = props.inputComponent,
-      inputComponent = _props$inputComponent === void 0 ? 'input' : _props$inputComponent,
-      _props$inputProps = props.inputProps;
-  _props$inputProps = _props$inputProps === void 0 ? {} : _props$inputProps;
-  var inputPropsClassName = _props$inputProps.className,
-      inputPropsProp = (0, _objectWithoutProperties2.default)(_props$inputProps, ["className"]),
-      inputRefProp = props.inputRef,
-      margin = props.margin,
-      _props$multiline = props.multiline,
-      multiline = _props$multiline === void 0 ? false : _props$multiline,
-      name = props.name,
-      onBlur = props.onBlur,
-      onChange = props.onChange,
-      onClick = props.onClick,
-      onFocus = props.onFocus,
-      onKeyDown = props.onKeyDown,
-      onKeyUp = props.onKeyUp,
-      placeholder = props.placeholder,
-      readOnly = props.readOnly,
-      renderSuffix = props.renderSuffix,
-      rows = props.rows,
-      rowsMax = props.rowsMax,
-      _props$select = props.select,
-      select = _props$select === void 0 ? false : _props$select,
-      startAdornment = props.startAdornment,
-      _props$type = props.type,
-      type = _props$type === void 0 ? 'text' : _props$type,
-      value = props.value,
-      other = (0, _objectWithoutProperties2.default)(props, ["aria-describedby", "autoComplete", "autoFocus", "classes", "className", "defaultValue", "disabled", "endAdornment", "error", "fullWidth", "id", "inputComponent", "inputProps", "inputRef", "margin", "multiline", "name", "onBlur", "onChange", "onClick", "onFocus", "onKeyDown", "onKeyUp", "placeholder", "readOnly", "renderSuffix", "rows", "rowsMax", "select", "startAdornment", "type", "value"]);
-
-  var _React$useRef = _react.default.useRef(value != null),
-      isControlled = _React$useRef.current;
-
-  var inputRef = _react.default.useRef();
-
-  var handleInputRefWarning = _react.default.useCallback(function (instance) {
-    "development" !== "production" ? (0, _warning.default)(!instance || instance instanceof HTMLInputElement || instance.focus, ['Material-UI: you have provided a `inputComponent` to the input component', 'that does not correctly handle the `inputRef` prop.', 'Make sure the `inputRef` prop is called with a HTMLInputElement.'].join('\n')) : void 0;
-  }, []);
-
-  var handleInputPropsRefProp = (0, _reactHelpers.useForkRef)(inputPropsProp.ref, handleInputRefWarning);
-  var handleInputRefProp = (0, _reactHelpers.useForkRef)(inputRefProp, handleInputPropsRefProp);
-  var handleInputRef = (0, _reactHelpers.useForkRef)(inputRef, handleInputRefProp);
-
-  var _React$useState = _react.default.useState(false),
-      focused = _React$useState[0],
-      setFocused = _React$useState[1];
-
-  var muiFormControl = (0, _FormControlContext.useFormControl)();
-
-  if ("development" !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    _react.default.useEffect(function () {
-      if (muiFormControl) {
-        return muiFormControl.registerEffect();
-      }
-
-      return undefined;
-    }, [muiFormControl]);
-  }
-
-  var fcs = (0, _formControlState.default)({
-    props: props,
-    muiFormControl: muiFormControl,
-    states: ['disabled', 'error', 'hiddenLabel', 'margin', 'required', 'filled']
-  });
-  fcs.focused = muiFormControl ? muiFormControl.focused : focused; // The blur won't fire when the disabled state is set on a focused input.
-  // We need to book keep the focused state manually.
-
-  _react.default.useEffect(function () {
-    if (!muiFormControl && disabled && focused) {
-      setFocused(false);
-
-      if (onBlur) {
-        onBlur();
-      }
-    }
-  }, [muiFormControl, disabled, focused, onBlur]);
-
-  var checkDirty = _react.default.useCallback(function (obj) {
-    if ((0, _utils.isFilled)(obj)) {
-      if (muiFormControl && muiFormControl.onFilled) {
-        muiFormControl.onFilled();
-      }
-    } else if (muiFormControl && muiFormControl.onEmpty) {
-      muiFormControl.onEmpty();
-    }
-  }, [muiFormControl]);
-
-  useEnhancedEffect(function () {
-    if (isControlled) {
-      checkDirty({
-        value: value
-      });
-    }
-  }, [value, checkDirty, isControlled]);
-
-  var handleFocus = function handleFocus(event) {
-    // Fix a bug with IE 11 where the focus/blur events are triggered
-    // while the input is disabled.
-    if (fcs.disabled) {
-      event.stopPropagation();
-      return;
-    }
-
-    if (onFocus) {
-      onFocus(event);
-    }
-
-    if (muiFormControl && muiFormControl.onFocus) {
-      muiFormControl.onFocus(event);
-    } else {
-      setFocused(true);
-    }
-  };
-
-  var handleBlur = function handleBlur(event) {
-    if (onBlur) {
-      onBlur(event);
-    }
-
-    if (muiFormControl && muiFormControl.onBlur) {
-      muiFormControl.onBlur(event);
-    } else {
-      setFocused(false);
-    }
-  };
-
-  var handleChange = function handleChange(event) {
-    if (!isControlled) {
-      var element = event.target || inputRef.current;
-
-      if (element == null) {
-        throw new TypeError('Material-UI: Expected valid input target. ' + 'Did you use a custom `inputComponent` and forget to forward refs? ' + 'See https://material-ui.com/r/input-component-ref-interface for more info.');
-      }
-
-      checkDirty({
-        value: element.value
-      });
-    } // Perform in the willUpdate
-
-
-    if (onChange) {
-      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
-      }
-
-      onChange.apply(void 0, [event].concat(args));
-    }
-  };
-
-  var handleClick = function handleClick(event) {
-    if (inputRef.current && event.currentTarget === event.target) {
-      inputRef.current.focus();
-    }
-
-    if (onClick) {
-      onClick(event);
-    }
-  };
-
-  var InputComponent = inputComponent;
-  var inputProps = (0, _extends2.default)({}, inputPropsProp, {
-    ref: handleInputRef
-  });
-
-  if (typeof InputComponent !== 'string') {
-    inputProps = (0, _extends2.default)({
-      // Rename ref to inputRef as we don't know the
-      // provided `inputComponent` structure.
-      inputRef: handleInputRef,
-      type: type
-    }, inputProps, {
-      ref: null
-    });
-  } else if (multiline) {
-    if (rows && !rowsMax) {
-      InputComponent = 'textarea';
-    } else {
-      inputProps = (0, _extends2.default)({
-        rows: rows,
-        rowsMax: rowsMax
-      }, inputProps);
-      InputComponent = _TextareaAutosize.default;
-    }
-  } else {
-    inputProps = (0, _extends2.default)({
-      type: type
-    }, inputProps);
-  }
-
-  return _react.default.createElement("div", (0, _extends2.default)({
-    className: (0, _clsx.default)(classes.root, classNameProp, fcs.disabled && classes.disabled, fcs.error && classes.error, fullWidth && classes.fullWidth, fcs.focused && classes.focused, muiFormControl && classes.formControl, multiline && classes.multiline, startAdornment && classes.adornedStart, endAdornment && classes.adornedEnd, {
-      dense: classes.marginDense
-    }[fcs.margin]),
-    onClick: handleClick,
+      className = props.className,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'initial' : _props$color,
+      component = props.component,
+      _props$display = props.display,
+      display = _props$display === void 0 ? 'initial' : _props$display,
+      _props$gutterBottom = props.gutterBottom,
+      gutterBottom = _props$gutterBottom === void 0 ? false : _props$gutterBottom,
+      _props$noWrap = props.noWrap,
+      noWrap = _props$noWrap === void 0 ? false : _props$noWrap,
+      _props$paragraph = props.paragraph,
+      paragraph = _props$paragraph === void 0 ? false : _props$paragraph,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'body1' : _props$variant,
+      _props$variantMapping = props.variantMapping,
+      variantMapping = _props$variantMapping === void 0 ? defaultVariantMapping : _props$variantMapping,
+      other = (0, _objectWithoutProperties2.default)(props, ["align", "classes", "className", "color", "component", "display", "gutterBottom", "noWrap", "paragraph", "variant", "variantMapping"]);
+  var Component = component || (paragraph ? 'p' : variantMapping[variant] || defaultVariantMapping[variant]) || 'span';
+  return _react.default.createElement(Component, (0, _extends2.default)({
+    className: (0, _clsx.default)(classes.root, className, variant !== 'inherit' && classes[variant], color !== 'initial' && classes["color".concat((0, _helpers.capitalize)(color))], noWrap && classes.noWrap, gutterBottom && classes.gutterBottom, paragraph && classes.paragraph, align !== 'inherit' && classes["align".concat((0, _helpers.capitalize)(align))], display !== 'initial' && classes["display".concat((0, _helpers.capitalize)(display))]),
     ref: ref
-  }, other), startAdornment, _react.default.createElement(_FormControlContext.default.Provider, {
-    value: null
-  }, _react.default.createElement(InputComponent, (0, _extends2.default)({
-    "aria-invalid": fcs.error,
-    "aria-describedby": ariaDescribedby,
-    autoComplete: autoComplete,
-    autoFocus: autoFocus,
-    className: (0, _clsx.default)(classes.input, inputPropsClassName, fcs.disabled && classes.disabled, multiline && classes.inputMultiline, select && classes.inputSelect, fcs.hiddenLabel && classes.inputHiddenLabel, startAdornment && classes.inputAdornedStart, endAdornment && classes.inputAdornedEnd, {
-      search: classes.inputTypeSearch
-    }[type], {
-      dense: classes.inputMarginDense
-    }[fcs.margin]),
-    defaultValue: defaultValue,
-    disabled: fcs.disabled,
-    id: id,
-    name: name,
-    onBlur: handleBlur,
-    onChange: handleChange,
-    onFocus: handleFocus,
-    onKeyDown: onKeyDown,
-    onKeyUp: onKeyUp,
-    placeholder: placeholder,
-    readOnly: readOnly,
-    required: fcs.required,
-    rows: rows,
-    value: value
-  }, inputProps))), endAdornment, renderSuffix ? renderSuffix((0, _extends2.default)({}, fcs, {
-    startAdornment: startAdornment
-  })) : null);
+  }, other));
 });
 
-"development" !== "production" ? InputBase.propTypes = {
+"development" !== "production" ? Typography.propTypes = {
   /**
-   * @ignore
+   * Set the text-align on the component.
    */
-  'aria-describedby': _propTypes.default.string,
+  align: _propTypes.default.oneOf(['inherit', 'left', 'center', 'right', 'justify']),
 
   /**
-   * This prop helps users to fill forms faster, especially on mobile devices.
-   * The name can be confusing, as it's more like an autofill.
-   * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
+   * The content of the component.
    */
-  autoComplete: _propTypes.default.string,
-
-  /**
-   * If `true`, the `input` element will be focused during the first mount.
-   */
-  autoFocus: _propTypes.default.bool,
+  children: _propTypes.default.node,
 
   /**
    * Override or extend the styles applied to the component.
@@ -12491,164 +11791,62 @@ var InputBase = _react.default.forwardRef(function InputBase(props, ref) {
   classes: _propTypes.default.object.isRequired,
 
   /**
-   * The CSS class name of the wrapper element.
+   * @ignore
    */
   className: _propTypes.default.string,
 
   /**
-   * The default `input` element value. Use when the component is not controlled.
+   * The color of the component. It supports those theme colors that make sense for this component.
    */
-  defaultValue: _propTypes.default.any,
+  color: _propTypes.default.oneOf(['initial', 'inherit', 'primary', 'secondary', 'textPrimary', 'textSecondary', 'error']),
 
   /**
-   * If `true`, the `input` element will be disabled.
-   */
-  disabled: _propTypes.default.bool,
-
-  /**
-   * End `InputAdornment` for this component.
-   */
-  endAdornment: _propTypes.default.node,
-
-  /**
-   * If `true`, the input will indicate an error. This is normally obtained via context from
-   * FormControl.
-   */
-  error: _propTypes.default.bool,
-
-  /**
-   * If `true`, the input will take up the full width of its container.
-   */
-  fullWidth: _propTypes.default.bool,
-
-  /**
-   * The id of the `input` element.
-   */
-  id: _propTypes.default.string,
-
-  /**
-   * The component used for the `input` element.
+   * The component used for the root node.
    * Either a string to use a DOM element or a component.
+   * By default, it maps the variant to a good default headline component.
    */
-  inputComponent: _propTypes.default.elementType,
+  component: _propTypes.default.elementType,
 
   /**
-   * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
+   * Controls the display type
    */
-  inputProps: _propTypes.default.object,
+  display: _propTypes.default.oneOf(['initial', 'block', 'inline']),
 
   /**
-   * This prop can be used to pass a ref callback to the `input` element.
+   * If `true`, the text will have a bottom margin.
    */
-  inputRef: _propTypes.default.oneOfType([_propTypes.default.func, _propTypes.default.object]),
+  gutterBottom: _propTypes.default.bool,
 
   /**
-   * If `dense`, will adjust vertical spacing. This is normally obtained via context from
-   * FormControl.
+   * If `true`, the text will not wrap, but instead will truncate with an ellipsis.
    */
-  margin: _propTypes.default.oneOf(['dense', 'none']),
+  noWrap: _propTypes.default.bool,
 
   /**
-   * If `true`, a textarea element will be rendered.
+   * If `true`, the text will have a bottom margin.
    */
-  multiline: _propTypes.default.bool,
+  paragraph: _propTypes.default.bool,
 
   /**
-   * Name attribute of the `input` element.
+   * Applies the theme typography styles.
    */
-  name: _propTypes.default.string,
+  variant: _propTypes.default.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'subtitle1', 'subtitle2', 'body1', 'body2', 'caption', 'button', 'overline', 'srOnly', 'inherit']),
 
   /**
-   * @ignore
+   * We are empirically mapping the variant prop to a range of different DOM element types.
+   * For instance, subtitle1 to `<h6>`.
+   * If you wish to change that mapping, you can provide your own.
+   * Alternatively, you can use the `component` prop.
    */
-  onBlur: _propTypes.default.func,
-
-  /**
-   * Callback fired when the value is changed.
-   *
-   * @param {object} event The event source of the callback.
-   * You can pull out the new value by accessing `event.target.value`.
-   */
-  onChange: _propTypes.default.func,
-
-  /**
-   * @ignore
-   */
-  onClick: _propTypes.default.func,
-
-  /**
-   * @ignore
-   */
-  onFocus: _propTypes.default.func,
-
-  /**
-   * @ignore
-   */
-  onKeyDown: _propTypes.default.func,
-
-  /**
-   * @ignore
-   */
-  onKeyUp: _propTypes.default.func,
-
-  /**
-   * The short hint displayed in the input before the user enters a value.
-   */
-  placeholder: _propTypes.default.string,
-
-  /**
-   * It prevents the user from changing the value of the field
-   * (not from interacting with the field).
-   */
-  readOnly: _propTypes.default.bool,
-
-  /**
-   * @ignore
-   */
-  renderSuffix: _propTypes.default.func,
-
-  /**
-   * If `true`, the `input` element will be required.
-   */
-  required: _propTypes.default.bool,
-
-  /**
-   * Number of rows to display when multiline option is set to true.
-   */
-  rows: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-
-  /**
-   * Maximum number of rows to display when multiline option is set to true.
-   */
-  rowsMax: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-
-  /**
-   * Should be `true` when the component hosts a select.
-   */
-  select: _propTypes.default.bool,
-
-  /**
-   * Start `InputAdornment` for this component.
-   */
-  startAdornment: _propTypes.default.node,
-
-  /**
-   * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types).
-   */
-  type: _propTypes.default.string,
-
-  /**
-   * The value of the `input` element, required for a controlled component.
-   */
-  value: _propTypes.default.any
+  variantMapping: _propTypes.default.object
 } : void 0;
 
 var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiInputBase'
-})(InputBase);
+  name: 'MuiTypography'
+})(Typography);
 
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","warning":"../node_modules/warning/warning.js","clsx":"../node_modules/clsx/dist/clsx.m.js","../FormControl/formControlState":"../node_modules/@material-ui/core/esm/FormControl/formControlState.js","../FormControl/FormControlContext":"../node_modules/@material-ui/core/esm/FormControl/FormControlContext.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../utils/reactHelpers":"../node_modules/@material-ui/core/esm/utils/reactHelpers.js","../TextareaAutosize":"../node_modules/@material-ui/core/esm/TextareaAutosize/index.js","./utils":"../node_modules/@material-ui/core/esm/InputBase/utils.js"}],"../node_modules/@material-ui/core/esm/InputBase/index.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../utils/helpers":"../node_modules/@material-ui/core/esm/utils/helpers.js"}],"../node_modules/@material-ui/core/esm/Typography/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12657,14 +11855,14 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function () {
-    return _InputBase.default;
+    return _Typography.default;
   }
 });
 
-var _InputBase = _interopRequireDefault(require("./InputBase"));
+var _Typography = _interopRequireDefault(require("./Typography"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./InputBase":"../node_modules/@material-ui/core/esm/InputBase/InputBase.js"}],"../node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
+},{"./Typography":"../node_modules/@material-ui/core/esm/Typography/Typography.js"}],"../node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
 /** @license React v0.15.0
  * scheduler.development.js
  *
@@ -40696,7 +39894,51 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/@material-ui/core/esm/utils/useEventCallback.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/@material-ui/core/esm/utils/reactHelpers.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isMuiElement = isMuiElement;
+exports.setRef = setRef;
+exports.useForkRef = useForkRef;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function isMuiElement(element, muiNames) {
+  return _react.default.isValidElement(element) && muiNames.indexOf(element.type.muiName) !== -1;
+} // TODO: Make it private only in v5
+
+
+function setRef(ref, value) {
+  if (typeof ref === 'function') {
+    ref(value);
+  } else if (ref) {
+    ref.current = value;
+  }
+}
+
+function useForkRef(refA, refB) {
+  /**
+   * This will create a new function if the ref props change and are defined.
+   * This means react will call the old forkRef with `null` and the new forkRef
+   * with the ref. Cleanup naturally emerges from this behavior
+   */
+  return _react.default.useMemo(function () {
+    if (refA == null && refB == null) {
+      return null;
+    }
+
+    return function (refValue) {
+      setRef(refA, refValue);
+      setRef(refB, refValue);
+    };
+  }, [refA, refB]);
+}
+},{"react":"../node_modules/react/index.js"}],"../node_modules/@material-ui/core/esm/utils/useEventCallback.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43840,63 +43082,7 @@ Object.defineProperty(exports, "default", {
 var _ButtonBase = _interopRequireDefault(require("./ButtonBase"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./ButtonBase":"../node_modules/@material-ui/core/esm/ButtonBase/ButtonBase.js"}],"../node_modules/@material-ui/core/esm/utils/helpers.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.capitalize = capitalize;
-exports.createChainedFunction = createChainedFunction;
-
-var _warning = _interopRequireDefault(require("warning"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// It should to be noted that this function isn't equivalent to `text-transform: capitalize`.
-//
-// A strict capitalization should uppercase the first letter of each word a the sentence.
-// We only handle the first word.
-function capitalize(string) {
-  if ("development" !== 'production' && typeof string !== 'string') {
-    throw new Error('Material-UI: capitalize(string) expects a string argument.');
-  }
-
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-/**
- * Safe chained function
- *
- * Will only create a new function if needed,
- * otherwise will pass back existing functions or null.
- *
- * @param {function} functions to chain
- * @returns {function|null}
- */
-
-
-function createChainedFunction() {
-  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
-    funcs[_key] = arguments[_key];
-  }
-
-  return funcs.reduce(function (acc, func) {
-    if (func == null) {
-      return acc;
-    }
-
-    "development" !== "production" ? (0, _warning.default)(typeof func === 'function', 'Material-UI: invalid Argument Type, must only provide functions, undefined, or null.') : void 0;
-    return function chainedFunction() {
-      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        args[_key2] = arguments[_key2];
-      }
-
-      acc.apply(this, args);
-      func.apply(this, args);
-    };
-  }, function () {});
-}
-},{"warning":"../node_modules/warning/warning.js"}],"../node_modules/@material-ui/core/esm/IconButton/IconButton.js":[function(require,module,exports) {
+},{"./ButtonBase":"../node_modules/@material-ui/core/esm/ButtonBase/ButtonBase.js"}],"../node_modules/@material-ui/core/esm/Button/Button.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43904,17 +43090,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.styles = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
 var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
 
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _clsx = _interopRequireDefault(require("clsx"));
-
-var _utils = require("@material-ui/utils");
 
 var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
 
@@ -43929,54 +43113,49 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var styles = function styles(theme) {
   return {
     /* Styles applied to the root element. */
-    root: {
-      textAlign: 'center',
-      flex: '0 0 auto',
-      fontSize: theme.typography.pxToRem(24),
-      padding: 12,
-      borderRadius: '50%',
-      overflow: 'visible',
-      // Explicitly set the default value to solve a bug on IE 11.
-      color: theme.palette.action.active,
-      transition: theme.transitions.create('background-color', {
-        duration: theme.transitions.duration.shortest
+    root: (0, _extends2.default)({
+      lineHeight: 1.75
+    }, theme.typography.button, {
+      boxSizing: 'border-box',
+      minWidth: 64,
+      padding: '6px 16px',
+      borderRadius: theme.shape.borderRadius,
+      color: theme.palette.text.primary,
+      transition: theme.transitions.create(['background-color', 'box-shadow', 'border'], {
+        duration: theme.transitions.duration.short
       }),
       '&:hover': {
-        backgroundColor: (0, _colorManipulator.fade)(theme.palette.action.active, theme.palette.action.hoverOpacity),
+        textDecoration: 'none',
+        backgroundColor: (0, _colorManipulator.fade)(theme.palette.text.primary, theme.palette.action.hoverOpacity),
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        },
+        '&$disabled': {
           backgroundColor: 'transparent'
         }
       },
       '&$disabled': {
-        backgroundColor: 'transparent',
         color: theme.palette.action.disabled
       }
+    }),
+
+    /* Styles applied to the span element that wraps the children. */
+    label: {
+      width: '100%',
+      // Ensure the correct width for iOS Safari
+      display: 'inherit',
+      alignItems: 'inherit',
+      justifyContent: 'inherit'
     },
 
-    /* Styles applied to the root element if `edge="start"`. */
-    edgeStart: {
-      marginLeft: -12,
-      '$sizeSmall&': {
-        marginLeft: -3
-      }
+    /* Styles applied to the root element if `variant="text"`. */
+    text: {
+      padding: '6px 8px'
     },
 
-    /* Styles applied to the root element if `edge="end"`. */
-    edgeEnd: {
-      marginRight: -12,
-      '$sizeSmall&': {
-        marginRight: -3
-      }
-    },
-
-    /* Styles applied to the root element if `color="inherit"`. */
-    colorInherit: {
-      color: 'inherit'
-    },
-
-    /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {
+    /* Styles applied to the root element if `variant="text"` and `color="primary"`. */
+    textPrimary: {
       color: theme.palette.primary.main,
       '&:hover': {
         backgroundColor: (0, _colorManipulator.fade)(theme.palette.primary.main, theme.palette.action.hoverOpacity),
@@ -43987,8 +43166,8 @@ var styles = function styles(theme) {
       }
     },
 
-    /* Styles applied to the root element if `color="secondary"`. */
-    colorSecondary: {
+    /* Styles applied to the root element if `variant="text"` and `color="secondary"`. */
+    textSecondary: {
       color: theme.palette.secondary.main,
       '&:hover': {
         backgroundColor: (0, _colorManipulator.fade)(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
@@ -43999,78 +43178,181 @@ var styles = function styles(theme) {
       }
     },
 
+    /* Styles applied to the root element if `variant="outlined"`. */
+    outlined: {
+      padding: '5px 16px',
+      border: "1px solid ".concat(theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.23)' : 'rgba(255, 255, 255, 0.23)'),
+      '&$disabled': {
+        border: "1px solid ".concat(theme.palette.action.disabled)
+      }
+    },
+
+    /* Styles applied to the root element if `variant="outlined"` and `color="primary"`. */
+    outlinedPrimary: {
+      color: theme.palette.primary.main,
+      border: "1px solid ".concat((0, _colorManipulator.fade)(theme.palette.primary.main, 0.5)),
+      '&:hover': {
+        border: "1px solid ".concat(theme.palette.primary.main),
+        backgroundColor: (0, _colorManipulator.fade)(theme.palette.primary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      }
+    },
+
+    /* Styles applied to the root element if `variant="outlined"` and `color="secondary"`. */
+    outlinedSecondary: {
+      color: theme.palette.secondary.main,
+      border: "1px solid ".concat((0, _colorManipulator.fade)(theme.palette.secondary.main, 0.5)),
+      '&:hover': {
+        border: "1px solid ".concat(theme.palette.secondary.main),
+        backgroundColor: (0, _colorManipulator.fade)(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      },
+      '&$disabled': {
+        border: "1px solid ".concat(theme.palette.action.disabled)
+      }
+    },
+
+    /* Styles applied to the root element if `variant="contained"`. */
+    contained: {
+      color: theme.palette.getContrastText(theme.palette.grey[300]),
+      backgroundColor: theme.palette.grey[300],
+      boxShadow: theme.shadows[2],
+      '&$focusVisible': {
+        boxShadow: theme.shadows[6]
+      },
+      '&:active': {
+        boxShadow: theme.shadows[8]
+      },
+      '&$disabled': {
+        color: theme.palette.action.disabled,
+        boxShadow: theme.shadows[0],
+        backgroundColor: theme.palette.action.disabledBackground
+      },
+      '&:hover': {
+        backgroundColor: theme.palette.grey.A100,
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: theme.palette.grey[300]
+        },
+        '&$disabled': {
+          backgroundColor: theme.palette.action.disabledBackground
+        }
+      }
+    },
+
+    /* Styles applied to the root element if `variant="contained"` and `color="primary"`. */
+    containedPrimary: {
+      color: theme.palette.primary.contrastText,
+      backgroundColor: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: theme.palette.primary.dark,
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: theme.palette.primary.main
+        }
+      }
+    },
+
+    /* Styles applied to the root element if `variant="contained"` and `color="secondary"`. */
+    containedSecondary: {
+      color: theme.palette.secondary.contrastText,
+      backgroundColor: theme.palette.secondary.main,
+      '&:hover': {
+        backgroundColor: theme.palette.secondary.dark,
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: theme.palette.secondary.main
+        }
+      }
+    },
+
+    /* Pseudo-class applied to the ButtonBase root element if the button is keyboard focused. */
+    focusVisible: {},
+
     /* Pseudo-class applied to the root element if `disabled={true}`. */
     disabled: {},
 
-    /* Styles applied to the root element if `size="small"`. */
-    sizeSmall: {
-      padding: 3,
-      fontSize: theme.typography.pxToRem(18)
+    /* Styles applied to the root element if `color="inherit"`. */
+    colorInherit: {
+      color: 'inherit',
+      borderColor: 'currentColor'
     },
 
-    /* Styles applied to the children container element. */
-    label: {
-      width: '100%',
-      display: 'flex',
-      alignItems: 'inherit',
-      justifyContent: 'inherit'
+    /* Styles applied to the root element if `size="small"`. */
+    sizeSmall: {
+      padding: '4px 8px',
+      fontSize: theme.typography.pxToRem(13)
+    },
+
+    /* Styles applied to the root element if `size="large"`. */
+    sizeLarge: {
+      padding: '8px 24px',
+      fontSize: theme.typography.pxToRem(15)
+    },
+
+    /* Styles applied to the root element if `fullWidth={true}`. */
+    fullWidth: {
+      width: '100%'
     }
   };
 };
-/**
- * Refer to the [Icons](/components/icons/) section of the documentation
- * regarding the available icon options.
- */
-
 
 exports.styles = styles;
 
-var IconButton = _react.default.forwardRef(function IconButton(props, ref) {
-  var _props$edge = props.edge,
-      edge = _props$edge === void 0 ? false : _props$edge,
-      children = props.children,
+var Button = _react.default.forwardRef(function Button(props, ref) {
+  var children = props.children,
       classes = props.classes,
-      className = props.className,
+      classNameProp = props.className,
       _props$color = props.color,
       color = _props$color === void 0 ? 'default' : _props$color,
+      _props$component = props.component,
+      component = _props$component === void 0 ? 'button' : _props$component,
       _props$disabled = props.disabled,
       disabled = _props$disabled === void 0 ? false : _props$disabled,
       _props$disableFocusRi = props.disableFocusRipple,
       disableFocusRipple = _props$disableFocusRi === void 0 ? false : _props$disableFocusRi,
+      focusVisibleClassName = props.focusVisibleClassName,
+      _props$fullWidth = props.fullWidth,
+      fullWidth = _props$fullWidth === void 0 ? false : _props$fullWidth,
       _props$size = props.size,
       size = _props$size === void 0 ? 'medium' : _props$size,
-      other = (0, _objectWithoutProperties2.default)(props, ["edge", "children", "classes", "className", "color", "disabled", "disableFocusRipple", "size"]);
+      _props$type = props.type,
+      type = _props$type === void 0 ? 'button' : _props$type,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'text' : _props$variant,
+      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "color", "component", "disabled", "disableFocusRipple", "focusVisibleClassName", "fullWidth", "size", "type", "variant"]);
+  var text = variant === 'text';
+  var outlined = variant === 'outlined';
+  var contained = variant === 'contained';
+  var primary = color === 'primary';
+  var secondary = color === 'secondary';
+  var className = (0, _clsx.default)(classes.root, classNameProp, text && [classes.text, primary && classes.textPrimary, secondary && classes.textSecondary], outlined && [classes.outlined, primary && classes.outlinedPrimary, secondary && classes.outlinedSecondary], contained && [classes.contained, primary && classes.containedPrimary, secondary && classes.containedSecondary], size !== 'medium' && classes["size".concat((0, _helpers.capitalize)(size))], disabled && classes.disabled, fullWidth && classes.fullWidth, {
+    inherit: classes.colorInherit
+  }[color]);
   return _react.default.createElement(_ButtonBase.default, (0, _extends2.default)({
-    className: (0, _clsx.default)(classes.root, className, color !== 'default' && classes["color".concat((0, _helpers.capitalize)(color))], disabled && classes.disabled, {
-      small: classes["size".concat((0, _helpers.capitalize)(size))]
-    }[size], {
-      start: classes.edgeStart,
-      end: classes.edgeEnd
-    }[edge]),
-    centerRipple: true,
-    focusRipple: !disableFocusRipple,
+    className: className,
+    component: component,
     disabled: disabled,
-    ref: ref
+    focusRipple: !disableFocusRipple,
+    focusVisibleClassName: (0, _clsx.default)(classes.focusVisible, focusVisibleClassName),
+    ref: ref,
+    type: type
   }, other), _react.default.createElement("span", {
     className: classes.label
   }, children));
 });
 
-"development" !== "production" ? IconButton.propTypes = {
+"development" !== "production" ? Button.propTypes = {
   /**
-   * The icon element.
+   * The content of the button.
    */
-  children: (0, _utils.chainPropTypes)(_propTypes.default.node, function (props) {
-    var found = _react.default.Children.toArray(props.children).some(function (child) {
-      return _react.default.isValidElement(child) && child.props.onClick;
-    });
-
-    if (found) {
-      return new Error(['Material-UI: you are providing an onClick event listener ' + 'to a child of a button element.', 'Firefox will never trigger the event.', 'You should move the onClick listener to the parent button element.', 'https://github.com/mui-org/material-ui/issues/13957'].join('\n'));
-    }
-
-    return null;
-  }),
+  children: _propTypes.default.node.isRequired,
 
   /**
    * Override or extend the styles applied to the component.
@@ -44089,6 +43371,12 @@ var IconButton = _react.default.forwardRef(function IconButton(props, ref) {
   color: _propTypes.default.oneOf(['default', 'inherit', 'primary', 'secondary']),
 
   /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   */
+  component: _propTypes.default.elementType,
+
+  /**
    * If `true`, the button will be disabled.
    */
   disabled: _propTypes.default.bool,
@@ -44101,30 +43389,51 @@ var IconButton = _react.default.forwardRef(function IconButton(props, ref) {
 
   /**
    * If `true`, the ripple effect will be disabled.
+   *
+   * ⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure
+   * to highlight the element by applying separate styles with the `focusVisibleClassName`.
    */
   disableRipple: _propTypes.default.bool,
 
   /**
-   * If given, uses a negative margin to counteract the padding on one
-   * side (this is often helpful for aligning the left or right
-   * side of the icon with content above or below, without ruining the border
-   * size and shape).
+   * @ignore
    */
-  edge: _propTypes.default.oneOf(['start', 'end', false]),
+  focusVisibleClassName: _propTypes.default.string,
+
+  /**
+   * If `true`, the button will take up the full width of its container.
+   */
+  fullWidth: _propTypes.default.bool,
+
+  /**
+   * The URL to link to when the button is clicked.
+   * If defined, an `a` element will be used as the root node.
+   */
+  href: _propTypes.default.string,
 
   /**
    * The size of the button.
    * `small` is equivalent to the dense button styling.
    */
-  size: _propTypes.default.oneOf(['small', 'medium'])
+  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
+
+  /**
+   * @ignore
+   */
+  type: _propTypes.default.string,
+
+  /**
+   * The variant to use.
+   */
+  variant: _propTypes.default.oneOf(['text', 'outlined', 'contained'])
 } : void 0;
 
 var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiIconButton'
-})(IconButton);
+  name: 'MuiButton'
+})(Button);
 
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","@material-ui/utils":"../node_modules/@material-ui/utils/esm/index.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../styles/colorManipulator":"../node_modules/@material-ui/core/esm/styles/colorManipulator.js","../ButtonBase":"../node_modules/@material-ui/core/esm/ButtonBase/index.js","../utils/helpers":"../node_modules/@material-ui/core/esm/utils/helpers.js"}],"../node_modules/@material-ui/core/esm/IconButton/index.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../styles/colorManipulator":"../node_modules/@material-ui/core/esm/styles/colorManipulator.js","../ButtonBase":"../node_modules/@material-ui/core/esm/ButtonBase/index.js","../utils/helpers":"../node_modules/@material-ui/core/esm/utils/helpers.js"}],"../node_modules/@material-ui/core/esm/Button/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44133,14 +43442,14 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function () {
-    return _IconButton.default;
+    return _Button.default;
   }
 });
 
-var _IconButton = _interopRequireDefault(require("./IconButton"));
+var _Button = _interopRequireDefault(require("./Button"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./IconButton":"../node_modules/@material-ui/core/esm/IconButton/IconButton.js"}],"../node_modules/@babel/runtime/helpers/extends.js":[function(require,module,exports) {
+},{"./Button":"../node_modules/@material-ui/core/esm/Button/Button.js"}],"../node_modules/@babel/runtime/helpers/extends.js":[function(require,module,exports) {
 function _extends() {
   module.exports = _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -44384,7 +43693,3751 @@ function createSvgIcon(path, displayName) {
   Component.muiName = _SvgIcon.default.muiName;
   return Component;
 }
-},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/extends":"../node_modules/@babel/runtime/helpers/extends.js","react":"../node_modules/react/index.js","@material-ui/core/SvgIcon":"../node_modules/@material-ui/core/esm/SvgIcon/index.js"}],"../node_modules/@material-ui/icons/Search.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/extends":"../node_modules/@babel/runtime/helpers/extends.js","react":"../node_modules/react/index.js","@material-ui/core/SvgIcon":"../node_modules/@material-ui/core/esm/SvgIcon/index.js"}],"../node_modules/@material-ui/icons/ArrowBack.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+  d: "M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+}), 'ArrowBack');
+
+exports.default = _default;
+},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+'use strict';
+
+module.exports = function bind(fn, thisArg) {
+  return function wrap() {
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+    return fn.apply(thisArg, args);
+  };
+};
+
+},{}],"../node_modules/axios/node_modules/is-buffer/index.js":[function(require,module,exports) {
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+module.exports = function isBuffer(obj) {
+  return obj != null && obj.constructor != null && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj);
+};
+},{}],"../node_modules/axios/lib/utils.js":[function(require,module,exports) {
+'use strict';
+
+var bind = require('./helpers/bind');
+var isBuffer = require('is-buffer');
+
+/*global toString:true*/
+
+// utils is a library of generic helper functions non-specific to axios
+
+var toString = Object.prototype.toString;
+
+/**
+ * Determine if a value is an Array
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an Array, otherwise false
+ */
+function isArray(val) {
+  return toString.call(val) === '[object Array]';
+}
+
+/**
+ * Determine if a value is an ArrayBuffer
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+ */
+function isArrayBuffer(val) {
+  return toString.call(val) === '[object ArrayBuffer]';
+}
+
+/**
+ * Determine if a value is a FormData
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an FormData, otherwise false
+ */
+function isFormData(val) {
+  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+}
+
+/**
+ * Determine if a value is a view on an ArrayBuffer
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+ */
+function isArrayBufferView(val) {
+  var result;
+  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
+    result = ArrayBuffer.isView(val);
+  } else {
+    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
+  }
+  return result;
+}
+
+/**
+ * Determine if a value is a String
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a String, otherwise false
+ */
+function isString(val) {
+  return typeof val === 'string';
+}
+
+/**
+ * Determine if a value is a Number
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Number, otherwise false
+ */
+function isNumber(val) {
+  return typeof val === 'number';
+}
+
+/**
+ * Determine if a value is undefined
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if the value is undefined, otherwise false
+ */
+function isUndefined(val) {
+  return typeof val === 'undefined';
+}
+
+/**
+ * Determine if a value is an Object
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an Object, otherwise false
+ */
+function isObject(val) {
+  return val !== null && typeof val === 'object';
+}
+
+/**
+ * Determine if a value is a Date
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Date, otherwise false
+ */
+function isDate(val) {
+  return toString.call(val) === '[object Date]';
+}
+
+/**
+ * Determine if a value is a File
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a File, otherwise false
+ */
+function isFile(val) {
+  return toString.call(val) === '[object File]';
+}
+
+/**
+ * Determine if a value is a Blob
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Blob, otherwise false
+ */
+function isBlob(val) {
+  return toString.call(val) === '[object Blob]';
+}
+
+/**
+ * Determine if a value is a Function
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Function, otherwise false
+ */
+function isFunction(val) {
+  return toString.call(val) === '[object Function]';
+}
+
+/**
+ * Determine if a value is a Stream
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Stream, otherwise false
+ */
+function isStream(val) {
+  return isObject(val) && isFunction(val.pipe);
+}
+
+/**
+ * Determine if a value is a URLSearchParams object
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+ */
+function isURLSearchParams(val) {
+  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+}
+
+/**
+ * Trim excess whitespace off the beginning and end of a string
+ *
+ * @param {String} str The String to trim
+ * @returns {String} The String freed of excess whitespace
+ */
+function trim(str) {
+  return str.replace(/^\s*/, '').replace(/\s*$/, '');
+}
+
+/**
+ * Determine if we're running in a standard browser environment
+ *
+ * This allows axios to run in a web worker, and react-native.
+ * Both environments support XMLHttpRequest, but not fully standard globals.
+ *
+ * web workers:
+ *  typeof window -> undefined
+ *  typeof document -> undefined
+ *
+ * react-native:
+ *  navigator.product -> 'ReactNative'
+ * nativescript
+ *  navigator.product -> 'NativeScript' or 'NS'
+ */
+function isStandardBrowserEnv() {
+  if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' ||
+                                           navigator.product === 'NativeScript' ||
+                                           navigator.product === 'NS')) {
+    return false;
+  }
+  return (
+    typeof window !== 'undefined' &&
+    typeof document !== 'undefined'
+  );
+}
+
+/**
+ * Iterate over an Array or an Object invoking a function for each item.
+ *
+ * If `obj` is an Array callback will be called passing
+ * the value, index, and complete array for each item.
+ *
+ * If 'obj' is an Object callback will be called passing
+ * the value, key, and complete object for each property.
+ *
+ * @param {Object|Array} obj The object to iterate
+ * @param {Function} fn The callback to invoke for each item
+ */
+function forEach(obj, fn) {
+  // Don't bother if no value provided
+  if (obj === null || typeof obj === 'undefined') {
+    return;
+  }
+
+  // Force an array if not already something iterable
+  if (typeof obj !== 'object') {
+    /*eslint no-param-reassign:0*/
+    obj = [obj];
+  }
+
+  if (isArray(obj)) {
+    // Iterate over array values
+    for (var i = 0, l = obj.length; i < l; i++) {
+      fn.call(null, obj[i], i, obj);
+    }
+  } else {
+    // Iterate over object keys
+    for (var key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        fn.call(null, obj[key], key, obj);
+      }
+    }
+  }
+}
+
+/**
+ * Accepts varargs expecting each argument to be an object, then
+ * immutably merges the properties of each object and returns result.
+ *
+ * When multiple objects contain the same key the later object in
+ * the arguments list will take precedence.
+ *
+ * Example:
+ *
+ * ```js
+ * var result = merge({foo: 123}, {foo: 456});
+ * console.log(result.foo); // outputs 456
+ * ```
+ *
+ * @param {Object} obj1 Object to merge
+ * @returns {Object} Result of all merge properties
+ */
+function merge(/* obj1, obj2, obj3, ... */) {
+  var result = {};
+  function assignValue(val, key) {
+    if (typeof result[key] === 'object' && typeof val === 'object') {
+      result[key] = merge(result[key], val);
+    } else {
+      result[key] = val;
+    }
+  }
+
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    forEach(arguments[i], assignValue);
+  }
+  return result;
+}
+
+/**
+ * Function equal to merge with the difference being that no reference
+ * to original objects is kept.
+ *
+ * @see merge
+ * @param {Object} obj1 Object to merge
+ * @returns {Object} Result of all merge properties
+ */
+function deepMerge(/* obj1, obj2, obj3, ... */) {
+  var result = {};
+  function assignValue(val, key) {
+    if (typeof result[key] === 'object' && typeof val === 'object') {
+      result[key] = deepMerge(result[key], val);
+    } else if (typeof val === 'object') {
+      result[key] = deepMerge({}, val);
+    } else {
+      result[key] = val;
+    }
+  }
+
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    forEach(arguments[i], assignValue);
+  }
+  return result;
+}
+
+/**
+ * Extends object a by mutably adding to it the properties of object b.
+ *
+ * @param {Object} a The object to be extended
+ * @param {Object} b The object to copy properties from
+ * @param {Object} thisArg The object to bind function to
+ * @return {Object} The resulting value of object a
+ */
+function extend(a, b, thisArg) {
+  forEach(b, function assignValue(val, key) {
+    if (thisArg && typeof val === 'function') {
+      a[key] = bind(val, thisArg);
+    } else {
+      a[key] = val;
+    }
+  });
+  return a;
+}
+
+module.exports = {
+  isArray: isArray,
+  isArrayBuffer: isArrayBuffer,
+  isBuffer: isBuffer,
+  isFormData: isFormData,
+  isArrayBufferView: isArrayBufferView,
+  isString: isString,
+  isNumber: isNumber,
+  isObject: isObject,
+  isUndefined: isUndefined,
+  isDate: isDate,
+  isFile: isFile,
+  isBlob: isBlob,
+  isFunction: isFunction,
+  isStream: isStream,
+  isURLSearchParams: isURLSearchParams,
+  isStandardBrowserEnv: isStandardBrowserEnv,
+  forEach: forEach,
+  merge: merge,
+  deepMerge: deepMerge,
+  extend: extend,
+  trim: trim
+};
+
+},{"./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","is-buffer":"../node_modules/axios/node_modules/is-buffer/index.js"}],"../node_modules/axios/lib/helpers/buildURL.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+function encode(val) {
+  return encodeURIComponent(val).
+    replace(/%40/gi, '@').
+    replace(/%3A/gi, ':').
+    replace(/%24/g, '$').
+    replace(/%2C/gi, ',').
+    replace(/%20/g, '+').
+    replace(/%5B/gi, '[').
+    replace(/%5D/gi, ']');
+}
+
+/**
+ * Build a URL by appending params to the end
+ *
+ * @param {string} url The base of the url (e.g., http://www.google.com)
+ * @param {object} [params] The params to be appended
+ * @returns {string} The formatted url
+ */
+module.exports = function buildURL(url, params, paramsSerializer) {
+  /*eslint no-param-reassign:0*/
+  if (!params) {
+    return url;
+  }
+
+  var serializedParams;
+  if (paramsSerializer) {
+    serializedParams = paramsSerializer(params);
+  } else if (utils.isURLSearchParams(params)) {
+    serializedParams = params.toString();
+  } else {
+    var parts = [];
+
+    utils.forEach(params, function serialize(val, key) {
+      if (val === null || typeof val === 'undefined') {
+        return;
+      }
+
+      if (utils.isArray(val)) {
+        key = key + '[]';
+      } else {
+        val = [val];
+      }
+
+      utils.forEach(val, function parseValue(v) {
+        if (utils.isDate(v)) {
+          v = v.toISOString();
+        } else if (utils.isObject(v)) {
+          v = JSON.stringify(v);
+        }
+        parts.push(encode(key) + '=' + encode(v));
+      });
+    });
+
+    serializedParams = parts.join('&');
+  }
+
+  if (serializedParams) {
+    var hashmarkIndex = url.indexOf('#');
+    if (hashmarkIndex !== -1) {
+      url = url.slice(0, hashmarkIndex);
+    }
+
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  }
+
+  return url;
+};
+
+},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/core/InterceptorManager.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+function InterceptorManager() {
+  this.handlers = [];
+}
+
+/**
+ * Add a new interceptor to the stack
+ *
+ * @param {Function} fulfilled The function to handle `then` for a `Promise`
+ * @param {Function} rejected The function to handle `reject` for a `Promise`
+ *
+ * @return {Number} An ID used to remove interceptor later
+ */
+InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+  this.handlers.push({
+    fulfilled: fulfilled,
+    rejected: rejected
+  });
+  return this.handlers.length - 1;
+};
+
+/**
+ * Remove an interceptor from the stack
+ *
+ * @param {Number} id The ID that was returned by `use`
+ */
+InterceptorManager.prototype.eject = function eject(id) {
+  if (this.handlers[id]) {
+    this.handlers[id] = null;
+  }
+};
+
+/**
+ * Iterate over all the registered interceptors
+ *
+ * This method is particularly useful for skipping over any
+ * interceptors that may have become `null` calling `eject`.
+ *
+ * @param {Function} fn The function to call for each interceptor
+ */
+InterceptorManager.prototype.forEach = function forEach(fn) {
+  utils.forEach(this.handlers, function forEachHandler(h) {
+    if (h !== null) {
+      fn(h);
+    }
+  });
+};
+
+module.exports = InterceptorManager;
+
+},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/core/transformData.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+/**
+ * Transform the data for a request or a response
+ *
+ * @param {Object|String} data The data to be transformed
+ * @param {Array} headers The headers for the request or response
+ * @param {Array|Function} fns A single function or Array of functions
+ * @returns {*} The resulting transformed data
+ */
+module.exports = function transformData(data, headers, fns) {
+  /*eslint no-param-reassign:0*/
+  utils.forEach(fns, function transform(fn) {
+    data = fn(data, headers);
+  });
+
+  return data;
+};
+
+},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/cancel/isCancel.js":[function(require,module,exports) {
+'use strict';
+
+module.exports = function isCancel(value) {
+  return !!(value && value.__CANCEL__);
+};
+
+},{}],"../node_modules/axios/lib/helpers/normalizeHeaderName.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('../utils');
+
+module.exports = function normalizeHeaderName(headers, normalizedName) {
+  utils.forEach(headers, function processHeader(value, name) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = value;
+      delete headers[name];
+    }
+  });
+};
+
+},{"../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/core/enhanceError.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * Update an Error with the specified config, error code, and response.
+ *
+ * @param {Error} error The error to update.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The error.
+ */
+module.exports = function enhanceError(error, config, code, request, response) {
+  error.config = config;
+  if (code) {
+    error.code = code;
+  }
+
+  error.request = request;
+  error.response = response;
+  error.isAxiosError = true;
+
+  error.toJSON = function() {
+    return {
+      // Standard
+      message: this.message,
+      name: this.name,
+      // Microsoft
+      description: this.description,
+      number: this.number,
+      // Mozilla
+      fileName: this.fileName,
+      lineNumber: this.lineNumber,
+      columnNumber: this.columnNumber,
+      stack: this.stack,
+      // Axios
+      config: this.config,
+      code: this.code
+    };
+  };
+  return error;
+};
+
+},{}],"../node_modules/axios/lib/core/createError.js":[function(require,module,exports) {
+'use strict';
+
+var enhanceError = require('./enhanceError');
+
+/**
+ * Create an Error with the specified message, config, error code, request and response.
+ *
+ * @param {string} message The error message.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The created error.
+ */
+module.exports = function createError(message, config, code, request, response) {
+  var error = new Error(message);
+  return enhanceError(error, config, code, request, response);
+};
+
+},{"./enhanceError":"../node_modules/axios/lib/core/enhanceError.js"}],"../node_modules/axios/lib/core/settle.js":[function(require,module,exports) {
+'use strict';
+
+var createError = require('./createError');
+
+/**
+ * Resolve or reject a Promise based on response status.
+ *
+ * @param {Function} resolve A function that resolves the promise.
+ * @param {Function} reject A function that rejects the promise.
+ * @param {object} response The response.
+ */
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+  if (!validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(createError(
+      'Request failed with status code ' + response.status,
+      response.config,
+      null,
+      response.request,
+      response
+    ));
+  }
+};
+
+},{"./createError":"../node_modules/axios/lib/core/createError.js"}],"../node_modules/axios/lib/helpers/parseHeaders.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+// Headers whose duplicates are ignored by node
+// c.f. https://nodejs.org/api/http.html#http_message_headers
+var ignoreDuplicateOf = [
+  'age', 'authorization', 'content-length', 'content-type', 'etag',
+  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
+  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
+  'referer', 'retry-after', 'user-agent'
+];
+
+/**
+ * Parse headers into an object
+ *
+ * ```
+ * Date: Wed, 27 Aug 2014 08:58:49 GMT
+ * Content-Type: application/json
+ * Connection: keep-alive
+ * Transfer-Encoding: chunked
+ * ```
+ *
+ * @param {String} headers Headers needing to be parsed
+ * @returns {Object} Headers parsed into an object
+ */
+module.exports = function parseHeaders(headers) {
+  var parsed = {};
+  var key;
+  var val;
+  var i;
+
+  if (!headers) { return parsed; }
+
+  utils.forEach(headers.split('\n'), function parser(line) {
+    i = line.indexOf(':');
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
+
+    if (key) {
+      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
+        return;
+      }
+      if (key === 'set-cookie') {
+        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
+      } else {
+        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+      }
+    }
+  });
+
+  return parsed;
+};
+
+},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/helpers/isURLSameOrigin.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs have full support of the APIs needed to test
+  // whether the request URL is of the same origin as current location.
+    (function standardBrowserEnv() {
+      var msie = /(msie|trident)/i.test(navigator.userAgent);
+      var urlParsingNode = document.createElement('a');
+      var originURL;
+
+      /**
+    * Parse a URL to discover it's components
+    *
+    * @param {String} url The URL to be parsed
+    * @returns {Object}
+    */
+      function resolveURL(url) {
+        var href = url;
+
+        if (msie) {
+        // IE needs attribute set twice to normalize properties
+          urlParsingNode.setAttribute('href', href);
+          href = urlParsingNode.href;
+        }
+
+        urlParsingNode.setAttribute('href', href);
+
+        // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+        return {
+          href: urlParsingNode.href,
+          protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+          host: urlParsingNode.host,
+          search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+          hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+          hostname: urlParsingNode.hostname,
+          port: urlParsingNode.port,
+          pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+            urlParsingNode.pathname :
+            '/' + urlParsingNode.pathname
+        };
+      }
+
+      originURL = resolveURL(window.location.href);
+
+      /**
+    * Determine if a URL shares the same origin as the current location
+    *
+    * @param {String} requestURL The URL to test
+    * @returns {boolean} True if URL shares the same origin, otherwise false
+    */
+      return function isURLSameOrigin(requestURL) {
+        var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+        return (parsed.protocol === originURL.protocol &&
+            parsed.host === originURL.host);
+      };
+    })() :
+
+  // Non standard browser envs (web workers, react-native) lack needed support.
+    (function nonStandardBrowserEnv() {
+      return function isURLSameOrigin() {
+        return true;
+      };
+    })()
+);
+
+},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/helpers/cookies.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs support document.cookie
+    (function standardBrowserEnv() {
+      return {
+        write: function write(name, value, expires, path, domain, secure) {
+          var cookie = [];
+          cookie.push(name + '=' + encodeURIComponent(value));
+
+          if (utils.isNumber(expires)) {
+            cookie.push('expires=' + new Date(expires).toGMTString());
+          }
+
+          if (utils.isString(path)) {
+            cookie.push('path=' + path);
+          }
+
+          if (utils.isString(domain)) {
+            cookie.push('domain=' + domain);
+          }
+
+          if (secure === true) {
+            cookie.push('secure');
+          }
+
+          document.cookie = cookie.join('; ');
+        },
+
+        read: function read(name) {
+          var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+          return (match ? decodeURIComponent(match[3]) : null);
+        },
+
+        remove: function remove(name) {
+          this.write(name, '', Date.now() - 86400000);
+        }
+      };
+    })() :
+
+  // Non standard browser env (web workers, react-native) lack needed support.
+    (function nonStandardBrowserEnv() {
+      return {
+        write: function write() {},
+        read: function read() { return null; },
+        remove: function remove() {}
+      };
+    })()
+);
+
+},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/adapters/xhr.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+var settle = require('./../core/settle');
+var buildURL = require('./../helpers/buildURL');
+var parseHeaders = require('./../helpers/parseHeaders');
+var isURLSameOrigin = require('./../helpers/isURLSameOrigin');
+var createError = require('../core/createError');
+
+module.exports = function xhrAdapter(config) {
+  return new Promise(function dispatchXhrRequest(resolve, reject) {
+    var requestData = config.data;
+    var requestHeaders = config.headers;
+
+    if (utils.isFormData(requestData)) {
+      delete requestHeaders['Content-Type']; // Let the browser set it
+    }
+
+    var request = new XMLHttpRequest();
+
+    // HTTP basic authentication
+    if (config.auth) {
+      var username = config.auth.username || '';
+      var password = config.auth.password || '';
+      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+    }
+
+    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
+
+    // Set the request timeout in MS
+    request.timeout = config.timeout;
+
+    // Listen for ready state
+    request.onreadystatechange = function handleLoad() {
+      if (!request || request.readyState !== 4) {
+        return;
+      }
+
+      // The request errored out and we didn't get a response, this will be
+      // handled by onerror instead
+      // With one exception: request that using file: protocol, most browsers
+      // will return status as 0 even though it's a successful request
+      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+        return;
+      }
+
+      // Prepare the response
+      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
+      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
+      var response = {
+        data: responseData,
+        status: request.status,
+        statusText: request.statusText,
+        headers: responseHeaders,
+        config: config,
+        request: request
+      };
+
+      settle(resolve, reject, response);
+
+      // Clean up request
+      request = null;
+    };
+
+    // Handle browser request cancellation (as opposed to a manual cancellation)
+    request.onabort = function handleAbort() {
+      if (!request) {
+        return;
+      }
+
+      reject(createError('Request aborted', config, 'ECONNABORTED', request));
+
+      // Clean up request
+      request = null;
+    };
+
+    // Handle low level network errors
+    request.onerror = function handleError() {
+      // Real errors are hidden from us by the browser
+      // onerror should only fire if it's a network error
+      reject(createError('Network Error', config, null, request));
+
+      // Clean up request
+      request = null;
+    };
+
+    // Handle timeout
+    request.ontimeout = function handleTimeout() {
+      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED',
+        request));
+
+      // Clean up request
+      request = null;
+    };
+
+    // Add xsrf header
+    // This is only done if running in a standard browser environment.
+    // Specifically not if we're in a web worker, or react-native.
+    if (utils.isStandardBrowserEnv()) {
+      var cookies = require('./../helpers/cookies');
+
+      // Add xsrf header
+      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
+        cookies.read(config.xsrfCookieName) :
+        undefined;
+
+      if (xsrfValue) {
+        requestHeaders[config.xsrfHeaderName] = xsrfValue;
+      }
+    }
+
+    // Add headers to the request
+    if ('setRequestHeader' in request) {
+      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
+        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
+          // Remove Content-Type if data is undefined
+          delete requestHeaders[key];
+        } else {
+          // Otherwise add header to the request
+          request.setRequestHeader(key, val);
+        }
+      });
+    }
+
+    // Add withCredentials to request if needed
+    if (config.withCredentials) {
+      request.withCredentials = true;
+    }
+
+    // Add responseType to request if needed
+    if (config.responseType) {
+      try {
+        request.responseType = config.responseType;
+      } catch (e) {
+        // Expected DOMException thrown by browsers not compatible XMLHttpRequest Level 2.
+        // But, this can be suppressed for 'json' type as it can be parsed by default 'transformResponse' function.
+        if (config.responseType !== 'json') {
+          throw e;
+        }
+      }
+    }
+
+    // Handle progress if needed
+    if (typeof config.onDownloadProgress === 'function') {
+      request.addEventListener('progress', config.onDownloadProgress);
+    }
+
+    // Not all browsers support upload events
+    if (typeof config.onUploadProgress === 'function' && request.upload) {
+      request.upload.addEventListener('progress', config.onUploadProgress);
+    }
+
+    if (config.cancelToken) {
+      // Handle cancellation
+      config.cancelToken.promise.then(function onCanceled(cancel) {
+        if (!request) {
+          return;
+        }
+
+        request.abort();
+        reject(cancel);
+        // Clean up request
+        request = null;
+      });
+    }
+
+    if (requestData === undefined) {
+      requestData = null;
+    }
+
+    // Send the request
+    request.send(requestData);
+  });
+};
+
+},{"./../utils":"../node_modules/axios/lib/utils.js","./../core/settle":"../node_modules/axios/lib/core/settle.js","./../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","./../helpers/parseHeaders":"../node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"../node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"../node_modules/axios/lib/core/createError.js","./../helpers/cookies":"../node_modules/axios/lib/helpers/cookies.js"}],"../node_modules/process/browser.js":[function(require,module,exports) {
+
+// shim for using process in browser
+var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+  throw new Error('setTimeout has not been defined');
+}
+
+function defaultClearTimeout() {
+  throw new Error('clearTimeout has not been defined');
+}
+
+(function () {
+  try {
+    if (typeof setTimeout === 'function') {
+      cachedSetTimeout = setTimeout;
+    } else {
+      cachedSetTimeout = defaultSetTimout;
+    }
+  } catch (e) {
+    cachedSetTimeout = defaultSetTimout;
+  }
+
+  try {
+    if (typeof clearTimeout === 'function') {
+      cachedClearTimeout = clearTimeout;
+    } else {
+      cachedClearTimeout = defaultClearTimeout;
+    }
+  } catch (e) {
+    cachedClearTimeout = defaultClearTimeout;
+  }
+})();
+
+function runTimeout(fun) {
+  if (cachedSetTimeout === setTimeout) {
+    //normal enviroments in sane situations
+    return setTimeout(fun, 0);
+  } // if setTimeout wasn't available but was latter defined
+
+
+  if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+    cachedSetTimeout = setTimeout;
+    return setTimeout(fun, 0);
+  }
+
+  try {
+    // when when somebody has screwed with setTimeout but no I.E. maddness
+    return cachedSetTimeout(fun, 0);
+  } catch (e) {
+    try {
+      // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+      return cachedSetTimeout.call(null, fun, 0);
+    } catch (e) {
+      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+      return cachedSetTimeout.call(this, fun, 0);
+    }
+  }
+}
+
+function runClearTimeout(marker) {
+  if (cachedClearTimeout === clearTimeout) {
+    //normal enviroments in sane situations
+    return clearTimeout(marker);
+  } // if clearTimeout wasn't available but was latter defined
+
+
+  if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+    cachedClearTimeout = clearTimeout;
+    return clearTimeout(marker);
+  }
+
+  try {
+    // when when somebody has screwed with setTimeout but no I.E. maddness
+    return cachedClearTimeout(marker);
+  } catch (e) {
+    try {
+      // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+      return cachedClearTimeout.call(null, marker);
+    } catch (e) {
+      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+      // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+      return cachedClearTimeout.call(this, marker);
+    }
+  }
+}
+
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+  if (!draining || !currentQueue) {
+    return;
+  }
+
+  draining = false;
+
+  if (currentQueue.length) {
+    queue = currentQueue.concat(queue);
+  } else {
+    queueIndex = -1;
+  }
+
+  if (queue.length) {
+    drainQueue();
+  }
+}
+
+function drainQueue() {
+  if (draining) {
+    return;
+  }
+
+  var timeout = runTimeout(cleanUpNextTick);
+  draining = true;
+  var len = queue.length;
+
+  while (len) {
+    currentQueue = queue;
+    queue = [];
+
+    while (++queueIndex < len) {
+      if (currentQueue) {
+        currentQueue[queueIndex].run();
+      }
+    }
+
+    queueIndex = -1;
+    len = queue.length;
+  }
+
+  currentQueue = null;
+  draining = false;
+  runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+  var args = new Array(arguments.length - 1);
+
+  if (arguments.length > 1) {
+    for (var i = 1; i < arguments.length; i++) {
+      args[i - 1] = arguments[i];
+    }
+  }
+
+  queue.push(new Item(fun, args));
+
+  if (queue.length === 1 && !draining) {
+    runTimeout(drainQueue);
+  }
+}; // v8 likes predictible objects
+
+
+function Item(fun, array) {
+  this.fun = fun;
+  this.array = array;
+}
+
+Item.prototype.run = function () {
+  this.fun.apply(null, this.array);
+};
+
+process.title = 'browser';
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) {
+  return [];
+};
+
+process.binding = function (name) {
+  throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () {
+  return '/';
+};
+
+process.chdir = function (dir) {
+  throw new Error('process.chdir is not supported');
+};
+
+process.umask = function () {
+  return 0;
+};
+},{}],"../node_modules/axios/lib/defaults.js":[function(require,module,exports) {
+var process = require("process");
+'use strict';
+
+var utils = require('./utils');
+var normalizeHeaderName = require('./helpers/normalizeHeaderName');
+
+var DEFAULT_CONTENT_TYPE = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+function setContentTypeIfUnset(headers, value) {
+  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+    headers['Content-Type'] = value;
+  }
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  // Only Node.JS has a process variable that is of [[Class]] process
+  if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
+    // For node use HTTP adapter
+    adapter = require('./adapters/http');
+  } else if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = require('./adapters/xhr');
+  }
+  return adapter;
+}
+
+var defaults = {
+  adapter: getDefaultAdapter(),
+
+  transformRequest: [function transformRequest(data, headers) {
+    normalizeHeaderName(headers, 'Accept');
+    normalizeHeaderName(headers, 'Content-Type');
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
+      utils.isBuffer(data) ||
+      utils.isStream(data) ||
+      utils.isFile(data) ||
+      utils.isBlob(data)
+    ) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+    if (utils.isObject(data)) {
+      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+      return JSON.stringify(data);
+    }
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    /*eslint no-param-reassign:0*/
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) { /* Ignore */ }
+    }
+    return data;
+  }],
+
+  /**
+   * A timeout in milliseconds to abort a request. If set to 0 (default) a
+   * timeout is not created.
+   */
+  timeout: 0,
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN',
+
+  maxContentLength: -1,
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  }
+};
+
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
+  }
+};
+
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  defaults.headers[method] = {};
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+});
+
+module.exports = defaults;
+
+},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"../node_modules/axios/lib/helpers/normalizeHeaderName.js","./adapters/http":"../node_modules/axios/lib/adapters/xhr.js","./adapters/xhr":"../node_modules/axios/lib/adapters/xhr.js","process":"../node_modules/process/browser.js"}],"../node_modules/axios/lib/helpers/isAbsoluteURL.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * Determines whether the specified URL is absolute
+ *
+ * @param {string} url The URL to test
+ * @returns {boolean} True if the specified URL is absolute, otherwise false
+ */
+module.exports = function isAbsoluteURL(url) {
+  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+  // by any combination of letters, digits, plus, period, or hyphen.
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+};
+
+},{}],"../node_modules/axios/lib/helpers/combineURLs.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * Creates a new URL by combining the specified URLs
+ *
+ * @param {string} baseURL The base URL
+ * @param {string} relativeURL The relative URL
+ * @returns {string} The combined URL
+ */
+module.exports = function combineURLs(baseURL, relativeURL) {
+  return relativeURL
+    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+    : baseURL;
+};
+
+},{}],"../node_modules/axios/lib/core/dispatchRequest.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+var transformData = require('./transformData');
+var isCancel = require('../cancel/isCancel');
+var defaults = require('../defaults');
+var isAbsoluteURL = require('./../helpers/isAbsoluteURL');
+var combineURLs = require('./../helpers/combineURLs');
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+}
+
+/**
+ * Dispatch a request to the server using the configured adapter.
+ *
+ * @param {object} config The config that is to be used for the request
+ * @returns {Promise} The Promise to be fulfilled
+ */
+module.exports = function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+
+  // Support baseURL config
+  if (config.baseURL && !isAbsoluteURL(config.url)) {
+    config.url = combineURLs(config.baseURL, config.url);
+  }
+
+  // Ensure headers exist
+  config.headers = config.headers || {};
+
+  // Transform request data
+  config.data = transformData(
+    config.data,
+    config.headers,
+    config.transformRequest
+  );
+
+  // Flatten headers
+  config.headers = utils.merge(
+    config.headers.common || {},
+    config.headers[config.method] || {},
+    config.headers || {}
+  );
+
+  utils.forEach(
+    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+    function cleanHeaderConfig(method) {
+      delete config.headers[method];
+    }
+  );
+
+  var adapter = config.adapter || defaults.adapter;
+
+  return adapter(config).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config);
+
+    // Transform response data
+    response.data = transformData(
+      response.data,
+      response.headers,
+      config.transformResponse
+    );
+
+    return response;
+  }, function onAdapterRejection(reason) {
+    if (!isCancel(reason)) {
+      throwIfCancellationRequested(config);
+
+      // Transform response data
+      if (reason && reason.response) {
+        reason.response.data = transformData(
+          reason.response.data,
+          reason.response.headers,
+          config.transformResponse
+        );
+      }
+    }
+
+    return Promise.reject(reason);
+  });
+};
+
+},{"./../utils":"../node_modules/axios/lib/utils.js","./transformData":"../node_modules/axios/lib/core/transformData.js","../cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","../defaults":"../node_modules/axios/lib/defaults.js","./../helpers/isAbsoluteURL":"../node_modules/axios/lib/helpers/isAbsoluteURL.js","./../helpers/combineURLs":"../node_modules/axios/lib/helpers/combineURLs.js"}],"../node_modules/axios/lib/core/mergeConfig.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('../utils');
+
+/**
+ * Config-specific merge-function which creates a new config-object
+ * by merging two configuration objects together.
+ *
+ * @param {Object} config1
+ * @param {Object} config2
+ * @returns {Object} New object resulting from merging config2 to config1
+ */
+module.exports = function mergeConfig(config1, config2) {
+  // eslint-disable-next-line no-param-reassign
+  config2 = config2 || {};
+  var config = {};
+
+  utils.forEach(['url', 'method', 'params', 'data'], function valueFromConfig2(prop) {
+    if (typeof config2[prop] !== 'undefined') {
+      config[prop] = config2[prop];
+    }
+  });
+
+  utils.forEach(['headers', 'auth', 'proxy'], function mergeDeepProperties(prop) {
+    if (utils.isObject(config2[prop])) {
+      config[prop] = utils.deepMerge(config1[prop], config2[prop]);
+    } else if (typeof config2[prop] !== 'undefined') {
+      config[prop] = config2[prop];
+    } else if (utils.isObject(config1[prop])) {
+      config[prop] = utils.deepMerge(config1[prop]);
+    } else if (typeof config1[prop] !== 'undefined') {
+      config[prop] = config1[prop];
+    }
+  });
+
+  utils.forEach([
+    'baseURL', 'transformRequest', 'transformResponse', 'paramsSerializer',
+    'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
+    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'maxContentLength',
+    'validateStatus', 'maxRedirects', 'httpAgent', 'httpsAgent', 'cancelToken',
+    'socketPath'
+  ], function defaultToConfig2(prop) {
+    if (typeof config2[prop] !== 'undefined') {
+      config[prop] = config2[prop];
+    } else if (typeof config1[prop] !== 'undefined') {
+      config[prop] = config1[prop];
+    }
+  });
+
+  return config;
+};
+
+},{"../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/core/Axios.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+var buildURL = require('../helpers/buildURL');
+var InterceptorManager = require('./InterceptorManager');
+var dispatchRequest = require('./dispatchRequest');
+var mergeConfig = require('./mergeConfig');
+
+/**
+ * Create a new instance of Axios
+ *
+ * @param {Object} instanceConfig The default config for the instance
+ */
+function Axios(instanceConfig) {
+  this.defaults = instanceConfig;
+  this.interceptors = {
+    request: new InterceptorManager(),
+    response: new InterceptorManager()
+  };
+}
+
+/**
+ * Dispatch a request
+ *
+ * @param {Object} config The config specific for this request (merged with this.defaults)
+ */
+Axios.prototype.request = function request(config) {
+  /*eslint no-param-reassign:0*/
+  // Allow for axios('example/url'[, config]) a la fetch API
+  if (typeof config === 'string') {
+    config = arguments[1] || {};
+    config.url = arguments[0];
+  } else {
+    config = config || {};
+  }
+
+  config = mergeConfig(this.defaults, config);
+  config.method = config.method ? config.method.toLowerCase() : 'get';
+
+  // Hook up interceptors middleware
+  var chain = [dispatchRequest, undefined];
+  var promise = Promise.resolve(config);
+
+  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+    chain.push(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  while (chain.length) {
+    promise = promise.then(chain.shift(), chain.shift());
+  }
+
+  return promise;
+};
+
+Axios.prototype.getUri = function getUri(config) {
+  config = mergeConfig(this.defaults, config);
+  return buildURL(config.url, config.params, config.paramsSerializer).replace(/^\?/, '');
+};
+
+// Provide aliases for supported request methods
+utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url
+    }));
+  };
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, data, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url,
+      data: data
+    }));
+  };
+});
+
+module.exports = Axios;
+
+},{"./../utils":"../node_modules/axios/lib/utils.js","../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","./InterceptorManager":"../node_modules/axios/lib/core/InterceptorManager.js","./dispatchRequest":"../node_modules/axios/lib/core/dispatchRequest.js","./mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js"}],"../node_modules/axios/lib/cancel/Cancel.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * A `Cancel` is an object that is thrown when an operation is canceled.
+ *
+ * @class
+ * @param {string=} message The message.
+ */
+function Cancel(message) {
+  this.message = message;
+}
+
+Cancel.prototype.toString = function toString() {
+  return 'Cancel' + (this.message ? ': ' + this.message : '');
+};
+
+Cancel.prototype.__CANCEL__ = true;
+
+module.exports = Cancel;
+
+},{}],"../node_modules/axios/lib/cancel/CancelToken.js":[function(require,module,exports) {
+'use strict';
+
+var Cancel = require('./Cancel');
+
+/**
+ * A `CancelToken` is an object that can be used to request cancellation of an operation.
+ *
+ * @class
+ * @param {Function} executor The executor function.
+ */
+function CancelToken(executor) {
+  if (typeof executor !== 'function') {
+    throw new TypeError('executor must be a function.');
+  }
+
+  var resolvePromise;
+  this.promise = new Promise(function promiseExecutor(resolve) {
+    resolvePromise = resolve;
+  });
+
+  var token = this;
+  executor(function cancel(message) {
+    if (token.reason) {
+      // Cancellation has already been requested
+      return;
+    }
+
+    token.reason = new Cancel(message);
+    resolvePromise(token.reason);
+  });
+}
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+  if (this.reason) {
+    throw this.reason;
+  }
+};
+
+/**
+ * Returns an object that contains a new `CancelToken` and a function that, when called,
+ * cancels the `CancelToken`.
+ */
+CancelToken.source = function source() {
+  var cancel;
+  var token = new CancelToken(function executor(c) {
+    cancel = c;
+  });
+  return {
+    token: token,
+    cancel: cancel
+  };
+};
+
+module.exports = CancelToken;
+
+},{"./Cancel":"../node_modules/axios/lib/cancel/Cancel.js"}],"../node_modules/axios/lib/helpers/spread.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * Syntactic sugar for invoking a function and expanding an array for arguments.
+ *
+ * Common use case would be to use `Function.prototype.apply`.
+ *
+ *  ```js
+ *  function f(x, y, z) {}
+ *  var args = [1, 2, 3];
+ *  f.apply(null, args);
+ *  ```
+ *
+ * With `spread` this example can be re-written.
+ *
+ *  ```js
+ *  spread(function(x, y, z) {})([1, 2, 3]);
+ *  ```
+ *
+ * @param {Function} callback
+ * @returns {Function}
+ */
+module.exports = function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+  };
+};
+
+},{}],"../node_modules/axios/lib/axios.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./utils');
+var bind = require('./helpers/bind');
+var Axios = require('./core/Axios');
+var mergeConfig = require('./core/mergeConfig');
+var defaults = require('./defaults');
+
+/**
+ * Create an instance of Axios
+ *
+ * @param {Object} defaultConfig The default config for the instance
+ * @return {Axios} A new instance of Axios
+ */
+function createInstance(defaultConfig) {
+  var context = new Axios(defaultConfig);
+  var instance = bind(Axios.prototype.request, context);
+
+  // Copy axios.prototype to instance
+  utils.extend(instance, Axios.prototype, context);
+
+  // Copy context to instance
+  utils.extend(instance, context);
+
+  return instance;
+}
+
+// Create the default instance to be exported
+var axios = createInstance(defaults);
+
+// Expose Axios class to allow class inheritance
+axios.Axios = Axios;
+
+// Factory for creating new instances
+axios.create = function create(instanceConfig) {
+  return createInstance(mergeConfig(axios.defaults, instanceConfig));
+};
+
+// Expose Cancel & CancelToken
+axios.Cancel = require('./cancel/Cancel');
+axios.CancelToken = require('./cancel/CancelToken');
+axios.isCancel = require('./cancel/isCancel');
+
+// Expose all/spread
+axios.all = function all(promises) {
+  return Promise.all(promises);
+};
+axios.spread = require('./helpers/spread');
+
+module.exports = axios;
+
+// Allow use of default import syntax in TypeScript
+module.exports.default = axios;
+
+},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
+module.exports = require('./lib/axios');
+},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"Hooks/Detail/effect.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useEndpoint = void 0;
+
+var _react = require("react");
+
+var _axios = _interopRequireDefault(require("axios"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var useEndpoint = function useEndpoint(req) {
+  var urlCode = location.href;
+  var slug = urlCode.split('?name=');
+  var name = slug[1];
+
+  var _useState = (0, _react.useState)({
+    data: [],
+    complete: false,
+    pending: false,
+    error: false
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      res = _useState2[0],
+      setRes = _useState2[1];
+
+  req.url = req.url + name;
+  (0, _react.useEffect)(function () {
+    setRes({
+      data: [],
+      pending: true,
+      error: false,
+      complete: false
+    });
+    (0, _axios.default)(req).then(function (res) {
+      return setRes({
+        data: res.data,
+        pending: false,
+        error: false,
+        complete: true
+      });
+    }).catch(function () {
+      return setRes({
+        data: [],
+        pending: false,
+        error: true,
+        complete: true
+      });
+    });
+  }, [req.url]);
+  return res.data[0];
+};
+
+exports.useEndpoint = useEndpoint;
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js"}],"../node_modules/@material-ui/core/esm/styles/createStyles.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createStyles;
+
+var _styles = require("@material-ui/styles");
+
+// import warning from 'warning';
+// let warnOnce = false;
+// To remove in v5
+function createStyles(styles) {
+  // warning(
+  //   warnOnce,
+  //   [
+  //     'Material-UI: createStyles from @material-ui/core/styles is deprecated.',
+  //     'Please use @material-ui/styles/createStyles',
+  //   ].join('\n'),
+  // );
+  // warnOnce = true;
+  return (0, _styles.createStyles)(styles);
+}
+},{"@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js"}],"../node_modules/@material-ui/core/esm/styles/makeStyles.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _styles = require("@material-ui/styles");
+
+var _defaultTheme = _interopRequireDefault(require("./defaultTheme"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function makeStyles(stylesOrCreator) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return (0, _styles.makeStyles)(stylesOrCreator, (0, _extends2.default)({
+    defaultTheme: _defaultTheme.default
+  }, options));
+}
+
+var _default = makeStyles;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/styles/MuiThemeProvider.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _styles = require("@material-ui/styles");
+
+/**
+ * @ignore - do not document.
+ */
+var _default = _styles.ThemeProvider;
+exports.default = _default;
+},{"@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js"}],"../node_modules/convert-css-length/dist/index.esm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+
+var e = function (e) {
+  return parseFloat(e);
+};
+
+function _default(r) {
+  return null == r && (r = r), function (n, t, i, f) {
+    null == i && (i = r), null == f && (f = i);
+    var l = String(n).match(/[\d.\-\+]*\s*(.*)/)[1] || "";
+    if (l === t) return n;
+    var u = e(n);
+    if ("px" !== l) if ("em" === l) u = e(n) * e(i);else if ("rem" === l) u = e(n) * e(r);else {
+      if ("ex" !== l) return n;
+      u = e(n) * e(i) * 2;
+    }
+    var a = u;
+    if ("px" !== t) if ("em" === t) a = u / e(f);else if ("rem" === t) a = u / e(r);else {
+      if ("ex" !== t) return n;
+      a = u / e(f) / 2;
+    }
+    return parseFloat(a.toFixed(5)) + t;
+  };
+}
+},{}],"../node_modules/@material-ui/core/esm/styles/cssUtils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.alignProperty = alignProperty;
+exports.fontGrid = fontGrid;
+exports.responsiveProperty = responsiveProperty;
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/defineProperty"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function alignProperty(_ref) {
+  var size = _ref.size,
+      grid = _ref.grid;
+  var sizeBelow = size - size % grid;
+  var sizeAbove = sizeBelow + grid;
+  return size - sizeBelow < sizeAbove - size ? sizeBelow : sizeAbove;
+} // fontGrid finds a minimal grid (in rem) for the fontSize values so that the
+// lineHeight falls under a x pixels grid, 4px in the case of Material Design,
+// without changing the relative line height
+
+
+function fontGrid(_ref2) {
+  var lineHeight = _ref2.lineHeight,
+      pixels = _ref2.pixels,
+      htmlFontSize = _ref2.htmlFontSize;
+  return pixels / (lineHeight * htmlFontSize);
+}
+/**
+ * generate a responsive version of a given CSS property
+ * @example
+ * responsiveProperty({
+ *   cssProperty: 'fontSize',
+ *   min: 15,
+ *   max: 20,
+ *   unit: 'px',
+ *   breakpoints: [300, 600],
+ * })
+ *
+ * // this returns
+ *
+ * {
+ *   fontSize: '15px',
+ *   '@media (min-width:300px)': {
+ *     fontSize: '17.5px',
+ *   },
+ *   '@media (min-width:600px)': {
+ *     fontSize: '20px',
+ *   },
+ * }
+ *
+ * @param {Object} params
+ * @param {string} params.cssProperty - The CSS property to be made responsive
+ * @param {number} params.min - The smallest value of the CSS property
+ * @param {number} params.max - The largest value of the CSS property
+ * @param {string} [params.unit] - The unit to be used for the CSS property
+ * @param {Array.number} [params.breakpoints]  - An array of breakpoints
+ * @param {number} [params.alignStep] - Round scaled value to fall under this grid
+ * @returns {Object} responsive styles for {params.cssProperty}
+ */
+
+
+function responsiveProperty(_ref3) {
+  var cssProperty = _ref3.cssProperty,
+      min = _ref3.min,
+      max = _ref3.max,
+      _ref3$unit = _ref3.unit,
+      unit = _ref3$unit === void 0 ? 'rem' : _ref3$unit,
+      _ref3$breakpoints = _ref3.breakpoints,
+      breakpoints = _ref3$breakpoints === void 0 ? [600, 960, 1280] : _ref3$breakpoints,
+      _ref3$transform = _ref3.transform,
+      transform = _ref3$transform === void 0 ? null : _ref3$transform;
+  var output = (0, _defineProperty2.default)({}, cssProperty, "".concat(min).concat(unit));
+  var factor = (max - min) / breakpoints[breakpoints.length - 1];
+  breakpoints.forEach(function (breakpoint) {
+    var value = min + factor * breakpoint;
+
+    if (transform !== null) {
+      value = transform(value);
+    }
+
+    output["@media (min-width:".concat(breakpoint, "px)")] = (0, _defineProperty2.default)({}, cssProperty, "".concat(Math.round(value * 10000) / 10000).concat(unit));
+  });
+  return output;
+}
+},{"@babel/runtime/helpers/esm/defineProperty":"../node_modules/@babel/runtime/helpers/esm/defineProperty.js"}],"../node_modules/@material-ui/core/esm/styles/responsiveFontSizes.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = responsiveFontSizes;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _convertCssLength = _interopRequireDefault(require("convert-css-length"));
+
+var _cssUtils = require("./cssUtils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function isUnitless(value) {
+  return String(parseFloat(value)).length === String(value).length;
+}
+
+function responsiveFontSizes(themeInput) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _options$breakpoints = options.breakpoints,
+      breakpoints = _options$breakpoints === void 0 ? ['sm', 'md', 'lg'] : _options$breakpoints,
+      _options$disableAlign = options.disableAlign,
+      disableAlign = _options$disableAlign === void 0 ? false : _options$disableAlign,
+      _options$factor = options.factor,
+      factor = _options$factor === void 0 ? 2 : _options$factor,
+      _options$variants = options.variants,
+      variants = _options$variants === void 0 ? ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'subtitle1', 'subtitle2', 'body1', 'body2', 'caption', 'button', 'overline'] : _options$variants;
+  var theme = (0, _extends2.default)({}, themeInput);
+  theme.typography = (0, _extends2.default)({}, theme.typography);
+  var typography = theme.typography; // Convert between css lengths e.g. em->px or px->rem
+  // Set the baseFontSize for your project. Defaults to 16px (also the browser default).
+
+  var convert = (0, _convertCssLength.default)(typography.htmlFontSize);
+  var breakpointValues = breakpoints.map(function (x) {
+    return theme.breakpoints.values[x];
+  });
+  variants.forEach(function (variant) {
+    var style = typography[variant];
+    var remFontSize = parseFloat(convert(style.fontSize, 'rem'));
+
+    if (remFontSize <= 1) {
+      return;
+    }
+
+    var maxFontSize = remFontSize;
+    var minFontSize = 1 + (maxFontSize - 1) / factor;
+    var lineHeight = style.lineHeight;
+
+    if (!isUnitless(lineHeight) && !disableAlign) {
+      throw new Error(["Material-UI: unsupported non-unitless line height with grid alignment.", 'Use unitless line heights instead.'].join('\n'));
+    }
+
+    if (!isUnitless(lineHeight)) {
+      // make it unitless
+      lineHeight = parseFloat(convert(lineHeight, 'rem')) / parseFloat(remFontSize);
+    }
+
+    var transform = null;
+
+    if (!disableAlign) {
+      transform = function transform(value) {
+        return (0, _cssUtils.alignProperty)({
+          size: value,
+          grid: (0, _cssUtils.fontGrid)({
+            pixels: 4,
+            lineHeight: lineHeight,
+            htmlFontSize: typography.htmlFontSize
+          })
+        });
+      };
+    }
+
+    typography[variant] = (0, _extends2.default)({}, style, {}, (0, _cssUtils.responsiveProperty)({
+      cssProperty: 'fontSize',
+      min: minFontSize,
+      max: maxFontSize,
+      unit: 'rem',
+      breakpoints: breakpointValues,
+      transform: transform
+    }));
+  });
+  return theme;
+}
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","convert-css-length":"../node_modules/convert-css-length/dist/index.esm.js","./cssUtils":"../node_modules/@material-ui/core/esm/styles/cssUtils.js"}],"../node_modules/@material-ui/core/esm/styles/styled.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _styles = require("@material-ui/styles");
+
+var _defaultTheme = _interopRequireDefault(require("./defaultTheme"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var styled = function styled(Component) {
+  var componentCreator = (0, _styles.styled)(Component);
+  return function (style, options) {
+    return componentCreator(style, (0, _extends2.default)({
+      defaultTheme: _defaultTheme.default
+    }, options));
+  };
+};
+
+var _default = styled;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/styles/useTheme.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = useTheme;
+
+var _styles = require("@material-ui/styles");
+
+var _defaultTheme = _interopRequireDefault(require("./defaultTheme"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function useTheme() {
+  return (0, _styles.useTheme)() || _defaultTheme.default;
+}
+},{"@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/styles/withTheme.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _styles = require("@material-ui/styles");
+
+var _defaultTheme = _interopRequireDefault(require("./defaultTheme"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var withTheme = (0, _styles.withThemeCreator)({
+  defaultTheme: _defaultTheme.default
+});
+var _default = withTheme;
+exports.default = _default;
+},{"@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/styles/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _exportNames = {
+  createMuiTheme: true,
+  createStyles: true,
+  makeStyles: true,
+  MuiThemeProvider: true,
+  responsiveFontSizes: true,
+  styled: true,
+  useTheme: true,
+  withStyles: true,
+  withTheme: true
+};
+Object.defineProperty(exports, "createMuiTheme", {
+  enumerable: true,
+  get: function () {
+    return _createMuiTheme.default;
+  }
+});
+Object.defineProperty(exports, "createStyles", {
+  enumerable: true,
+  get: function () {
+    return _createStyles.default;
+  }
+});
+Object.defineProperty(exports, "makeStyles", {
+  enumerable: true,
+  get: function () {
+    return _makeStyles.default;
+  }
+});
+Object.defineProperty(exports, "MuiThemeProvider", {
+  enumerable: true,
+  get: function () {
+    return _MuiThemeProvider.default;
+  }
+});
+Object.defineProperty(exports, "responsiveFontSizes", {
+  enumerable: true,
+  get: function () {
+    return _responsiveFontSizes.default;
+  }
+});
+Object.defineProperty(exports, "styled", {
+  enumerable: true,
+  get: function () {
+    return _styled.default;
+  }
+});
+Object.defineProperty(exports, "useTheme", {
+  enumerable: true,
+  get: function () {
+    return _useTheme.default;
+  }
+});
+Object.defineProperty(exports, "withStyles", {
+  enumerable: true,
+  get: function () {
+    return _withStyles.default;
+  }
+});
+Object.defineProperty(exports, "withTheme", {
+  enumerable: true,
+  get: function () {
+    return _withTheme.default;
+  }
+});
+
+var _colorManipulator = require("./colorManipulator");
+
+Object.keys(_colorManipulator).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _colorManipulator[key];
+    }
+  });
+});
+
+var _createMuiTheme = _interopRequireDefault(require("./createMuiTheme"));
+
+var _createStyles = _interopRequireDefault(require("./createStyles"));
+
+var _makeStyles = _interopRequireDefault(require("./makeStyles"));
+
+var _MuiThemeProvider = _interopRequireDefault(require("./MuiThemeProvider"));
+
+var _responsiveFontSizes = _interopRequireDefault(require("./responsiveFontSizes"));
+
+var _styled = _interopRequireDefault(require("./styled"));
+
+var _transitions = require("./transitions");
+
+Object.keys(_transitions).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _transitions[key];
+    }
+  });
+});
+
+var _useTheme = _interopRequireDefault(require("./useTheme"));
+
+var _withStyles = _interopRequireDefault(require("./withStyles"));
+
+var _withTheme = _interopRequireDefault(require("./withTheme"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./colorManipulator":"../node_modules/@material-ui/core/esm/styles/colorManipulator.js","./createMuiTheme":"../node_modules/@material-ui/core/esm/styles/createMuiTheme.js","./createStyles":"../node_modules/@material-ui/core/esm/styles/createStyles.js","./makeStyles":"../node_modules/@material-ui/core/esm/styles/makeStyles.js","./MuiThemeProvider":"../node_modules/@material-ui/core/esm/styles/MuiThemeProvider.js","./responsiveFontSizes":"../node_modules/@material-ui/core/esm/styles/responsiveFontSizes.js","./styled":"../node_modules/@material-ui/core/esm/styles/styled.js","./transitions":"../node_modules/@material-ui/core/esm/styles/transitions.js","./useTheme":"../node_modules/@material-ui/core/esm/styles/useTheme.js","./withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","./withTheme":"../node_modules/@material-ui/core/esm/styles/withTheme.js"}],"Views/Detail/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
+
+var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
+
+var _clsx = _interopRequireDefault(require("clsx"));
+
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
+
+var _ArrowBack = _interopRequireDefault(require("@material-ui/icons/ArrowBack"));
+
+var _effect = require("../../Hooks/Detail/effect");
+
+var _styles = require("@material-ui/core/styles");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+var useStyles = (0, _styles.makeStyles)(function (theme) {
+  return {
+    text: {
+      color: theme.palette.text.textSecondary,
+      marginTop: '6px',
+      fontSize: '14px'
+    },
+    button: {
+      margin: theme.spacing(1)
+    },
+    leftIcon: {
+      marginRight: theme.spacing(1)
+    },
+    rightIcon: {
+      marginLeft: theme.spacing(1)
+    },
+    iconSmall: {
+      fontSize: 20
+    },
+    title: {
+      fontSize: '32px',
+      width: '100%',
+      height: '30px'
+    },
+    card: {
+      backgroundColor: theme.palette.primary.main,
+      paddingBottom: '32px',
+      boxSizing: 'border-box'
+    }
+  };
+});
+
+var Detail = function Detail() {
+  var classes = useStyles();
+  var country = (0, _effect.useEndpoint)({
+    method: "GET",
+    url: 'https://restcountries.eu/rest/v2/name/'
+  });
+
+  if (typeof country !== 'undefined' || country != null) {
+    console.log(country);
+    return _react.default.createElement(_Grid.default, {
+      spacing: 4,
+      container: true,
+      style: {
+        marginTop: '32px'
+      }
+    }, _react.default.createElement(_Grid.default, {
+      item: true,
+      xs: 12,
+      sm: 12
+    }, _react.default.createElement(_Button.default, {
+      variant: "contained",
+      size: "small",
+      className: classes.button,
+      onClick: function onClick() {
+        location.hash = '/';
+      }
+    }, _react.default.createElement(_ArrowBack.default, {
+      className: (0, _clsx.default)(classes.leftIcon, classes.iconSmall)
+    }), "Voltar")), _react.default.createElement(_Grid.default, {
+      item: true,
+      xs: 12,
+      sm: 6
+    }, _react.default.createElement("img", {
+      src: country.flag,
+      width: '100%'
+    })), _react.default.createElement(_Grid.default, {
+      item: true,
+      xs: 12,
+      sm: 6,
+      spacing: 3,
+      container: true,
+      justify: "flex-start"
+    }, _react.default.createElement(_Grid.default, {
+      item: true,
+      xs: 12,
+      sm: 12
+    }, _react.default.createElement(_Typography.default, {
+      component: "h1",
+      className: classes.title
+    }, country.name)), _react.default.createElement(_Grid.default, {
+      item: true,
+      xs: 12,
+      sm: 6
+    }, _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, _react.default.createElement("b", null, "Native Name: "), " ", country.nativeName), _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, _react.default.createElement("b", null, "Population: "), " ", country.population), _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, _react.default.createElement("b", null, "Region: "), " ", country.region), _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, _react.default.createElement("b", null, "Sub Region: "), " ", country.subRegion), _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, _react.default.createElement("b", null, "Capital: "), " ", country.capital)), _react.default.createElement(_Grid.default, {
+      item: true,
+      xs: 12,
+      sm: 6
+    }, _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, _react.default.createElement("b", null, "Top Level Domain:"), " ", country.topLevelDomain), _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, _react.default.createElement("b", null, "Currencies: "), " ", country.currencies.map(function (currencie) {
+      return "".concat(currencie.name, " ");
+    })), _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, _react.default.createElement("b", null, " Languages: "), country.languages.map(function (language) {
+      return "".concat(language.name, " ");
+    })))));
+  }
+
+  return _react.default.createElement("p", null, "Loading...");
+};
+
+var _default = Detail;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","@material-ui/icons/ArrowBack":"../node_modules/@material-ui/icons/ArrowBack.js","../../Hooks/Detail/effect":"Hooks/Detail/effect.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js"}],"../node_modules/@material-ui/core/esm/Paper/Paper.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _clsx = _interopRequireDefault(require("clsx"));
+
+var _warning = _interopRequireDefault(require("warning"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var styles = function styles(theme) {
+  var elevations = {};
+  theme.shadows.forEach(function (shadow, index) {
+    elevations["elevation".concat(index)] = {
+      boxShadow: shadow
+    };
+  });
+  return (0, _extends2.default)({
+    /* Styles applied to the root element. */
+    root: {
+      backgroundColor: theme.palette.background.paper,
+      color: theme.palette.text.primary,
+      transition: theme.transitions.create('box-shadow')
+    },
+
+    /* Styles applied to the root element if `square={false}`. */
+    rounded: {
+      borderRadius: theme.shape.borderRadius
+    }
+  }, elevations);
+};
+
+exports.styles = styles;
+
+var Paper = _react.default.forwardRef(function Paper(props, ref) {
+  var classes = props.classes,
+      classNameProp = props.className,
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'div' : _props$component,
+      _props$square = props.square,
+      square = _props$square === void 0 ? false : _props$square,
+      _props$elevation = props.elevation,
+      elevation = _props$elevation === void 0 ? 1 : _props$elevation,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "component", "square", "elevation"]);
+  "development" !== "production" ? (0, _warning.default)(elevation >= 0 && elevation < 25, "Material-UI: this elevation `".concat(elevation, "` is not implemented.")) : void 0;
+  var className = (0, _clsx.default)(classes.root, classes["elevation".concat(elevation)], classNameProp, !square && classes.rounded);
+  return _react.default.createElement(Component, (0, _extends2.default)({
+    className: className,
+    ref: ref
+  }, other));
+});
+
+"development" !== "production" ? Paper.propTypes = {
+  /**
+   * The content of the component.
+   */
+  children: _propTypes.default.node,
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: _propTypes.default.object.isRequired,
+
+  /**
+   * @ignore
+   */
+  className: _propTypes.default.string,
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   */
+  component: _propTypes.default.elementType,
+
+  /**
+   * Shadow depth, corresponds to `dp` in the spec.
+   * It accepts values between 0 and 24 inclusive.
+   */
+  elevation: _propTypes.default.number,
+
+  /**
+   * If `true`, rounded corners are disabled.
+   */
+  square: _propTypes.default.bool
+} : void 0;
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiPaper'
+})(Paper);
+
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","warning":"../node_modules/warning/warning.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js"}],"../node_modules/@material-ui/core/esm/Paper/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _Paper.default;
+  }
+});
+
+var _Paper = _interopRequireDefault(require("./Paper"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./Paper":"../node_modules/@material-ui/core/esm/Paper/Paper.js"}],"../node_modules/@material-ui/core/esm/FormControl/formControlState.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = formControlState;
+
+function formControlState(_ref) {
+  var props = _ref.props,
+      states = _ref.states,
+      muiFormControl = _ref.muiFormControl;
+  return states.reduce(function (acc, state) {
+    acc[state] = props[state];
+
+    if (muiFormControl) {
+      if (typeof props[state] === 'undefined') {
+        acc[state] = muiFormControl[state];
+      }
+    }
+
+    return acc;
+  }, {});
+}
+},{}],"../node_modules/@material-ui/core/esm/FormControl/FormControlContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useFormControl = useFormControl;
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * @ignore - internal component.
+ */
+var FormControlContext = _react.default.createContext();
+
+function useFormControl() {
+  return _react.default.useContext(FormControlContext);
+}
+
+var _default = FormControlContext;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"../node_modules/@material-ui/core/esm/utils/debounce.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = debounce;
+
+// Corresponds to 10 frames at 60 Hz.
+// A few bytes payload overhead when lodash/debounce is ~3 kB and debounce ~300 B.
+function debounce(func) {
+  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 166;
+  var timeout;
+
+  function debounced() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    } // eslint-disable-next-line consistent-this
+
+
+    var that = this;
+
+    var later = function later() {
+      func.apply(that, args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  }
+
+  debounced.clear = function () {
+    clearTimeout(timeout);
+  };
+
+  return debounced;
+}
+},{}],"../node_modules/@material-ui/core/esm/TextareaAutosize/TextareaAutosize.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _debounce = _interopRequireDefault(require("../utils/debounce"));
+
+var _reactHelpers = require("../utils/reactHelpers");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getStyleValue(computedStyle, property) {
+  return parseInt(computedStyle[property], 10) || 0;
+}
+
+var useEnhancedEffect = typeof window !== 'undefined' ? _react.default.useLayoutEffect : _react.default.useEffect;
+var styles = {
+  /* Styles applied to the shadow textarea element. */
+  shadow: {
+    // Visibility needed to hide the extra text area on iPads
+    visibility: 'hidden',
+    // Remove from the content flow
+    position: 'absolute',
+    // Ignore the scrollbar width
+    overflow: 'hidden',
+    height: 0,
+    top: 0,
+    left: 0
+  }
+};
+
+var TextareaAutosize = _react.default.forwardRef(function TextareaAutosize(props, ref) {
+  var onChange = props.onChange,
+      rows = props.rows,
+      rowsMax = props.rowsMax,
+      style = props.style,
+      value = props.value,
+      other = (0, _objectWithoutProperties2.default)(props, ["onChange", "rows", "rowsMax", "style", "value"]);
+
+  var _React$useRef = _react.default.useRef(value != null),
+      isControlled = _React$useRef.current;
+
+  var inputRef = _react.default.useRef(null);
+
+  var handleRef = (0, _reactHelpers.useForkRef)(ref, inputRef);
+
+  var shadowRef = _react.default.useRef(null);
+
+  var _React$useState = _react.default.useState({}),
+      state = _React$useState[0],
+      setState = _React$useState[1];
+
+  var syncHeight = _react.default.useCallback(function () {
+    var input = inputRef.current;
+    var computedStyle = window.getComputedStyle(input);
+    var inputShallow = shadowRef.current;
+    inputShallow.style.width = computedStyle.width;
+    inputShallow.value = input.value || props.placeholder || 'x';
+    var boxSizing = computedStyle['box-sizing'];
+    var padding = getStyleValue(computedStyle, 'padding-bottom') + getStyleValue(computedStyle, 'padding-top');
+    var border = getStyleValue(computedStyle, 'border-bottom-width') + getStyleValue(computedStyle, 'border-top-width'); // The height of the inner content
+
+    var innerHeight = inputShallow.scrollHeight - padding; // Measure height of a textarea with a single row
+
+    inputShallow.value = 'x';
+    var singleRowHeight = inputShallow.scrollHeight - padding; // The height of the outer content
+
+    var outerHeight = innerHeight;
+
+    if (rows != null) {
+      outerHeight = Math.max(Number(rows) * singleRowHeight, outerHeight);
+    }
+
+    if (rowsMax != null) {
+      outerHeight = Math.min(Number(rowsMax) * singleRowHeight, outerHeight);
+    }
+
+    outerHeight = Math.max(outerHeight, singleRowHeight); // Take the box sizing into account for applying this value as a style.
+
+    var outerHeightStyle = outerHeight + (boxSizing === 'border-box' ? padding + border : 0);
+    setState(function (prevState) {
+      // Need a large enough different to update the height.
+      // This prevents infinite rendering loop.
+      if (outerHeightStyle > 0 && Math.abs((prevState.outerHeightStyle || 0) - outerHeightStyle) > 1) {
+        return {
+          innerHeight: innerHeight,
+          outerHeight: outerHeight,
+          outerHeightStyle: outerHeightStyle
+        };
+      }
+
+      return prevState;
+    });
+  }, [setState, rows, rowsMax, props.placeholder]);
+
+  _react.default.useEffect(function () {
+    var handleResize = (0, _debounce.default)(function () {
+      syncHeight();
+    });
+    window.addEventListener('resize', handleResize);
+    return function () {
+      handleResize.clear();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [syncHeight]);
+
+  useEnhancedEffect(function () {
+    syncHeight();
+  });
+
+  var handleChange = function handleChange(event) {
+    if (!isControlled) {
+      syncHeight();
+    }
+
+    if (onChange) {
+      onChange(event);
+    }
+  };
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("textarea", (0, _extends2.default)({
+    value: value,
+    onChange: handleChange,
+    ref: handleRef // Apply the rows prop to get a "correct" first SSR paint
+    ,
+    rows: rows || 1,
+    style: (0, _extends2.default)({
+      height: state.outerHeightStyle,
+      // Need a large enough different to allow scrolling.
+      // This prevents infinite rendering loop.
+      overflow: Math.abs(state.outerHeight - state.innerHeight) <= 1 ? 'hidden' : null
+    }, style)
+  }, other)), _react.default.createElement("textarea", {
+    "aria-hidden": true,
+    className: props.className,
+    readOnly: true,
+    ref: shadowRef,
+    tabIndex: -1,
+    style: (0, _extends2.default)({}, styles.shadow, {}, style)
+  }));
+});
+
+"development" !== "production" ? TextareaAutosize.propTypes = {
+  /**
+   * @ignore
+   */
+  className: _propTypes.default.string,
+
+  /**
+   * @ignore
+   */
+  onChange: _propTypes.default.func,
+
+  /**
+   * @ignore
+   */
+  placeholder: _propTypes.default.string,
+
+  /**
+   * Minimum number of rows to display.
+   */
+  rows: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
+  /**
+   * Maximum number of rows to display.
+   */
+  rowsMax: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
+  /**
+   * @ignore
+   */
+  style: _propTypes.default.object,
+
+  /**
+   * @ignore
+   */
+  value: _propTypes.default.any
+} : void 0;
+var _default = TextareaAutosize;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","../utils/debounce":"../node_modules/@material-ui/core/esm/utils/debounce.js","../utils/reactHelpers":"../node_modules/@material-ui/core/esm/utils/reactHelpers.js"}],"../node_modules/@material-ui/core/esm/TextareaAutosize/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _TextareaAutosize.default;
+  }
+});
+
+var _TextareaAutosize = _interopRequireDefault(require("./TextareaAutosize"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./TextareaAutosize":"../node_modules/@material-ui/core/esm/TextareaAutosize/TextareaAutosize.js"}],"../node_modules/@material-ui/core/esm/InputBase/utils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.hasValue = hasValue;
+exports.isFilled = isFilled;
+exports.isAdornedStart = isAdornedStart;
+
+// Supports determination of isControlled().
+// Controlled input accepts its current value as a prop.
+//
+// @see https://facebook.github.io/react/docs/forms.html#controlled-components
+// @param value
+// @returns {boolean} true if string (including '') or number (including zero)
+function hasValue(value) {
+  return value != null && !(Array.isArray(value) && value.length === 0);
+} // Determine if field is empty or filled.
+// Response determines if label is presented above field or as placeholder.
+//
+// @param obj
+// @param SSR
+// @returns {boolean} False when not present or empty string.
+//                    True when any number or string with length.
+
+
+function isFilled(obj) {
+  var SSR = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  return obj && (hasValue(obj.value) && obj.value !== '' || SSR && hasValue(obj.defaultValue) && obj.defaultValue !== '');
+} // Determine if an Input is adorned on start.
+// It's corresponding to the left with LTR.
+//
+// @param obj
+// @returns {boolean} False when no adornments.
+//                    True when adorned at the start.
+
+
+function isAdornedStart(obj) {
+  return obj.startAdornment;
+}
+},{}],"../node_modules/@material-ui/core/esm/InputBase/InputBase.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _warning = _interopRequireDefault(require("warning"));
+
+var _clsx = _interopRequireDefault(require("clsx"));
+
+var _formControlState = _interopRequireDefault(require("../FormControl/formControlState"));
+
+var _FormControlContext = _interopRequireWildcard(require("../FormControl/FormControlContext"));
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var _reactHelpers = require("../utils/reactHelpers");
+
+var _TextareaAutosize = _interopRequireDefault(require("../TextareaAutosize"));
+
+var _utils = require("./utils");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+var styles = function styles(theme) {
+  var light = theme.palette.type === 'light';
+  var placeholder = {
+    color: 'currentColor',
+    opacity: light ? 0.42 : 0.5,
+    transition: theme.transitions.create('opacity', {
+      duration: theme.transitions.duration.shorter
+    })
+  };
+  var placeholderHidden = {
+    opacity: '0 !important'
+  };
+  var placeholderVisible = {
+    opacity: light ? 0.42 : 0.5
+  };
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      // Mimics the default input display property used by browsers for an input.
+      fontFamily: theme.typography.fontFamily,
+      color: theme.palette.text.primary,
+      fontSize: theme.typography.pxToRem(16),
+      lineHeight: '1.1875em',
+      // Reset (19px), match the native input line-height
+      boxSizing: 'border-box',
+      // Prevent padding issue with fullWidth.
+      position: 'relative',
+      cursor: 'text',
+      display: 'inline-flex',
+      alignItems: 'center',
+      '&$disabled': {
+        color: theme.palette.text.disabled,
+        cursor: 'default'
+      }
+    },
+
+    /* Styles applied to the root element if the component is a descendant of `FormControl`. */
+    formControl: {},
+
+    /* Styles applied to the root element if the component is focused. */
+    focused: {},
+
+    /* Styles applied to the root element if `disabled={true}`. */
+    disabled: {},
+
+    /* Styles applied to the root element if `startAdornment` is provided. */
+    adornedStart: {},
+
+    /* Styles applied to the root element if `endAdornment` is provided. */
+    adornedEnd: {},
+
+    /* Styles applied to the root element if `error={true}`. */
+    error: {},
+
+    /* Styles applied to the `input` element if `margin="dense"`. */
+    marginDense: {},
+
+    /* Styles applied to the root element if `multiline={true}`. */
+    multiline: {
+      padding: "".concat(8 - 2, "px 0 ").concat(8 - 1, "px"),
+      '&$marginDense': {
+        paddingTop: 4 - 1
+      }
+    },
+
+    /* Styles applied to the root element if `fullWidth={true}`. */
+    fullWidth: {
+      width: '100%'
+    },
+
+    /* Styles applied to the `input` element. */
+    input: {
+      font: 'inherit',
+      color: 'currentColor',
+      padding: "".concat(8 - 2, "px 0 ").concat(8 - 1, "px"),
+      border: 0,
+      boxSizing: 'content-box',
+      background: 'none',
+      height: '1.1875em',
+      // Reset (19px), match the native input line-height
+      margin: 0,
+      // Reset for Safari
+      // Remove grey highlight
+      WebkitTapHighlightColor: 'transparent',
+      display: 'block',
+      // Make the flex item shrink with Firefox
+      minWidth: 0,
+      width: '100%',
+      // Fix IE 11 width issue
+      '&::-webkit-input-placeholder': placeholder,
+      '&::-moz-placeholder': placeholder,
+      // Firefox 19+
+      '&:-ms-input-placeholder': placeholder,
+      // IE 11
+      '&::-ms-input-placeholder': placeholder,
+      // Edge
+      '&:focus': {
+        outline: 0
+      },
+      // Reset Firefox invalid required input style
+      '&:invalid': {
+        boxShadow: 'none'
+      },
+      '&::-webkit-search-decoration': {
+        // Remove the padding when type=search.
+        '-webkit-appearance': 'none'
+      },
+      // Show and hide the placeholder logic
+      'label[data-shrink=false] + $formControl &': {
+        '&::-webkit-input-placeholder': placeholderHidden,
+        '&::-moz-placeholder': placeholderHidden,
+        // Firefox 19+
+        '&:-ms-input-placeholder': placeholderHidden,
+        // IE 11
+        '&::-ms-input-placeholder': placeholderHidden,
+        // Edge
+        '&:focus::-webkit-input-placeholder': placeholderVisible,
+        '&:focus::-moz-placeholder': placeholderVisible,
+        // Firefox 19+
+        '&:focus:-ms-input-placeholder': placeholderVisible,
+        // IE 11
+        '&:focus::-ms-input-placeholder': placeholderVisible // Edge
+
+      },
+      '&$disabled': {
+        opacity: 1 // Reset iOS opacity
+
+      }
+    },
+
+    /* Styles applied to the `input` element if `margin="dense"`. */
+    inputMarginDense: {
+      paddingTop: 4 - 1
+    },
+
+    /* Styles applied to the `input` element if `select={true}`. */
+    inputSelect: {
+      paddingRight: 24
+    },
+
+    /* Styles applied to the `input` element if `multiline={true}`. */
+    inputMultiline: {
+      height: 'auto',
+      resize: 'none',
+      padding: 0
+    },
+
+    /* Styles applied to the `input` element if `type="search"`. */
+    inputTypeSearch: {
+      // Improve type search style.
+      '-moz-appearance': 'textfield',
+      '-webkit-appearance': 'textfield'
+    },
+
+    /* Styles applied to the `input` element if `startAdornment` is provided. */
+    inputAdornedStart: {},
+
+    /* Styles applied to the `input` element if `endAdornment` is provided. */
+    inputAdornedEnd: {},
+
+    /* Styles applied to the `input` element if `hiddenLabel={true}`. */
+    inputHiddenLabel: {}
+  };
+};
+
+exports.styles = styles;
+var useEnhancedEffect = typeof window === 'undefined' ? _react.default.useEffect : _react.default.useLayoutEffect;
+/**
+ * `InputBase` contains as few styles as possible.
+ * It aims to be a simple building block for creating an input.
+ * It contains a load of style reset and some state logic.
+ */
+
+var InputBase = _react.default.forwardRef(function InputBase(props, ref) {
+  var ariaDescribedby = props['aria-describedby'],
+      autoComplete = props.autoComplete,
+      autoFocus = props.autoFocus,
+      classes = props.classes,
+      classNameProp = props.className,
+      defaultValue = props.defaultValue,
+      disabled = props.disabled,
+      endAdornment = props.endAdornment,
+      error = props.error,
+      _props$fullWidth = props.fullWidth,
+      fullWidth = _props$fullWidth === void 0 ? false : _props$fullWidth,
+      id = props.id,
+      _props$inputComponent = props.inputComponent,
+      inputComponent = _props$inputComponent === void 0 ? 'input' : _props$inputComponent,
+      _props$inputProps = props.inputProps;
+  _props$inputProps = _props$inputProps === void 0 ? {} : _props$inputProps;
+  var inputPropsClassName = _props$inputProps.className,
+      inputPropsProp = (0, _objectWithoutProperties2.default)(_props$inputProps, ["className"]),
+      inputRefProp = props.inputRef,
+      margin = props.margin,
+      _props$multiline = props.multiline,
+      multiline = _props$multiline === void 0 ? false : _props$multiline,
+      name = props.name,
+      onBlur = props.onBlur,
+      onChange = props.onChange,
+      onClick = props.onClick,
+      onFocus = props.onFocus,
+      onKeyDown = props.onKeyDown,
+      onKeyUp = props.onKeyUp,
+      placeholder = props.placeholder,
+      readOnly = props.readOnly,
+      renderSuffix = props.renderSuffix,
+      rows = props.rows,
+      rowsMax = props.rowsMax,
+      _props$select = props.select,
+      select = _props$select === void 0 ? false : _props$select,
+      startAdornment = props.startAdornment,
+      _props$type = props.type,
+      type = _props$type === void 0 ? 'text' : _props$type,
+      value = props.value,
+      other = (0, _objectWithoutProperties2.default)(props, ["aria-describedby", "autoComplete", "autoFocus", "classes", "className", "defaultValue", "disabled", "endAdornment", "error", "fullWidth", "id", "inputComponent", "inputProps", "inputRef", "margin", "multiline", "name", "onBlur", "onChange", "onClick", "onFocus", "onKeyDown", "onKeyUp", "placeholder", "readOnly", "renderSuffix", "rows", "rowsMax", "select", "startAdornment", "type", "value"]);
+
+  var _React$useRef = _react.default.useRef(value != null),
+      isControlled = _React$useRef.current;
+
+  var inputRef = _react.default.useRef();
+
+  var handleInputRefWarning = _react.default.useCallback(function (instance) {
+    "development" !== "production" ? (0, _warning.default)(!instance || instance instanceof HTMLInputElement || instance.focus, ['Material-UI: you have provided a `inputComponent` to the input component', 'that does not correctly handle the `inputRef` prop.', 'Make sure the `inputRef` prop is called with a HTMLInputElement.'].join('\n')) : void 0;
+  }, []);
+
+  var handleInputPropsRefProp = (0, _reactHelpers.useForkRef)(inputPropsProp.ref, handleInputRefWarning);
+  var handleInputRefProp = (0, _reactHelpers.useForkRef)(inputRefProp, handleInputPropsRefProp);
+  var handleInputRef = (0, _reactHelpers.useForkRef)(inputRef, handleInputRefProp);
+
+  var _React$useState = _react.default.useState(false),
+      focused = _React$useState[0],
+      setFocused = _React$useState[1];
+
+  var muiFormControl = (0, _FormControlContext.useFormControl)();
+
+  if ("development" !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    _react.default.useEffect(function () {
+      if (muiFormControl) {
+        return muiFormControl.registerEffect();
+      }
+
+      return undefined;
+    }, [muiFormControl]);
+  }
+
+  var fcs = (0, _formControlState.default)({
+    props: props,
+    muiFormControl: muiFormControl,
+    states: ['disabled', 'error', 'hiddenLabel', 'margin', 'required', 'filled']
+  });
+  fcs.focused = muiFormControl ? muiFormControl.focused : focused; // The blur won't fire when the disabled state is set on a focused input.
+  // We need to book keep the focused state manually.
+
+  _react.default.useEffect(function () {
+    if (!muiFormControl && disabled && focused) {
+      setFocused(false);
+
+      if (onBlur) {
+        onBlur();
+      }
+    }
+  }, [muiFormControl, disabled, focused, onBlur]);
+
+  var checkDirty = _react.default.useCallback(function (obj) {
+    if ((0, _utils.isFilled)(obj)) {
+      if (muiFormControl && muiFormControl.onFilled) {
+        muiFormControl.onFilled();
+      }
+    } else if (muiFormControl && muiFormControl.onEmpty) {
+      muiFormControl.onEmpty();
+    }
+  }, [muiFormControl]);
+
+  useEnhancedEffect(function () {
+    if (isControlled) {
+      checkDirty({
+        value: value
+      });
+    }
+  }, [value, checkDirty, isControlled]);
+
+  var handleFocus = function handleFocus(event) {
+    // Fix a bug with IE 11 where the focus/blur events are triggered
+    // while the input is disabled.
+    if (fcs.disabled) {
+      event.stopPropagation();
+      return;
+    }
+
+    if (onFocus) {
+      onFocus(event);
+    }
+
+    if (muiFormControl && muiFormControl.onFocus) {
+      muiFormControl.onFocus(event);
+    } else {
+      setFocused(true);
+    }
+  };
+
+  var handleBlur = function handleBlur(event) {
+    if (onBlur) {
+      onBlur(event);
+    }
+
+    if (muiFormControl && muiFormControl.onBlur) {
+      muiFormControl.onBlur(event);
+    } else {
+      setFocused(false);
+    }
+  };
+
+  var handleChange = function handleChange(event) {
+    if (!isControlled) {
+      var element = event.target || inputRef.current;
+
+      if (element == null) {
+        throw new TypeError('Material-UI: Expected valid input target. ' + 'Did you use a custom `inputComponent` and forget to forward refs? ' + 'See https://material-ui.com/r/input-component-ref-interface for more info.');
+      }
+
+      checkDirty({
+        value: element.value
+      });
+    } // Perform in the willUpdate
+
+
+    if (onChange) {
+      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+
+      onChange.apply(void 0, [event].concat(args));
+    }
+  };
+
+  var handleClick = function handleClick(event) {
+    if (inputRef.current && event.currentTarget === event.target) {
+      inputRef.current.focus();
+    }
+
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
+  var InputComponent = inputComponent;
+  var inputProps = (0, _extends2.default)({}, inputPropsProp, {
+    ref: handleInputRef
+  });
+
+  if (typeof InputComponent !== 'string') {
+    inputProps = (0, _extends2.default)({
+      // Rename ref to inputRef as we don't know the
+      // provided `inputComponent` structure.
+      inputRef: handleInputRef,
+      type: type
+    }, inputProps, {
+      ref: null
+    });
+  } else if (multiline) {
+    if (rows && !rowsMax) {
+      InputComponent = 'textarea';
+    } else {
+      inputProps = (0, _extends2.default)({
+        rows: rows,
+        rowsMax: rowsMax
+      }, inputProps);
+      InputComponent = _TextareaAutosize.default;
+    }
+  } else {
+    inputProps = (0, _extends2.default)({
+      type: type
+    }, inputProps);
+  }
+
+  return _react.default.createElement("div", (0, _extends2.default)({
+    className: (0, _clsx.default)(classes.root, classNameProp, fcs.disabled && classes.disabled, fcs.error && classes.error, fullWidth && classes.fullWidth, fcs.focused && classes.focused, muiFormControl && classes.formControl, multiline && classes.multiline, startAdornment && classes.adornedStart, endAdornment && classes.adornedEnd, {
+      dense: classes.marginDense
+    }[fcs.margin]),
+    onClick: handleClick,
+    ref: ref
+  }, other), startAdornment, _react.default.createElement(_FormControlContext.default.Provider, {
+    value: null
+  }, _react.default.createElement(InputComponent, (0, _extends2.default)({
+    "aria-invalid": fcs.error,
+    "aria-describedby": ariaDescribedby,
+    autoComplete: autoComplete,
+    autoFocus: autoFocus,
+    className: (0, _clsx.default)(classes.input, inputPropsClassName, fcs.disabled && classes.disabled, multiline && classes.inputMultiline, select && classes.inputSelect, fcs.hiddenLabel && classes.inputHiddenLabel, startAdornment && classes.inputAdornedStart, endAdornment && classes.inputAdornedEnd, {
+      search: classes.inputTypeSearch
+    }[type], {
+      dense: classes.inputMarginDense
+    }[fcs.margin]),
+    defaultValue: defaultValue,
+    disabled: fcs.disabled,
+    id: id,
+    name: name,
+    onBlur: handleBlur,
+    onChange: handleChange,
+    onFocus: handleFocus,
+    onKeyDown: onKeyDown,
+    onKeyUp: onKeyUp,
+    placeholder: placeholder,
+    readOnly: readOnly,
+    required: fcs.required,
+    rows: rows,
+    value: value
+  }, inputProps))), endAdornment, renderSuffix ? renderSuffix((0, _extends2.default)({}, fcs, {
+    startAdornment: startAdornment
+  })) : null);
+});
+
+"development" !== "production" ? InputBase.propTypes = {
+  /**
+   * @ignore
+   */
+  'aria-describedby': _propTypes.default.string,
+
+  /**
+   * This prop helps users to fill forms faster, especially on mobile devices.
+   * The name can be confusing, as it's more like an autofill.
+   * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
+   */
+  autoComplete: _propTypes.default.string,
+
+  /**
+   * If `true`, the `input` element will be focused during the first mount.
+   */
+  autoFocus: _propTypes.default.bool,
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: _propTypes.default.object.isRequired,
+
+  /**
+   * The CSS class name of the wrapper element.
+   */
+  className: _propTypes.default.string,
+
+  /**
+   * The default `input` element value. Use when the component is not controlled.
+   */
+  defaultValue: _propTypes.default.any,
+
+  /**
+   * If `true`, the `input` element will be disabled.
+   */
+  disabled: _propTypes.default.bool,
+
+  /**
+   * End `InputAdornment` for this component.
+   */
+  endAdornment: _propTypes.default.node,
+
+  /**
+   * If `true`, the input will indicate an error. This is normally obtained via context from
+   * FormControl.
+   */
+  error: _propTypes.default.bool,
+
+  /**
+   * If `true`, the input will take up the full width of its container.
+   */
+  fullWidth: _propTypes.default.bool,
+
+  /**
+   * The id of the `input` element.
+   */
+  id: _propTypes.default.string,
+
+  /**
+   * The component used for the `input` element.
+   * Either a string to use a DOM element or a component.
+   */
+  inputComponent: _propTypes.default.elementType,
+
+  /**
+   * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
+   */
+  inputProps: _propTypes.default.object,
+
+  /**
+   * This prop can be used to pass a ref callback to the `input` element.
+   */
+  inputRef: _propTypes.default.oneOfType([_propTypes.default.func, _propTypes.default.object]),
+
+  /**
+   * If `dense`, will adjust vertical spacing. This is normally obtained via context from
+   * FormControl.
+   */
+  margin: _propTypes.default.oneOf(['dense', 'none']),
+
+  /**
+   * If `true`, a textarea element will be rendered.
+   */
+  multiline: _propTypes.default.bool,
+
+  /**
+   * Name attribute of the `input` element.
+   */
+  name: _propTypes.default.string,
+
+  /**
+   * @ignore
+   */
+  onBlur: _propTypes.default.func,
+
+  /**
+   * Callback fired when the value is changed.
+   *
+   * @param {object} event The event source of the callback.
+   * You can pull out the new value by accessing `event.target.value`.
+   */
+  onChange: _propTypes.default.func,
+
+  /**
+   * @ignore
+   */
+  onClick: _propTypes.default.func,
+
+  /**
+   * @ignore
+   */
+  onFocus: _propTypes.default.func,
+
+  /**
+   * @ignore
+   */
+  onKeyDown: _propTypes.default.func,
+
+  /**
+   * @ignore
+   */
+  onKeyUp: _propTypes.default.func,
+
+  /**
+   * The short hint displayed in the input before the user enters a value.
+   */
+  placeholder: _propTypes.default.string,
+
+  /**
+   * It prevents the user from changing the value of the field
+   * (not from interacting with the field).
+   */
+  readOnly: _propTypes.default.bool,
+
+  /**
+   * @ignore
+   */
+  renderSuffix: _propTypes.default.func,
+
+  /**
+   * If `true`, the `input` element will be required.
+   */
+  required: _propTypes.default.bool,
+
+  /**
+   * Number of rows to display when multiline option is set to true.
+   */
+  rows: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
+  /**
+   * Maximum number of rows to display when multiline option is set to true.
+   */
+  rowsMax: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
+  /**
+   * Should be `true` when the component hosts a select.
+   */
+  select: _propTypes.default.bool,
+
+  /**
+   * Start `InputAdornment` for this component.
+   */
+  startAdornment: _propTypes.default.node,
+
+  /**
+   * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types).
+   */
+  type: _propTypes.default.string,
+
+  /**
+   * The value of the `input` element, required for a controlled component.
+   */
+  value: _propTypes.default.any
+} : void 0;
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiInputBase'
+})(InputBase);
+
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","warning":"../node_modules/warning/warning.js","clsx":"../node_modules/clsx/dist/clsx.m.js","../FormControl/formControlState":"../node_modules/@material-ui/core/esm/FormControl/formControlState.js","../FormControl/FormControlContext":"../node_modules/@material-ui/core/esm/FormControl/FormControlContext.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../utils/reactHelpers":"../node_modules/@material-ui/core/esm/utils/reactHelpers.js","../TextareaAutosize":"../node_modules/@material-ui/core/esm/TextareaAutosize/index.js","./utils":"../node_modules/@material-ui/core/esm/InputBase/utils.js"}],"../node_modules/@material-ui/core/esm/InputBase/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _InputBase.default;
+  }
+});
+
+var _InputBase = _interopRequireDefault(require("./InputBase"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./InputBase":"../node_modules/@material-ui/core/esm/InputBase/InputBase.js"}],"../node_modules/@material-ui/core/esm/IconButton/IconButton.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _clsx = _interopRequireDefault(require("clsx"));
+
+var _utils = require("@material-ui/utils");
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var _colorManipulator = require("../styles/colorManipulator");
+
+var _ButtonBase = _interopRequireDefault(require("../ButtonBase"));
+
+var _helpers = require("../utils/helpers");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      textAlign: 'center',
+      flex: '0 0 auto',
+      fontSize: theme.typography.pxToRem(24),
+      padding: 12,
+      borderRadius: '50%',
+      overflow: 'visible',
+      // Explicitly set the default value to solve a bug on IE 11.
+      color: theme.palette.action.active,
+      transition: theme.transitions.create('background-color', {
+        duration: theme.transitions.duration.shortest
+      }),
+      '&:hover': {
+        backgroundColor: (0, _colorManipulator.fade)(theme.palette.action.active, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      },
+      '&$disabled': {
+        backgroundColor: 'transparent',
+        color: theme.palette.action.disabled
+      }
+    },
+
+    /* Styles applied to the root element if `edge="start"`. */
+    edgeStart: {
+      marginLeft: -12,
+      '$sizeSmall&': {
+        marginLeft: -3
+      }
+    },
+
+    /* Styles applied to the root element if `edge="end"`. */
+    edgeEnd: {
+      marginRight: -12,
+      '$sizeSmall&': {
+        marginRight: -3
+      }
+    },
+
+    /* Styles applied to the root element if `color="inherit"`. */
+    colorInherit: {
+      color: 'inherit'
+    },
+
+    /* Styles applied to the root element if `color="primary"`. */
+    colorPrimary: {
+      color: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: (0, _colorManipulator.fade)(theme.palette.primary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      }
+    },
+
+    /* Styles applied to the root element if `color="secondary"`. */
+    colorSecondary: {
+      color: theme.palette.secondary.main,
+      '&:hover': {
+        backgroundColor: (0, _colorManipulator.fade)(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      }
+    },
+
+    /* Pseudo-class applied to the root element if `disabled={true}`. */
+    disabled: {},
+
+    /* Styles applied to the root element if `size="small"`. */
+    sizeSmall: {
+      padding: 3,
+      fontSize: theme.typography.pxToRem(18)
+    },
+
+    /* Styles applied to the children container element. */
+    label: {
+      width: '100%',
+      display: 'flex',
+      alignItems: 'inherit',
+      justifyContent: 'inherit'
+    }
+  };
+};
+/**
+ * Refer to the [Icons](/components/icons/) section of the documentation
+ * regarding the available icon options.
+ */
+
+
+exports.styles = styles;
+
+var IconButton = _react.default.forwardRef(function IconButton(props, ref) {
+  var _props$edge = props.edge,
+      edge = _props$edge === void 0 ? false : _props$edge,
+      children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'default' : _props$color,
+      _props$disabled = props.disabled,
+      disabled = _props$disabled === void 0 ? false : _props$disabled,
+      _props$disableFocusRi = props.disableFocusRipple,
+      disableFocusRipple = _props$disableFocusRi === void 0 ? false : _props$disableFocusRi,
+      _props$size = props.size,
+      size = _props$size === void 0 ? 'medium' : _props$size,
+      other = (0, _objectWithoutProperties2.default)(props, ["edge", "children", "classes", "className", "color", "disabled", "disableFocusRipple", "size"]);
+  return _react.default.createElement(_ButtonBase.default, (0, _extends2.default)({
+    className: (0, _clsx.default)(classes.root, className, color !== 'default' && classes["color".concat((0, _helpers.capitalize)(color))], disabled && classes.disabled, {
+      small: classes["size".concat((0, _helpers.capitalize)(size))]
+    }[size], {
+      start: classes.edgeStart,
+      end: classes.edgeEnd
+    }[edge]),
+    centerRipple: true,
+    focusRipple: !disableFocusRipple,
+    disabled: disabled,
+    ref: ref
+  }, other), _react.default.createElement("span", {
+    className: classes.label
+  }, children));
+});
+
+"development" !== "production" ? IconButton.propTypes = {
+  /**
+   * The icon element.
+   */
+  children: (0, _utils.chainPropTypes)(_propTypes.default.node, function (props) {
+    var found = _react.default.Children.toArray(props.children).some(function (child) {
+      return _react.default.isValidElement(child) && child.props.onClick;
+    });
+
+    if (found) {
+      return new Error(['Material-UI: you are providing an onClick event listener ' + 'to a child of a button element.', 'Firefox will never trigger the event.', 'You should move the onClick listener to the parent button element.', 'https://github.com/mui-org/material-ui/issues/13957'].join('\n'));
+    }
+
+    return null;
+  }),
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: _propTypes.default.object.isRequired,
+
+  /**
+   * @ignore
+   */
+  className: _propTypes.default.string,
+
+  /**
+   * The color of the component. It supports those theme colors that make sense for this component.
+   */
+  color: _propTypes.default.oneOf(['default', 'inherit', 'primary', 'secondary']),
+
+  /**
+   * If `true`, the button will be disabled.
+   */
+  disabled: _propTypes.default.bool,
+
+  /**
+   * If `true`, the  keyboard focus ripple will be disabled.
+   * `disableRipple` must also be true.
+   */
+  disableFocusRipple: _propTypes.default.bool,
+
+  /**
+   * If `true`, the ripple effect will be disabled.
+   */
+  disableRipple: _propTypes.default.bool,
+
+  /**
+   * If given, uses a negative margin to counteract the padding on one
+   * side (this is often helpful for aligning the left or right
+   * side of the icon with content above or below, without ruining the border
+   * size and shape).
+   */
+  edge: _propTypes.default.oneOf(['start', 'end', false]),
+
+  /**
+   * The size of the button.
+   * `small` is equivalent to the dense button styling.
+   */
+  size: _propTypes.default.oneOf(['small', 'medium'])
+} : void 0;
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiIconButton'
+})(IconButton);
+
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","@material-ui/utils":"../node_modules/@material-ui/utils/esm/index.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../styles/colorManipulator":"../node_modules/@material-ui/core/esm/styles/colorManipulator.js","../ButtonBase":"../node_modules/@material-ui/core/esm/ButtonBase/index.js","../utils/helpers":"../node_modules/@material-ui/core/esm/utils/helpers.js"}],"../node_modules/@material-ui/core/esm/IconButton/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _IconButton.default;
+  }
+});
+
+var _IconButton = _interopRequireDefault(require("./IconButton"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./IconButton":"../node_modules/@material-ui/core/esm/IconButton/IconButton.js"}],"../node_modules/@material-ui/icons/Search.js":[function(require,module,exports) {
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -46472,24 +49525,7 @@ var _Modal = _interopRequireDefault(require("./Modal"));
 var _ModalManager = _interopRequireDefault(require("./ModalManager"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Modal":"../node_modules/@material-ui/core/esm/Modal/Modal.js","./ModalManager":"../node_modules/@material-ui/core/esm/Modal/ModalManager.js"}],"../node_modules/@material-ui/core/esm/styles/useTheme.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = useTheme;
-
-var _styles = require("@material-ui/styles");
-
-var _defaultTheme = _interopRequireDefault(require("./defaultTheme"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function useTheme() {
-  return (0, _styles.useTheme)() || _defaultTheme.default;
-}
-},{"@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/transitions/utils.js":[function(require,module,exports) {
+},{"./Modal":"../node_modules/@material-ui/core/esm/Modal/Modal.js","./ModalManager":"../node_modules/@material-ui/core/esm/Modal/ModalManager.js"}],"../node_modules/@material-ui/core/esm/transitions/utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49821,726 +52857,7 @@ Object.defineProperty(exports, "default", {
 var _CardMedia = _interopRequireDefault(require("./CardMedia"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./CardMedia":"../node_modules/@material-ui/core/esm/CardMedia/CardMedia.js"}],"../node_modules/@material-ui/core/esm/Typography/Typography.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _clsx = _interopRequireDefault(require("clsx"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _helpers = require("../utils/helpers");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      margin: 0
-    },
-
-    /* Styles applied to the root element if `variant="body2"`. */
-    body2: theme.typography.body2,
-
-    /* Styles applied to the root element if `variant="body1"`. */
-    body1: theme.typography.body1,
-
-    /* Styles applied to the root element if `variant="caption"`. */
-    caption: theme.typography.caption,
-
-    /* Styles applied to the root element if `variant="button"`. */
-    button: theme.typography.button,
-
-    /* Styles applied to the root element if `variant="h1"`. */
-    h1: theme.typography.h1,
-
-    /* Styles applied to the root element if `variant="h2"`. */
-    h2: theme.typography.h2,
-
-    /* Styles applied to the root element if `variant="h3"`. */
-    h3: theme.typography.h3,
-
-    /* Styles applied to the root element if `variant="h4"`. */
-    h4: theme.typography.h4,
-
-    /* Styles applied to the root element if `variant="h5"`. */
-    h5: theme.typography.h5,
-
-    /* Styles applied to the root element if `variant="h6"`. */
-    h6: theme.typography.h6,
-
-    /* Styles applied to the root element if `variant="subtitle1"`. */
-    subtitle1: theme.typography.subtitle1,
-
-    /* Styles applied to the root element if `variant="subtitle2"`. */
-    subtitle2: theme.typography.subtitle2,
-
-    /* Styles applied to the root element if `variant="overline"`. */
-    overline: theme.typography.overline,
-
-    /* Styles applied to the root element if `variant="srOnly"`. Only accessible to screen readers. */
-    srOnly: {
-      position: 'absolute',
-      height: 1,
-      width: 1,
-      overflow: 'hidden'
-    },
-
-    /* Styles applied to the root element if `align="left"`. */
-    alignLeft: {
-      textAlign: 'left'
-    },
-
-    /* Styles applied to the root element if `align="center"`. */
-    alignCenter: {
-      textAlign: 'center'
-    },
-
-    /* Styles applied to the root element if `align="right"`. */
-    alignRight: {
-      textAlign: 'right'
-    },
-
-    /* Styles applied to the root element if `align="justify"`. */
-    alignJustify: {
-      textAlign: 'justify'
-    },
-
-    /* Styles applied to the root element if `align="nowrap"`. */
-    noWrap: {
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap'
-    },
-
-    /* Styles applied to the root element if `gutterBottom={true}`. */
-    gutterBottom: {
-      marginBottom: '0.35em'
-    },
-
-    /* Styles applied to the root element if `paragraph={true}`. */
-    paragraph: {
-      marginBottom: 16
-    },
-
-    /* Styles applied to the root element if `color="inherit"`. */
-    colorInherit: {
-      color: 'inherit'
-    },
-
-    /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {
-      color: theme.palette.primary.main
-    },
-
-    /* Styles applied to the root element if `color="secondary"`. */
-    colorSecondary: {
-      color: theme.palette.secondary.main
-    },
-
-    /* Styles applied to the root element if `color="textPrimary"`. */
-    colorTextPrimary: {
-      color: theme.palette.text.primary
-    },
-
-    /* Styles applied to the root element if `color="textSecondary"`. */
-    colorTextSecondary: {
-      color: theme.palette.text.secondary
-    },
-
-    /* Styles applied to the root element if `color="error"`. */
-    colorError: {
-      color: theme.palette.error.main
-    },
-
-    /* Styles applied to the root element if `display="inline"`. */
-    displayInline: {
-      display: 'inline'
-    },
-
-    /* Styles applied to the root element if `display="block"`. */
-    displayBlock: {
-      display: 'block'
-    }
-  };
-};
-
-exports.styles = styles;
-var defaultVariantMapping = {
-  h1: 'h1',
-  h2: 'h2',
-  h3: 'h3',
-  h4: 'h4',
-  h5: 'h5',
-  h6: 'h6',
-  subtitle1: 'h6',
-  subtitle2: 'h6',
-  body1: 'p',
-  body2: 'p'
-};
-
-var Typography = _react.default.forwardRef(function Typography(props, ref) {
-  var _props$align = props.align,
-      align = _props$align === void 0 ? 'inherit' : _props$align,
-      classes = props.classes,
-      className = props.className,
-      _props$color = props.color,
-      color = _props$color === void 0 ? 'initial' : _props$color,
-      component = props.component,
-      _props$display = props.display,
-      display = _props$display === void 0 ? 'initial' : _props$display,
-      _props$gutterBottom = props.gutterBottom,
-      gutterBottom = _props$gutterBottom === void 0 ? false : _props$gutterBottom,
-      _props$noWrap = props.noWrap,
-      noWrap = _props$noWrap === void 0 ? false : _props$noWrap,
-      _props$paragraph = props.paragraph,
-      paragraph = _props$paragraph === void 0 ? false : _props$paragraph,
-      _props$variant = props.variant,
-      variant = _props$variant === void 0 ? 'body1' : _props$variant,
-      _props$variantMapping = props.variantMapping,
-      variantMapping = _props$variantMapping === void 0 ? defaultVariantMapping : _props$variantMapping,
-      other = (0, _objectWithoutProperties2.default)(props, ["align", "classes", "className", "color", "component", "display", "gutterBottom", "noWrap", "paragraph", "variant", "variantMapping"]);
-  var Component = component || (paragraph ? 'p' : variantMapping[variant] || defaultVariantMapping[variant]) || 'span';
-  return _react.default.createElement(Component, (0, _extends2.default)({
-    className: (0, _clsx.default)(classes.root, className, variant !== 'inherit' && classes[variant], color !== 'initial' && classes["color".concat((0, _helpers.capitalize)(color))], noWrap && classes.noWrap, gutterBottom && classes.gutterBottom, paragraph && classes.paragraph, align !== 'inherit' && classes["align".concat((0, _helpers.capitalize)(align))], display !== 'initial' && classes["display".concat((0, _helpers.capitalize)(display))]),
-    ref: ref
-  }, other));
-});
-
-"development" !== "production" ? Typography.propTypes = {
-  /**
-   * Set the text-align on the component.
-   */
-  align: _propTypes.default.oneOf(['inherit', 'left', 'center', 'right', 'justify']),
-
-  /**
-   * The content of the component.
-   */
-  children: _propTypes.default.node,
-
-  /**
-   * Override or extend the styles applied to the component.
-   * See [CSS API](#css) below for more details.
-   */
-  classes: _propTypes.default.object.isRequired,
-
-  /**
-   * @ignore
-   */
-  className: _propTypes.default.string,
-
-  /**
-   * The color of the component. It supports those theme colors that make sense for this component.
-   */
-  color: _propTypes.default.oneOf(['initial', 'inherit', 'primary', 'secondary', 'textPrimary', 'textSecondary', 'error']),
-
-  /**
-   * The component used for the root node.
-   * Either a string to use a DOM element or a component.
-   * By default, it maps the variant to a good default headline component.
-   */
-  component: _propTypes.default.elementType,
-
-  /**
-   * Controls the display type
-   */
-  display: _propTypes.default.oneOf(['initial', 'block', 'inline']),
-
-  /**
-   * If `true`, the text will have a bottom margin.
-   */
-  gutterBottom: _propTypes.default.bool,
-
-  /**
-   * If `true`, the text will not wrap, but instead will truncate with an ellipsis.
-   */
-  noWrap: _propTypes.default.bool,
-
-  /**
-   * If `true`, the text will have a bottom margin.
-   */
-  paragraph: _propTypes.default.bool,
-
-  /**
-   * Applies the theme typography styles.
-   */
-  variant: _propTypes.default.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'subtitle1', 'subtitle2', 'body1', 'body2', 'caption', 'button', 'overline', 'srOnly', 'inherit']),
-
-  /**
-   * We are empirically mapping the variant prop to a range of different DOM element types.
-   * For instance, subtitle1 to `<h6>`.
-   * If you wish to change that mapping, you can provide your own.
-   * Alternatively, you can use the `component` prop.
-   */
-  variantMapping: _propTypes.default.object
-} : void 0;
-
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiTypography'
-})(Typography);
-
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../utils/helpers":"../node_modules/@material-ui/core/esm/utils/helpers.js"}],"../node_modules/@material-ui/core/esm/Typography/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function () {
-    return _Typography.default;
-  }
-});
-
-var _Typography = _interopRequireDefault(require("./Typography"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Typography":"../node_modules/@material-ui/core/esm/Typography/Typography.js"}],"../node_modules/@material-ui/core/esm/styles/createStyles.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createStyles;
-
-var _styles = require("@material-ui/styles");
-
-// import warning from 'warning';
-// let warnOnce = false;
-// To remove in v5
-function createStyles(styles) {
-  // warning(
-  //   warnOnce,
-  //   [
-  //     'Material-UI: createStyles from @material-ui/core/styles is deprecated.',
-  //     'Please use @material-ui/styles/createStyles',
-  //   ].join('\n'),
-  // );
-  // warnOnce = true;
-  return (0, _styles.createStyles)(styles);
-}
-},{"@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js"}],"../node_modules/@material-ui/core/esm/styles/makeStyles.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _styles = require("@material-ui/styles");
-
-var _defaultTheme = _interopRequireDefault(require("./defaultTheme"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function makeStyles(stylesOrCreator) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return (0, _styles.makeStyles)(stylesOrCreator, (0, _extends2.default)({
-    defaultTheme: _defaultTheme.default
-  }, options));
-}
-
-var _default = makeStyles;
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/styles/MuiThemeProvider.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _styles = require("@material-ui/styles");
-
-/**
- * @ignore - do not document.
- */
-var _default = _styles.ThemeProvider;
-exports.default = _default;
-},{"@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js"}],"../node_modules/convert-css-length/dist/index.esm.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-var e = function (e) {
-  return parseFloat(e);
-};
-
-function _default(r) {
-  return null == r && (r = r), function (n, t, i, f) {
-    null == i && (i = r), null == f && (f = i);
-    var l = String(n).match(/[\d.\-\+]*\s*(.*)/)[1] || "";
-    if (l === t) return n;
-    var u = e(n);
-    if ("px" !== l) if ("em" === l) u = e(n) * e(i);else if ("rem" === l) u = e(n) * e(r);else {
-      if ("ex" !== l) return n;
-      u = e(n) * e(i) * 2;
-    }
-    var a = u;
-    if ("px" !== t) if ("em" === t) a = u / e(f);else if ("rem" === t) a = u / e(r);else {
-      if ("ex" !== t) return n;
-      a = u / e(f) / 2;
-    }
-    return parseFloat(a.toFixed(5)) + t;
-  };
-}
-},{}],"../node_modules/@material-ui/core/esm/styles/cssUtils.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.alignProperty = alignProperty;
-exports.fontGrid = fontGrid;
-exports.responsiveProperty = responsiveProperty;
-
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/defineProperty"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function alignProperty(_ref) {
-  var size = _ref.size,
-      grid = _ref.grid;
-  var sizeBelow = size - size % grid;
-  var sizeAbove = sizeBelow + grid;
-  return size - sizeBelow < sizeAbove - size ? sizeBelow : sizeAbove;
-} // fontGrid finds a minimal grid (in rem) for the fontSize values so that the
-// lineHeight falls under a x pixels grid, 4px in the case of Material Design,
-// without changing the relative line height
-
-
-function fontGrid(_ref2) {
-  var lineHeight = _ref2.lineHeight,
-      pixels = _ref2.pixels,
-      htmlFontSize = _ref2.htmlFontSize;
-  return pixels / (lineHeight * htmlFontSize);
-}
-/**
- * generate a responsive version of a given CSS property
- * @example
- * responsiveProperty({
- *   cssProperty: 'fontSize',
- *   min: 15,
- *   max: 20,
- *   unit: 'px',
- *   breakpoints: [300, 600],
- * })
- *
- * // this returns
- *
- * {
- *   fontSize: '15px',
- *   '@media (min-width:300px)': {
- *     fontSize: '17.5px',
- *   },
- *   '@media (min-width:600px)': {
- *     fontSize: '20px',
- *   },
- * }
- *
- * @param {Object} params
- * @param {string} params.cssProperty - The CSS property to be made responsive
- * @param {number} params.min - The smallest value of the CSS property
- * @param {number} params.max - The largest value of the CSS property
- * @param {string} [params.unit] - The unit to be used for the CSS property
- * @param {Array.number} [params.breakpoints]  - An array of breakpoints
- * @param {number} [params.alignStep] - Round scaled value to fall under this grid
- * @returns {Object} responsive styles for {params.cssProperty}
- */
-
-
-function responsiveProperty(_ref3) {
-  var cssProperty = _ref3.cssProperty,
-      min = _ref3.min,
-      max = _ref3.max,
-      _ref3$unit = _ref3.unit,
-      unit = _ref3$unit === void 0 ? 'rem' : _ref3$unit,
-      _ref3$breakpoints = _ref3.breakpoints,
-      breakpoints = _ref3$breakpoints === void 0 ? [600, 960, 1280] : _ref3$breakpoints,
-      _ref3$transform = _ref3.transform,
-      transform = _ref3$transform === void 0 ? null : _ref3$transform;
-  var output = (0, _defineProperty2.default)({}, cssProperty, "".concat(min).concat(unit));
-  var factor = (max - min) / breakpoints[breakpoints.length - 1];
-  breakpoints.forEach(function (breakpoint) {
-    var value = min + factor * breakpoint;
-
-    if (transform !== null) {
-      value = transform(value);
-    }
-
-    output["@media (min-width:".concat(breakpoint, "px)")] = (0, _defineProperty2.default)({}, cssProperty, "".concat(Math.round(value * 10000) / 10000).concat(unit));
-  });
-  return output;
-}
-},{"@babel/runtime/helpers/esm/defineProperty":"../node_modules/@babel/runtime/helpers/esm/defineProperty.js"}],"../node_modules/@material-ui/core/esm/styles/responsiveFontSizes.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = responsiveFontSizes;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _convertCssLength = _interopRequireDefault(require("convert-css-length"));
-
-var _cssUtils = require("./cssUtils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function isUnitless(value) {
-  return String(parseFloat(value)).length === String(value).length;
-}
-
-function responsiveFontSizes(themeInput) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var _options$breakpoints = options.breakpoints,
-      breakpoints = _options$breakpoints === void 0 ? ['sm', 'md', 'lg'] : _options$breakpoints,
-      _options$disableAlign = options.disableAlign,
-      disableAlign = _options$disableAlign === void 0 ? false : _options$disableAlign,
-      _options$factor = options.factor,
-      factor = _options$factor === void 0 ? 2 : _options$factor,
-      _options$variants = options.variants,
-      variants = _options$variants === void 0 ? ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'subtitle1', 'subtitle2', 'body1', 'body2', 'caption', 'button', 'overline'] : _options$variants;
-  var theme = (0, _extends2.default)({}, themeInput);
-  theme.typography = (0, _extends2.default)({}, theme.typography);
-  var typography = theme.typography; // Convert between css lengths e.g. em->px or px->rem
-  // Set the baseFontSize for your project. Defaults to 16px (also the browser default).
-
-  var convert = (0, _convertCssLength.default)(typography.htmlFontSize);
-  var breakpointValues = breakpoints.map(function (x) {
-    return theme.breakpoints.values[x];
-  });
-  variants.forEach(function (variant) {
-    var style = typography[variant];
-    var remFontSize = parseFloat(convert(style.fontSize, 'rem'));
-
-    if (remFontSize <= 1) {
-      return;
-    }
-
-    var maxFontSize = remFontSize;
-    var minFontSize = 1 + (maxFontSize - 1) / factor;
-    var lineHeight = style.lineHeight;
-
-    if (!isUnitless(lineHeight) && !disableAlign) {
-      throw new Error(["Material-UI: unsupported non-unitless line height with grid alignment.", 'Use unitless line heights instead.'].join('\n'));
-    }
-
-    if (!isUnitless(lineHeight)) {
-      // make it unitless
-      lineHeight = parseFloat(convert(lineHeight, 'rem')) / parseFloat(remFontSize);
-    }
-
-    var transform = null;
-
-    if (!disableAlign) {
-      transform = function transform(value) {
-        return (0, _cssUtils.alignProperty)({
-          size: value,
-          grid: (0, _cssUtils.fontGrid)({
-            pixels: 4,
-            lineHeight: lineHeight,
-            htmlFontSize: typography.htmlFontSize
-          })
-        });
-      };
-    }
-
-    typography[variant] = (0, _extends2.default)({}, style, {}, (0, _cssUtils.responsiveProperty)({
-      cssProperty: 'fontSize',
-      min: minFontSize,
-      max: maxFontSize,
-      unit: 'rem',
-      breakpoints: breakpointValues,
-      transform: transform
-    }));
-  });
-  return theme;
-}
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","convert-css-length":"../node_modules/convert-css-length/dist/index.esm.js","./cssUtils":"../node_modules/@material-ui/core/esm/styles/cssUtils.js"}],"../node_modules/@material-ui/core/esm/styles/styled.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _styles = require("@material-ui/styles");
-
-var _defaultTheme = _interopRequireDefault(require("./defaultTheme"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styled = function styled(Component) {
-  var componentCreator = (0, _styles.styled)(Component);
-  return function (style, options) {
-    return componentCreator(style, (0, _extends2.default)({
-      defaultTheme: _defaultTheme.default
-    }, options));
-  };
-};
-
-var _default = styled;
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/styles/withTheme.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _styles = require("@material-ui/styles");
-
-var _defaultTheme = _interopRequireDefault(require("./defaultTheme"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var withTheme = (0, _styles.withThemeCreator)({
-  defaultTheme: _defaultTheme.default
-});
-var _default = withTheme;
-exports.default = _default;
-},{"@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js","./defaultTheme":"../node_modules/@material-ui/core/esm/styles/defaultTheme.js"}],"../node_modules/@material-ui/core/esm/styles/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var _exportNames = {
-  createMuiTheme: true,
-  createStyles: true,
-  makeStyles: true,
-  MuiThemeProvider: true,
-  responsiveFontSizes: true,
-  styled: true,
-  useTheme: true,
-  withStyles: true,
-  withTheme: true
-};
-Object.defineProperty(exports, "createMuiTheme", {
-  enumerable: true,
-  get: function () {
-    return _createMuiTheme.default;
-  }
-});
-Object.defineProperty(exports, "createStyles", {
-  enumerable: true,
-  get: function () {
-    return _createStyles.default;
-  }
-});
-Object.defineProperty(exports, "makeStyles", {
-  enumerable: true,
-  get: function () {
-    return _makeStyles.default;
-  }
-});
-Object.defineProperty(exports, "MuiThemeProvider", {
-  enumerable: true,
-  get: function () {
-    return _MuiThemeProvider.default;
-  }
-});
-Object.defineProperty(exports, "responsiveFontSizes", {
-  enumerable: true,
-  get: function () {
-    return _responsiveFontSizes.default;
-  }
-});
-Object.defineProperty(exports, "styled", {
-  enumerable: true,
-  get: function () {
-    return _styled.default;
-  }
-});
-Object.defineProperty(exports, "useTheme", {
-  enumerable: true,
-  get: function () {
-    return _useTheme.default;
-  }
-});
-Object.defineProperty(exports, "withStyles", {
-  enumerable: true,
-  get: function () {
-    return _withStyles.default;
-  }
-});
-Object.defineProperty(exports, "withTheme", {
-  enumerable: true,
-  get: function () {
-    return _withTheme.default;
-  }
-});
-
-var _colorManipulator = require("./colorManipulator");
-
-Object.keys(_colorManipulator).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _colorManipulator[key];
-    }
-  });
-});
-
-var _createMuiTheme = _interopRequireDefault(require("./createMuiTheme"));
-
-var _createStyles = _interopRequireDefault(require("./createStyles"));
-
-var _makeStyles = _interopRequireDefault(require("./makeStyles"));
-
-var _MuiThemeProvider = _interopRequireDefault(require("./MuiThemeProvider"));
-
-var _responsiveFontSizes = _interopRequireDefault(require("./responsiveFontSizes"));
-
-var _styled = _interopRequireDefault(require("./styled"));
-
-var _transitions = require("./transitions");
-
-Object.keys(_transitions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _transitions[key];
-    }
-  });
-});
-
-var _useTheme = _interopRequireDefault(require("./useTheme"));
-
-var _withStyles = _interopRequireDefault(require("./withStyles"));
-
-var _withTheme = _interopRequireDefault(require("./withTheme"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./colorManipulator":"../node_modules/@material-ui/core/esm/styles/colorManipulator.js","./createMuiTheme":"../node_modules/@material-ui/core/esm/styles/createMuiTheme.js","./createStyles":"../node_modules/@material-ui/core/esm/styles/createStyles.js","./makeStyles":"../node_modules/@material-ui/core/esm/styles/makeStyles.js","./MuiThemeProvider":"../node_modules/@material-ui/core/esm/styles/MuiThemeProvider.js","./responsiveFontSizes":"../node_modules/@material-ui/core/esm/styles/responsiveFontSizes.js","./styled":"../node_modules/@material-ui/core/esm/styles/styled.js","./transitions":"../node_modules/@material-ui/core/esm/styles/transitions.js","./useTheme":"../node_modules/@material-ui/core/esm/styles/useTheme.js","./withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","./withTheme":"../node_modules/@material-ui/core/esm/styles/withTheme.js"}],"Components/FlagCard.js":[function(require,module,exports) {
+},{"./CardMedia":"../node_modules/@material-ui/core/esm/CardMedia/CardMedia.js"}],"Components/FlagCard.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50596,7 +52913,7 @@ var FlagCard = function FlagCard(_ref) {
   }, _react.default.createElement(_CardActionArea.default, null, _react.default.createElement(_CardMedia.default, {
     component: "img",
     alt: entry.name,
-    height: "150",
+    height: "200",
     image: entry.flag,
     title: entry.name
   }), _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, {
@@ -51440,2562 +53757,7 @@ Object.defineProperty(exports, "default", {
 var _CircularProgress = _interopRequireDefault(require("./CircularProgress"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./CircularProgress":"../node_modules/@material-ui/core/esm/CircularProgress/CircularProgress.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
-'use strict';
-
-module.exports = function bind(fn, thisArg) {
-  return function wrap() {
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-    return fn.apply(thisArg, args);
-  };
-};
-
-},{}],"../node_modules/axios/node_modules/is-buffer/index.js":[function(require,module,exports) {
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-module.exports = function isBuffer(obj) {
-  return obj != null && obj.constructor != null && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj);
-};
-},{}],"../node_modules/axios/lib/utils.js":[function(require,module,exports) {
-'use strict';
-
-var bind = require('./helpers/bind');
-var isBuffer = require('is-buffer');
-
-/*global toString:true*/
-
-// utils is a library of generic helper functions non-specific to axios
-
-var toString = Object.prototype.toString;
-
-/**
- * Determine if a value is an Array
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an Array, otherwise false
- */
-function isArray(val) {
-  return toString.call(val) === '[object Array]';
-}
-
-/**
- * Determine if a value is an ArrayBuffer
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an ArrayBuffer, otherwise false
- */
-function isArrayBuffer(val) {
-  return toString.call(val) === '[object ArrayBuffer]';
-}
-
-/**
- * Determine if a value is a FormData
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an FormData, otherwise false
- */
-function isFormData(val) {
-  return (typeof FormData !== 'undefined') && (val instanceof FormData);
-}
-
-/**
- * Determine if a value is a view on an ArrayBuffer
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
- */
-function isArrayBufferView(val) {
-  var result;
-  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
-    result = ArrayBuffer.isView(val);
-  } else {
-    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
-  }
-  return result;
-}
-
-/**
- * Determine if a value is a String
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a String, otherwise false
- */
-function isString(val) {
-  return typeof val === 'string';
-}
-
-/**
- * Determine if a value is a Number
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Number, otherwise false
- */
-function isNumber(val) {
-  return typeof val === 'number';
-}
-
-/**
- * Determine if a value is undefined
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if the value is undefined, otherwise false
- */
-function isUndefined(val) {
-  return typeof val === 'undefined';
-}
-
-/**
- * Determine if a value is an Object
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an Object, otherwise false
- */
-function isObject(val) {
-  return val !== null && typeof val === 'object';
-}
-
-/**
- * Determine if a value is a Date
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Date, otherwise false
- */
-function isDate(val) {
-  return toString.call(val) === '[object Date]';
-}
-
-/**
- * Determine if a value is a File
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a File, otherwise false
- */
-function isFile(val) {
-  return toString.call(val) === '[object File]';
-}
-
-/**
- * Determine if a value is a Blob
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Blob, otherwise false
- */
-function isBlob(val) {
-  return toString.call(val) === '[object Blob]';
-}
-
-/**
- * Determine if a value is a Function
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Function, otherwise false
- */
-function isFunction(val) {
-  return toString.call(val) === '[object Function]';
-}
-
-/**
- * Determine if a value is a Stream
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Stream, otherwise false
- */
-function isStream(val) {
-  return isObject(val) && isFunction(val.pipe);
-}
-
-/**
- * Determine if a value is a URLSearchParams object
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a URLSearchParams object, otherwise false
- */
-function isURLSearchParams(val) {
-  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
-}
-
-/**
- * Trim excess whitespace off the beginning and end of a string
- *
- * @param {String} str The String to trim
- * @returns {String} The String freed of excess whitespace
- */
-function trim(str) {
-  return str.replace(/^\s*/, '').replace(/\s*$/, '');
-}
-
-/**
- * Determine if we're running in a standard browser environment
- *
- * This allows axios to run in a web worker, and react-native.
- * Both environments support XMLHttpRequest, but not fully standard globals.
- *
- * web workers:
- *  typeof window -> undefined
- *  typeof document -> undefined
- *
- * react-native:
- *  navigator.product -> 'ReactNative'
- * nativescript
- *  navigator.product -> 'NativeScript' or 'NS'
- */
-function isStandardBrowserEnv() {
-  if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' ||
-                                           navigator.product === 'NativeScript' ||
-                                           navigator.product === 'NS')) {
-    return false;
-  }
-  return (
-    typeof window !== 'undefined' &&
-    typeof document !== 'undefined'
-  );
-}
-
-/**
- * Iterate over an Array or an Object invoking a function for each item.
- *
- * If `obj` is an Array callback will be called passing
- * the value, index, and complete array for each item.
- *
- * If 'obj' is an Object callback will be called passing
- * the value, key, and complete object for each property.
- *
- * @param {Object|Array} obj The object to iterate
- * @param {Function} fn The callback to invoke for each item
- */
-function forEach(obj, fn) {
-  // Don't bother if no value provided
-  if (obj === null || typeof obj === 'undefined') {
-    return;
-  }
-
-  // Force an array if not already something iterable
-  if (typeof obj !== 'object') {
-    /*eslint no-param-reassign:0*/
-    obj = [obj];
-  }
-
-  if (isArray(obj)) {
-    // Iterate over array values
-    for (var i = 0, l = obj.length; i < l; i++) {
-      fn.call(null, obj[i], i, obj);
-    }
-  } else {
-    // Iterate over object keys
-    for (var key in obj) {
-      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        fn.call(null, obj[key], key, obj);
-      }
-    }
-  }
-}
-
-/**
- * Accepts varargs expecting each argument to be an object, then
- * immutably merges the properties of each object and returns result.
- *
- * When multiple objects contain the same key the later object in
- * the arguments list will take precedence.
- *
- * Example:
- *
- * ```js
- * var result = merge({foo: 123}, {foo: 456});
- * console.log(result.foo); // outputs 456
- * ```
- *
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function merge(/* obj1, obj2, obj3, ... */) {
-  var result = {};
-  function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
-      result[key] = merge(result[key], val);
-    } else {
-      result[key] = val;
-    }
-  }
-
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    forEach(arguments[i], assignValue);
-  }
-  return result;
-}
-
-/**
- * Function equal to merge with the difference being that no reference
- * to original objects is kept.
- *
- * @see merge
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function deepMerge(/* obj1, obj2, obj3, ... */) {
-  var result = {};
-  function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
-      result[key] = deepMerge(result[key], val);
-    } else if (typeof val === 'object') {
-      result[key] = deepMerge({}, val);
-    } else {
-      result[key] = val;
-    }
-  }
-
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    forEach(arguments[i], assignValue);
-  }
-  return result;
-}
-
-/**
- * Extends object a by mutably adding to it the properties of object b.
- *
- * @param {Object} a The object to be extended
- * @param {Object} b The object to copy properties from
- * @param {Object} thisArg The object to bind function to
- * @return {Object} The resulting value of object a
- */
-function extend(a, b, thisArg) {
-  forEach(b, function assignValue(val, key) {
-    if (thisArg && typeof val === 'function') {
-      a[key] = bind(val, thisArg);
-    } else {
-      a[key] = val;
-    }
-  });
-  return a;
-}
-
-module.exports = {
-  isArray: isArray,
-  isArrayBuffer: isArrayBuffer,
-  isBuffer: isBuffer,
-  isFormData: isFormData,
-  isArrayBufferView: isArrayBufferView,
-  isString: isString,
-  isNumber: isNumber,
-  isObject: isObject,
-  isUndefined: isUndefined,
-  isDate: isDate,
-  isFile: isFile,
-  isBlob: isBlob,
-  isFunction: isFunction,
-  isStream: isStream,
-  isURLSearchParams: isURLSearchParams,
-  isStandardBrowserEnv: isStandardBrowserEnv,
-  forEach: forEach,
-  merge: merge,
-  deepMerge: deepMerge,
-  extend: extend,
-  trim: trim
-};
-
-},{"./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","is-buffer":"../node_modules/axios/node_modules/is-buffer/index.js"}],"../node_modules/axios/lib/helpers/buildURL.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./../utils');
-
-function encode(val) {
-  return encodeURIComponent(val).
-    replace(/%40/gi, '@').
-    replace(/%3A/gi, ':').
-    replace(/%24/g, '$').
-    replace(/%2C/gi, ',').
-    replace(/%20/g, '+').
-    replace(/%5B/gi, '[').
-    replace(/%5D/gi, ']');
-}
-
-/**
- * Build a URL by appending params to the end
- *
- * @param {string} url The base of the url (e.g., http://www.google.com)
- * @param {object} [params] The params to be appended
- * @returns {string} The formatted url
- */
-module.exports = function buildURL(url, params, paramsSerializer) {
-  /*eslint no-param-reassign:0*/
-  if (!params) {
-    return url;
-  }
-
-  var serializedParams;
-  if (paramsSerializer) {
-    serializedParams = paramsSerializer(params);
-  } else if (utils.isURLSearchParams(params)) {
-    serializedParams = params.toString();
-  } else {
-    var parts = [];
-
-    utils.forEach(params, function serialize(val, key) {
-      if (val === null || typeof val === 'undefined') {
-        return;
-      }
-
-      if (utils.isArray(val)) {
-        key = key + '[]';
-      } else {
-        val = [val];
-      }
-
-      utils.forEach(val, function parseValue(v) {
-        if (utils.isDate(v)) {
-          v = v.toISOString();
-        } else if (utils.isObject(v)) {
-          v = JSON.stringify(v);
-        }
-        parts.push(encode(key) + '=' + encode(v));
-      });
-    });
-
-    serializedParams = parts.join('&');
-  }
-
-  if (serializedParams) {
-    var hashmarkIndex = url.indexOf('#');
-    if (hashmarkIndex !== -1) {
-      url = url.slice(0, hashmarkIndex);
-    }
-
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-  }
-
-  return url;
-};
-
-},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/core/InterceptorManager.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./../utils');
-
-function InterceptorManager() {
-  this.handlers = [];
-}
-
-/**
- * Add a new interceptor to the stack
- *
- * @param {Function} fulfilled The function to handle `then` for a `Promise`
- * @param {Function} rejected The function to handle `reject` for a `Promise`
- *
- * @return {Number} An ID used to remove interceptor later
- */
-InterceptorManager.prototype.use = function use(fulfilled, rejected) {
-  this.handlers.push({
-    fulfilled: fulfilled,
-    rejected: rejected
-  });
-  return this.handlers.length - 1;
-};
-
-/**
- * Remove an interceptor from the stack
- *
- * @param {Number} id The ID that was returned by `use`
- */
-InterceptorManager.prototype.eject = function eject(id) {
-  if (this.handlers[id]) {
-    this.handlers[id] = null;
-  }
-};
-
-/**
- * Iterate over all the registered interceptors
- *
- * This method is particularly useful for skipping over any
- * interceptors that may have become `null` calling `eject`.
- *
- * @param {Function} fn The function to call for each interceptor
- */
-InterceptorManager.prototype.forEach = function forEach(fn) {
-  utils.forEach(this.handlers, function forEachHandler(h) {
-    if (h !== null) {
-      fn(h);
-    }
-  });
-};
-
-module.exports = InterceptorManager;
-
-},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/core/transformData.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./../utils');
-
-/**
- * Transform the data for a request or a response
- *
- * @param {Object|String} data The data to be transformed
- * @param {Array} headers The headers for the request or response
- * @param {Array|Function} fns A single function or Array of functions
- * @returns {*} The resulting transformed data
- */
-module.exports = function transformData(data, headers, fns) {
-  /*eslint no-param-reassign:0*/
-  utils.forEach(fns, function transform(fn) {
-    data = fn(data, headers);
-  });
-
-  return data;
-};
-
-},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/cancel/isCancel.js":[function(require,module,exports) {
-'use strict';
-
-module.exports = function isCancel(value) {
-  return !!(value && value.__CANCEL__);
-};
-
-},{}],"../node_modules/axios/lib/helpers/normalizeHeaderName.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('../utils');
-
-module.exports = function normalizeHeaderName(headers, normalizedName) {
-  utils.forEach(headers, function processHeader(value, name) {
-    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-      headers[normalizedName] = value;
-      delete headers[name];
-    }
-  });
-};
-
-},{"../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/core/enhanceError.js":[function(require,module,exports) {
-'use strict';
-
-/**
- * Update an Error with the specified config, error code, and response.
- *
- * @param {Error} error The error to update.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The error.
- */
-module.exports = function enhanceError(error, config, code, request, response) {
-  error.config = config;
-  if (code) {
-    error.code = code;
-  }
-
-  error.request = request;
-  error.response = response;
-  error.isAxiosError = true;
-
-  error.toJSON = function() {
-    return {
-      // Standard
-      message: this.message,
-      name: this.name,
-      // Microsoft
-      description: this.description,
-      number: this.number,
-      // Mozilla
-      fileName: this.fileName,
-      lineNumber: this.lineNumber,
-      columnNumber: this.columnNumber,
-      stack: this.stack,
-      // Axios
-      config: this.config,
-      code: this.code
-    };
-  };
-  return error;
-};
-
-},{}],"../node_modules/axios/lib/core/createError.js":[function(require,module,exports) {
-'use strict';
-
-var enhanceError = require('./enhanceError');
-
-/**
- * Create an Error with the specified message, config, error code, request and response.
- *
- * @param {string} message The error message.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The created error.
- */
-module.exports = function createError(message, config, code, request, response) {
-  var error = new Error(message);
-  return enhanceError(error, config, code, request, response);
-};
-
-},{"./enhanceError":"../node_modules/axios/lib/core/enhanceError.js"}],"../node_modules/axios/lib/core/settle.js":[function(require,module,exports) {
-'use strict';
-
-var createError = require('./createError');
-
-/**
- * Resolve or reject a Promise based on response status.
- *
- * @param {Function} resolve A function that resolves the promise.
- * @param {Function} reject A function that rejects the promise.
- * @param {object} response The response.
- */
-module.exports = function settle(resolve, reject, response) {
-  var validateStatus = response.config.validateStatus;
-  if (!validateStatus || validateStatus(response.status)) {
-    resolve(response);
-  } else {
-    reject(createError(
-      'Request failed with status code ' + response.status,
-      response.config,
-      null,
-      response.request,
-      response
-    ));
-  }
-};
-
-},{"./createError":"../node_modules/axios/lib/core/createError.js"}],"../node_modules/axios/lib/helpers/parseHeaders.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./../utils');
-
-// Headers whose duplicates are ignored by node
-// c.f. https://nodejs.org/api/http.html#http_message_headers
-var ignoreDuplicateOf = [
-  'age', 'authorization', 'content-length', 'content-type', 'etag',
-  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
-  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
-  'referer', 'retry-after', 'user-agent'
-];
-
-/**
- * Parse headers into an object
- *
- * ```
- * Date: Wed, 27 Aug 2014 08:58:49 GMT
- * Content-Type: application/json
- * Connection: keep-alive
- * Transfer-Encoding: chunked
- * ```
- *
- * @param {String} headers Headers needing to be parsed
- * @returns {Object} Headers parsed into an object
- */
-module.exports = function parseHeaders(headers) {
-  var parsed = {};
-  var key;
-  var val;
-  var i;
-
-  if (!headers) { return parsed; }
-
-  utils.forEach(headers.split('\n'), function parser(line) {
-    i = line.indexOf(':');
-    key = utils.trim(line.substr(0, i)).toLowerCase();
-    val = utils.trim(line.substr(i + 1));
-
-    if (key) {
-      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
-        return;
-      }
-      if (key === 'set-cookie') {
-        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
-      } else {
-        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-      }
-    }
-  });
-
-  return parsed;
-};
-
-},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/helpers/isURLSameOrigin.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./../utils');
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs have full support of the APIs needed to test
-  // whether the request URL is of the same origin as current location.
-    (function standardBrowserEnv() {
-      var msie = /(msie|trident)/i.test(navigator.userAgent);
-      var urlParsingNode = document.createElement('a');
-      var originURL;
-
-      /**
-    * Parse a URL to discover it's components
-    *
-    * @param {String} url The URL to be parsed
-    * @returns {Object}
-    */
-      function resolveURL(url) {
-        var href = url;
-
-        if (msie) {
-        // IE needs attribute set twice to normalize properties
-          urlParsingNode.setAttribute('href', href);
-          href = urlParsingNode.href;
-        }
-
-        urlParsingNode.setAttribute('href', href);
-
-        // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-        return {
-          href: urlParsingNode.href,
-          protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
-          host: urlParsingNode.host,
-          search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
-          hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
-          hostname: urlParsingNode.hostname,
-          port: urlParsingNode.port,
-          pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-            urlParsingNode.pathname :
-            '/' + urlParsingNode.pathname
-        };
-      }
-
-      originURL = resolveURL(window.location.href);
-
-      /**
-    * Determine if a URL shares the same origin as the current location
-    *
-    * @param {String} requestURL The URL to test
-    * @returns {boolean} True if URL shares the same origin, otherwise false
-    */
-      return function isURLSameOrigin(requestURL) {
-        var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
-        return (parsed.protocol === originURL.protocol &&
-            parsed.host === originURL.host);
-      };
-    })() :
-
-  // Non standard browser envs (web workers, react-native) lack needed support.
-    (function nonStandardBrowserEnv() {
-      return function isURLSameOrigin() {
-        return true;
-      };
-    })()
-);
-
-},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/helpers/cookies.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./../utils');
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs support document.cookie
-    (function standardBrowserEnv() {
-      return {
-        write: function write(name, value, expires, path, domain, secure) {
-          var cookie = [];
-          cookie.push(name + '=' + encodeURIComponent(value));
-
-          if (utils.isNumber(expires)) {
-            cookie.push('expires=' + new Date(expires).toGMTString());
-          }
-
-          if (utils.isString(path)) {
-            cookie.push('path=' + path);
-          }
-
-          if (utils.isString(domain)) {
-            cookie.push('domain=' + domain);
-          }
-
-          if (secure === true) {
-            cookie.push('secure');
-          }
-
-          document.cookie = cookie.join('; ');
-        },
-
-        read: function read(name) {
-          var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-          return (match ? decodeURIComponent(match[3]) : null);
-        },
-
-        remove: function remove(name) {
-          this.write(name, '', Date.now() - 86400000);
-        }
-      };
-    })() :
-
-  // Non standard browser env (web workers, react-native) lack needed support.
-    (function nonStandardBrowserEnv() {
-      return {
-        write: function write() {},
-        read: function read() { return null; },
-        remove: function remove() {}
-      };
-    })()
-);
-
-},{"./../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/adapters/xhr.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./../utils');
-var settle = require('./../core/settle');
-var buildURL = require('./../helpers/buildURL');
-var parseHeaders = require('./../helpers/parseHeaders');
-var isURLSameOrigin = require('./../helpers/isURLSameOrigin');
-var createError = require('../core/createError');
-
-module.exports = function xhrAdapter(config) {
-  return new Promise(function dispatchXhrRequest(resolve, reject) {
-    var requestData = config.data;
-    var requestHeaders = config.headers;
-
-    if (utils.isFormData(requestData)) {
-      delete requestHeaders['Content-Type']; // Let the browser set it
-    }
-
-    var request = new XMLHttpRequest();
-
-    // HTTP basic authentication
-    if (config.auth) {
-      var username = config.auth.username || '';
-      var password = config.auth.password || '';
-      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
-    }
-
-    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
-
-    // Set the request timeout in MS
-    request.timeout = config.timeout;
-
-    // Listen for ready state
-    request.onreadystatechange = function handleLoad() {
-      if (!request || request.readyState !== 4) {
-        return;
-      }
-
-      // The request errored out and we didn't get a response, this will be
-      // handled by onerror instead
-      // With one exception: request that using file: protocol, most browsers
-      // will return status as 0 even though it's a successful request
-      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
-        return;
-      }
-
-      // Prepare the response
-      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
-      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
-      var response = {
-        data: responseData,
-        status: request.status,
-        statusText: request.statusText,
-        headers: responseHeaders,
-        config: config,
-        request: request
-      };
-
-      settle(resolve, reject, response);
-
-      // Clean up request
-      request = null;
-    };
-
-    // Handle browser request cancellation (as opposed to a manual cancellation)
-    request.onabort = function handleAbort() {
-      if (!request) {
-        return;
-      }
-
-      reject(createError('Request aborted', config, 'ECONNABORTED', request));
-
-      // Clean up request
-      request = null;
-    };
-
-    // Handle low level network errors
-    request.onerror = function handleError() {
-      // Real errors are hidden from us by the browser
-      // onerror should only fire if it's a network error
-      reject(createError('Network Error', config, null, request));
-
-      // Clean up request
-      request = null;
-    };
-
-    // Handle timeout
-    request.ontimeout = function handleTimeout() {
-      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED',
-        request));
-
-      // Clean up request
-      request = null;
-    };
-
-    // Add xsrf header
-    // This is only done if running in a standard browser environment.
-    // Specifically not if we're in a web worker, or react-native.
-    if (utils.isStandardBrowserEnv()) {
-      var cookies = require('./../helpers/cookies');
-
-      // Add xsrf header
-      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
-        cookies.read(config.xsrfCookieName) :
-        undefined;
-
-      if (xsrfValue) {
-        requestHeaders[config.xsrfHeaderName] = xsrfValue;
-      }
-    }
-
-    // Add headers to the request
-    if ('setRequestHeader' in request) {
-      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
-        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
-          // Remove Content-Type if data is undefined
-          delete requestHeaders[key];
-        } else {
-          // Otherwise add header to the request
-          request.setRequestHeader(key, val);
-        }
-      });
-    }
-
-    // Add withCredentials to request if needed
-    if (config.withCredentials) {
-      request.withCredentials = true;
-    }
-
-    // Add responseType to request if needed
-    if (config.responseType) {
-      try {
-        request.responseType = config.responseType;
-      } catch (e) {
-        // Expected DOMException thrown by browsers not compatible XMLHttpRequest Level 2.
-        // But, this can be suppressed for 'json' type as it can be parsed by default 'transformResponse' function.
-        if (config.responseType !== 'json') {
-          throw e;
-        }
-      }
-    }
-
-    // Handle progress if needed
-    if (typeof config.onDownloadProgress === 'function') {
-      request.addEventListener('progress', config.onDownloadProgress);
-    }
-
-    // Not all browsers support upload events
-    if (typeof config.onUploadProgress === 'function' && request.upload) {
-      request.upload.addEventListener('progress', config.onUploadProgress);
-    }
-
-    if (config.cancelToken) {
-      // Handle cancellation
-      config.cancelToken.promise.then(function onCanceled(cancel) {
-        if (!request) {
-          return;
-        }
-
-        request.abort();
-        reject(cancel);
-        // Clean up request
-        request = null;
-      });
-    }
-
-    if (requestData === undefined) {
-      requestData = null;
-    }
-
-    // Send the request
-    request.send(requestData);
-  });
-};
-
-},{"./../utils":"../node_modules/axios/lib/utils.js","./../core/settle":"../node_modules/axios/lib/core/settle.js","./../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","./../helpers/parseHeaders":"../node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"../node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"../node_modules/axios/lib/core/createError.js","./../helpers/cookies":"../node_modules/axios/lib/helpers/cookies.js"}],"../node_modules/process/browser.js":[function(require,module,exports) {
-
-// shim for using process in browser
-var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-  throw new Error('setTimeout has not been defined');
-}
-
-function defaultClearTimeout() {
-  throw new Error('clearTimeout has not been defined');
-}
-
-(function () {
-  try {
-    if (typeof setTimeout === 'function') {
-      cachedSetTimeout = setTimeout;
-    } else {
-      cachedSetTimeout = defaultSetTimout;
-    }
-  } catch (e) {
-    cachedSetTimeout = defaultSetTimout;
-  }
-
-  try {
-    if (typeof clearTimeout === 'function') {
-      cachedClearTimeout = clearTimeout;
-    } else {
-      cachedClearTimeout = defaultClearTimeout;
-    }
-  } catch (e) {
-    cachedClearTimeout = defaultClearTimeout;
-  }
-})();
-
-function runTimeout(fun) {
-  if (cachedSetTimeout === setTimeout) {
-    //normal enviroments in sane situations
-    return setTimeout(fun, 0);
-  } // if setTimeout wasn't available but was latter defined
-
-
-  if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-    cachedSetTimeout = setTimeout;
-    return setTimeout(fun, 0);
-  }
-
-  try {
-    // when when somebody has screwed with setTimeout but no I.E. maddness
-    return cachedSetTimeout(fun, 0);
-  } catch (e) {
-    try {
-      // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-      return cachedSetTimeout.call(null, fun, 0);
-    } catch (e) {
-      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-      return cachedSetTimeout.call(this, fun, 0);
-    }
-  }
-}
-
-function runClearTimeout(marker) {
-  if (cachedClearTimeout === clearTimeout) {
-    //normal enviroments in sane situations
-    return clearTimeout(marker);
-  } // if clearTimeout wasn't available but was latter defined
-
-
-  if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-    cachedClearTimeout = clearTimeout;
-    return clearTimeout(marker);
-  }
-
-  try {
-    // when when somebody has screwed with setTimeout but no I.E. maddness
-    return cachedClearTimeout(marker);
-  } catch (e) {
-    try {
-      // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-      return cachedClearTimeout.call(null, marker);
-    } catch (e) {
-      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-      // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-      return cachedClearTimeout.call(this, marker);
-    }
-  }
-}
-
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-  if (!draining || !currentQueue) {
-    return;
-  }
-
-  draining = false;
-
-  if (currentQueue.length) {
-    queue = currentQueue.concat(queue);
-  } else {
-    queueIndex = -1;
-  }
-
-  if (queue.length) {
-    drainQueue();
-  }
-}
-
-function drainQueue() {
-  if (draining) {
-    return;
-  }
-
-  var timeout = runTimeout(cleanUpNextTick);
-  draining = true;
-  var len = queue.length;
-
-  while (len) {
-    currentQueue = queue;
-    queue = [];
-
-    while (++queueIndex < len) {
-      if (currentQueue) {
-        currentQueue[queueIndex].run();
-      }
-    }
-
-    queueIndex = -1;
-    len = queue.length;
-  }
-
-  currentQueue = null;
-  draining = false;
-  runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-  var args = new Array(arguments.length - 1);
-
-  if (arguments.length > 1) {
-    for (var i = 1; i < arguments.length; i++) {
-      args[i - 1] = arguments[i];
-    }
-  }
-
-  queue.push(new Item(fun, args));
-
-  if (queue.length === 1 && !draining) {
-    runTimeout(drainQueue);
-  }
-}; // v8 likes predictible objects
-
-
-function Item(fun, array) {
-  this.fun = fun;
-  this.array = array;
-}
-
-Item.prototype.run = function () {
-  this.fun.apply(null, this.array);
-};
-
-process.title = 'browser';
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) {
-  return [];
-};
-
-process.binding = function (name) {
-  throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () {
-  return '/';
-};
-
-process.chdir = function (dir) {
-  throw new Error('process.chdir is not supported');
-};
-
-process.umask = function () {
-  return 0;
-};
-},{}],"../node_modules/axios/lib/defaults.js":[function(require,module,exports) {
-var process = require("process");
-'use strict';
-
-var utils = require('./utils');
-var normalizeHeaderName = require('./helpers/normalizeHeaderName');
-
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
-  }
-}
-
-function getDefaultAdapter() {
-  var adapter;
-  // Only Node.JS has a process variable that is of [[Class]] process
-  if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
-    // For node use HTTP adapter
-    adapter = require('./adapters/http');
-  } else if (typeof XMLHttpRequest !== 'undefined') {
-    // For browsers use XHR adapter
-    adapter = require('./adapters/xhr');
-  }
-  return adapter;
-}
-
-var defaults = {
-  adapter: getDefaultAdapter(),
-
-  transformRequest: [function transformRequest(data, headers) {
-    normalizeHeaderName(headers, 'Accept');
-    normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) ||
-      utils.isArrayBuffer(data) ||
-      utils.isBuffer(data) ||
-      utils.isStream(data) ||
-      utils.isFile(data) ||
-      utils.isBlob(data)
-    ) {
-      return data;
-    }
-    if (utils.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils.isURLSearchParams(data)) {
-      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-      return data.toString();
-    }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
-    }
-    return data;
-  }],
-
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
-
-  /**
-   * A timeout in milliseconds to abort a request. If set to 0 (default) a
-   * timeout is not created.
-   */
-  timeout: 0,
-
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
-
-  maxContentLength: -1,
-
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-};
-
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
-
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-});
-
-module.exports = defaults;
-
-},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"../node_modules/axios/lib/helpers/normalizeHeaderName.js","./adapters/http":"../node_modules/axios/lib/adapters/xhr.js","./adapters/xhr":"../node_modules/axios/lib/adapters/xhr.js","process":"../node_modules/process/browser.js"}],"../node_modules/axios/lib/helpers/isAbsoluteURL.js":[function(require,module,exports) {
-'use strict';
-
-/**
- * Determines whether the specified URL is absolute
- *
- * @param {string} url The URL to test
- * @returns {boolean} True if the specified URL is absolute, otherwise false
- */
-module.exports = function isAbsoluteURL(url) {
-  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-  // by any combination of letters, digits, plus, period, or hyphen.
-  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-};
-
-},{}],"../node_modules/axios/lib/helpers/combineURLs.js":[function(require,module,exports) {
-'use strict';
-
-/**
- * Creates a new URL by combining the specified URLs
- *
- * @param {string} baseURL The base URL
- * @param {string} relativeURL The relative URL
- * @returns {string} The combined URL
- */
-module.exports = function combineURLs(baseURL, relativeURL) {
-  return relativeURL
-    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
-    : baseURL;
-};
-
-},{}],"../node_modules/axios/lib/core/dispatchRequest.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./../utils');
-var transformData = require('./transformData');
-var isCancel = require('../cancel/isCancel');
-var defaults = require('../defaults');
-var isAbsoluteURL = require('./../helpers/isAbsoluteURL');
-var combineURLs = require('./../helpers/combineURLs');
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-function throwIfCancellationRequested(config) {
-  if (config.cancelToken) {
-    config.cancelToken.throwIfRequested();
-  }
-}
-
-/**
- * Dispatch a request to the server using the configured adapter.
- *
- * @param {object} config The config that is to be used for the request
- * @returns {Promise} The Promise to be fulfilled
- */
-module.exports = function dispatchRequest(config) {
-  throwIfCancellationRequested(config);
-
-  // Support baseURL config
-  if (config.baseURL && !isAbsoluteURL(config.url)) {
-    config.url = combineURLs(config.baseURL, config.url);
-  }
-
-  // Ensure headers exist
-  config.headers = config.headers || {};
-
-  // Transform request data
-  config.data = transformData(
-    config.data,
-    config.headers,
-    config.transformRequest
-  );
-
-  // Flatten headers
-  config.headers = utils.merge(
-    config.headers.common || {},
-    config.headers[config.method] || {},
-    config.headers || {}
-  );
-
-  utils.forEach(
-    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
-    function cleanHeaderConfig(method) {
-      delete config.headers[method];
-    }
-  );
-
-  var adapter = config.adapter || defaults.adapter;
-
-  return adapter(config).then(function onAdapterResolution(response) {
-    throwIfCancellationRequested(config);
-
-    // Transform response data
-    response.data = transformData(
-      response.data,
-      response.headers,
-      config.transformResponse
-    );
-
-    return response;
-  }, function onAdapterRejection(reason) {
-    if (!isCancel(reason)) {
-      throwIfCancellationRequested(config);
-
-      // Transform response data
-      if (reason && reason.response) {
-        reason.response.data = transformData(
-          reason.response.data,
-          reason.response.headers,
-          config.transformResponse
-        );
-      }
-    }
-
-    return Promise.reject(reason);
-  });
-};
-
-},{"./../utils":"../node_modules/axios/lib/utils.js","./transformData":"../node_modules/axios/lib/core/transformData.js","../cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","../defaults":"../node_modules/axios/lib/defaults.js","./../helpers/isAbsoluteURL":"../node_modules/axios/lib/helpers/isAbsoluteURL.js","./../helpers/combineURLs":"../node_modules/axios/lib/helpers/combineURLs.js"}],"../node_modules/axios/lib/core/mergeConfig.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('../utils');
-
-/**
- * Config-specific merge-function which creates a new config-object
- * by merging two configuration objects together.
- *
- * @param {Object} config1
- * @param {Object} config2
- * @returns {Object} New object resulting from merging config2 to config1
- */
-module.exports = function mergeConfig(config1, config2) {
-  // eslint-disable-next-line no-param-reassign
-  config2 = config2 || {};
-  var config = {};
-
-  utils.forEach(['url', 'method', 'params', 'data'], function valueFromConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    }
-  });
-
-  utils.forEach(['headers', 'auth', 'proxy'], function mergeDeepProperties(prop) {
-    if (utils.isObject(config2[prop])) {
-      config[prop] = utils.deepMerge(config1[prop], config2[prop]);
-    } else if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (utils.isObject(config1[prop])) {
-      config[prop] = utils.deepMerge(config1[prop]);
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
-    }
-  });
-
-  utils.forEach([
-    'baseURL', 'transformRequest', 'transformResponse', 'paramsSerializer',
-    'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
-    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'maxContentLength',
-    'validateStatus', 'maxRedirects', 'httpAgent', 'httpsAgent', 'cancelToken',
-    'socketPath'
-  ], function defaultToConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
-    }
-  });
-
-  return config;
-};
-
-},{"../utils":"../node_modules/axios/lib/utils.js"}],"../node_modules/axios/lib/core/Axios.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./../utils');
-var buildURL = require('../helpers/buildURL');
-var InterceptorManager = require('./InterceptorManager');
-var dispatchRequest = require('./dispatchRequest');
-var mergeConfig = require('./mergeConfig');
-
-/**
- * Create a new instance of Axios
- *
- * @param {Object} instanceConfig The default config for the instance
- */
-function Axios(instanceConfig) {
-  this.defaults = instanceConfig;
-  this.interceptors = {
-    request: new InterceptorManager(),
-    response: new InterceptorManager()
-  };
-}
-
-/**
- * Dispatch a request
- *
- * @param {Object} config The config specific for this request (merged with this.defaults)
- */
-Axios.prototype.request = function request(config) {
-  /*eslint no-param-reassign:0*/
-  // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof config === 'string') {
-    config = arguments[1] || {};
-    config.url = arguments[0];
-  } else {
-    config = config || {};
-  }
-
-  config = mergeConfig(this.defaults, config);
-  config.method = config.method ? config.method.toLowerCase() : 'get';
-
-  // Hook up interceptors middleware
-  var chain = [dispatchRequest, undefined];
-  var promise = Promise.resolve(config);
-
-  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-    chain.push(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  while (chain.length) {
-    promise = promise.then(chain.shift(), chain.shift());
-  }
-
-  return promise;
-};
-
-Axios.prototype.getUri = function getUri(config) {
-  config = mergeConfig(this.defaults, config);
-  return buildURL(config.url, config.params, config.paramsSerializer).replace(/^\?/, '');
-};
-
-// Provide aliases for supported request methods
-utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url
-    }));
-  };
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url,
-      data: data
-    }));
-  };
-});
-
-module.exports = Axios;
-
-},{"./../utils":"../node_modules/axios/lib/utils.js","../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","./InterceptorManager":"../node_modules/axios/lib/core/InterceptorManager.js","./dispatchRequest":"../node_modules/axios/lib/core/dispatchRequest.js","./mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js"}],"../node_modules/axios/lib/cancel/Cancel.js":[function(require,module,exports) {
-'use strict';
-
-/**
- * A `Cancel` is an object that is thrown when an operation is canceled.
- *
- * @class
- * @param {string=} message The message.
- */
-function Cancel(message) {
-  this.message = message;
-}
-
-Cancel.prototype.toString = function toString() {
-  return 'Cancel' + (this.message ? ': ' + this.message : '');
-};
-
-Cancel.prototype.__CANCEL__ = true;
-
-module.exports = Cancel;
-
-},{}],"../node_modules/axios/lib/cancel/CancelToken.js":[function(require,module,exports) {
-'use strict';
-
-var Cancel = require('./Cancel');
-
-/**
- * A `CancelToken` is an object that can be used to request cancellation of an operation.
- *
- * @class
- * @param {Function} executor The executor function.
- */
-function CancelToken(executor) {
-  if (typeof executor !== 'function') {
-    throw new TypeError('executor must be a function.');
-  }
-
-  var resolvePromise;
-  this.promise = new Promise(function promiseExecutor(resolve) {
-    resolvePromise = resolve;
-  });
-
-  var token = this;
-  executor(function cancel(message) {
-    if (token.reason) {
-      // Cancellation has already been requested
-      return;
-    }
-
-    token.reason = new Cancel(message);
-    resolvePromise(token.reason);
-  });
-}
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-  if (this.reason) {
-    throw this.reason;
-  }
-};
-
-/**
- * Returns an object that contains a new `CancelToken` and a function that, when called,
- * cancels the `CancelToken`.
- */
-CancelToken.source = function source() {
-  var cancel;
-  var token = new CancelToken(function executor(c) {
-    cancel = c;
-  });
-  return {
-    token: token,
-    cancel: cancel
-  };
-};
-
-module.exports = CancelToken;
-
-},{"./Cancel":"../node_modules/axios/lib/cancel/Cancel.js"}],"../node_modules/axios/lib/helpers/spread.js":[function(require,module,exports) {
-'use strict';
-
-/**
- * Syntactic sugar for invoking a function and expanding an array for arguments.
- *
- * Common use case would be to use `Function.prototype.apply`.
- *
- *  ```js
- *  function f(x, y, z) {}
- *  var args = [1, 2, 3];
- *  f.apply(null, args);
- *  ```
- *
- * With `spread` this example can be re-written.
- *
- *  ```js
- *  spread(function(x, y, z) {})([1, 2, 3]);
- *  ```
- *
- * @param {Function} callback
- * @returns {Function}
- */
-module.exports = function spread(callback) {
-  return function wrap(arr) {
-    return callback.apply(null, arr);
-  };
-};
-
-},{}],"../node_modules/axios/lib/axios.js":[function(require,module,exports) {
-'use strict';
-
-var utils = require('./utils');
-var bind = require('./helpers/bind');
-var Axios = require('./core/Axios');
-var mergeConfig = require('./core/mergeConfig');
-var defaults = require('./defaults');
-
-/**
- * Create an instance of Axios
- *
- * @param {Object} defaultConfig The default config for the instance
- * @return {Axios} A new instance of Axios
- */
-function createInstance(defaultConfig) {
-  var context = new Axios(defaultConfig);
-  var instance = bind(Axios.prototype.request, context);
-
-  // Copy axios.prototype to instance
-  utils.extend(instance, Axios.prototype, context);
-
-  // Copy context to instance
-  utils.extend(instance, context);
-
-  return instance;
-}
-
-// Create the default instance to be exported
-var axios = createInstance(defaults);
-
-// Expose Axios class to allow class inheritance
-axios.Axios = Axios;
-
-// Factory for creating new instances
-axios.create = function create(instanceConfig) {
-  return createInstance(mergeConfig(axios.defaults, instanceConfig));
-};
-
-// Expose Cancel & CancelToken
-axios.Cancel = require('./cancel/Cancel');
-axios.CancelToken = require('./cancel/CancelToken');
-axios.isCancel = require('./cancel/isCancel');
-
-// Expose all/spread
-axios.all = function all(promises) {
-  return Promise.all(promises);
-};
-axios.spread = require('./helpers/spread');
-
-module.exports = axios;
-
-// Allow use of default import syntax in TypeScript
-module.exports.default = axios;
-
-},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
-module.exports = require('./lib/axios');
-},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"Hooks/Detail/effect.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useEndpoint = void 0;
-
-var _react = require("react");
-
-var _axios = _interopRequireDefault(require("axios"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var useEndpoint = function useEndpoint(req) {
-  var urlCode = location.href;
-  var slug = urlCode.split('?name=');
-  var name = slug[1];
-
-  var _useState = (0, _react.useState)({
-    data: [],
-    complete: false,
-    pending: false,
-    error: false
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      res = _useState2[0],
-      setRes = _useState2[1];
-
-  req.url = req.url + name;
-  (0, _react.useEffect)(function () {
-    setRes({
-      data: [],
-      pending: true,
-      error: false,
-      complete: false
-    });
-    (0, _axios.default)(req).then(function (res) {
-      return setRes({
-        data: res.data,
-        pending: false,
-        error: false,
-        complete: true
-      });
-    }).catch(function () {
-      return setRes({
-        data: [],
-        pending: false,
-        error: true,
-        complete: true
-      });
-    });
-  }, [req.url]);
-  return res.data[0];
-};
-
-exports.useEndpoint = useEndpoint;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js"}],"../node_modules/@material-ui/core/esm/Button/Button.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _clsx = _interopRequireDefault(require("clsx"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _colorManipulator = require("../styles/colorManipulator");
-
-var _ButtonBase = _interopRequireDefault(require("../ButtonBase"));
-
-var _helpers = require("../utils/helpers");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: (0, _extends2.default)({
-      lineHeight: 1.75
-    }, theme.typography.button, {
-      boxSizing: 'border-box',
-      minWidth: 64,
-      padding: '6px 16px',
-      borderRadius: theme.shape.borderRadius,
-      color: theme.palette.text.primary,
-      transition: theme.transitions.create(['background-color', 'box-shadow', 'border'], {
-        duration: theme.transitions.duration.short
-      }),
-      '&:hover': {
-        textDecoration: 'none',
-        backgroundColor: (0, _colorManipulator.fade)(theme.palette.text.primary, theme.palette.action.hoverOpacity),
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          backgroundColor: 'transparent'
-        },
-        '&$disabled': {
-          backgroundColor: 'transparent'
-        }
-      },
-      '&$disabled': {
-        color: theme.palette.action.disabled
-      }
-    }),
-
-    /* Styles applied to the span element that wraps the children. */
-    label: {
-      width: '100%',
-      // Ensure the correct width for iOS Safari
-      display: 'inherit',
-      alignItems: 'inherit',
-      justifyContent: 'inherit'
-    },
-
-    /* Styles applied to the root element if `variant="text"`. */
-    text: {
-      padding: '6px 8px'
-    },
-
-    /* Styles applied to the root element if `variant="text"` and `color="primary"`. */
-    textPrimary: {
-      color: theme.palette.primary.main,
-      '&:hover': {
-        backgroundColor: (0, _colorManipulator.fade)(theme.palette.primary.main, theme.palette.action.hoverOpacity),
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          backgroundColor: 'transparent'
-        }
-      }
-    },
-
-    /* Styles applied to the root element if `variant="text"` and `color="secondary"`. */
-    textSecondary: {
-      color: theme.palette.secondary.main,
-      '&:hover': {
-        backgroundColor: (0, _colorManipulator.fade)(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          backgroundColor: 'transparent'
-        }
-      }
-    },
-
-    /* Styles applied to the root element if `variant="outlined"`. */
-    outlined: {
-      padding: '5px 16px',
-      border: "1px solid ".concat(theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.23)' : 'rgba(255, 255, 255, 0.23)'),
-      '&$disabled': {
-        border: "1px solid ".concat(theme.palette.action.disabled)
-      }
-    },
-
-    /* Styles applied to the root element if `variant="outlined"` and `color="primary"`. */
-    outlinedPrimary: {
-      color: theme.palette.primary.main,
-      border: "1px solid ".concat((0, _colorManipulator.fade)(theme.palette.primary.main, 0.5)),
-      '&:hover': {
-        border: "1px solid ".concat(theme.palette.primary.main),
-        backgroundColor: (0, _colorManipulator.fade)(theme.palette.primary.main, theme.palette.action.hoverOpacity),
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          backgroundColor: 'transparent'
-        }
-      }
-    },
-
-    /* Styles applied to the root element if `variant="outlined"` and `color="secondary"`. */
-    outlinedSecondary: {
-      color: theme.palette.secondary.main,
-      border: "1px solid ".concat((0, _colorManipulator.fade)(theme.palette.secondary.main, 0.5)),
-      '&:hover': {
-        border: "1px solid ".concat(theme.palette.secondary.main),
-        backgroundColor: (0, _colorManipulator.fade)(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          backgroundColor: 'transparent'
-        }
-      },
-      '&$disabled': {
-        border: "1px solid ".concat(theme.palette.action.disabled)
-      }
-    },
-
-    /* Styles applied to the root element if `variant="contained"`. */
-    contained: {
-      color: theme.palette.getContrastText(theme.palette.grey[300]),
-      backgroundColor: theme.palette.grey[300],
-      boxShadow: theme.shadows[2],
-      '&$focusVisible': {
-        boxShadow: theme.shadows[6]
-      },
-      '&:active': {
-        boxShadow: theme.shadows[8]
-      },
-      '&$disabled': {
-        color: theme.palette.action.disabled,
-        boxShadow: theme.shadows[0],
-        backgroundColor: theme.palette.action.disabledBackground
-      },
-      '&:hover': {
-        backgroundColor: theme.palette.grey.A100,
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          backgroundColor: theme.palette.grey[300]
-        },
-        '&$disabled': {
-          backgroundColor: theme.palette.action.disabledBackground
-        }
-      }
-    },
-
-    /* Styles applied to the root element if `variant="contained"` and `color="primary"`. */
-    containedPrimary: {
-      color: theme.palette.primary.contrastText,
-      backgroundColor: theme.palette.primary.main,
-      '&:hover': {
-        backgroundColor: theme.palette.primary.dark,
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          backgroundColor: theme.palette.primary.main
-        }
-      }
-    },
-
-    /* Styles applied to the root element if `variant="contained"` and `color="secondary"`. */
-    containedSecondary: {
-      color: theme.palette.secondary.contrastText,
-      backgroundColor: theme.palette.secondary.main,
-      '&:hover': {
-        backgroundColor: theme.palette.secondary.dark,
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          backgroundColor: theme.palette.secondary.main
-        }
-      }
-    },
-
-    /* Pseudo-class applied to the ButtonBase root element if the button is keyboard focused. */
-    focusVisible: {},
-
-    /* Pseudo-class applied to the root element if `disabled={true}`. */
-    disabled: {},
-
-    /* Styles applied to the root element if `color="inherit"`. */
-    colorInherit: {
-      color: 'inherit',
-      borderColor: 'currentColor'
-    },
-
-    /* Styles applied to the root element if `size="small"`. */
-    sizeSmall: {
-      padding: '4px 8px',
-      fontSize: theme.typography.pxToRem(13)
-    },
-
-    /* Styles applied to the root element if `size="large"`. */
-    sizeLarge: {
-      padding: '8px 24px',
-      fontSize: theme.typography.pxToRem(15)
-    },
-
-    /* Styles applied to the root element if `fullWidth={true}`. */
-    fullWidth: {
-      width: '100%'
-    }
-  };
-};
-
-exports.styles = styles;
-
-var Button = _react.default.forwardRef(function Button(props, ref) {
-  var children = props.children,
-      classes = props.classes,
-      classNameProp = props.className,
-      _props$color = props.color,
-      color = _props$color === void 0 ? 'default' : _props$color,
-      _props$component = props.component,
-      component = _props$component === void 0 ? 'button' : _props$component,
-      _props$disabled = props.disabled,
-      disabled = _props$disabled === void 0 ? false : _props$disabled,
-      _props$disableFocusRi = props.disableFocusRipple,
-      disableFocusRipple = _props$disableFocusRi === void 0 ? false : _props$disableFocusRi,
-      focusVisibleClassName = props.focusVisibleClassName,
-      _props$fullWidth = props.fullWidth,
-      fullWidth = _props$fullWidth === void 0 ? false : _props$fullWidth,
-      _props$size = props.size,
-      size = _props$size === void 0 ? 'medium' : _props$size,
-      _props$type = props.type,
-      type = _props$type === void 0 ? 'button' : _props$type,
-      _props$variant = props.variant,
-      variant = _props$variant === void 0 ? 'text' : _props$variant,
-      other = (0, _objectWithoutProperties2.default)(props, ["children", "classes", "className", "color", "component", "disabled", "disableFocusRipple", "focusVisibleClassName", "fullWidth", "size", "type", "variant"]);
-  var text = variant === 'text';
-  var outlined = variant === 'outlined';
-  var contained = variant === 'contained';
-  var primary = color === 'primary';
-  var secondary = color === 'secondary';
-  var className = (0, _clsx.default)(classes.root, classNameProp, text && [classes.text, primary && classes.textPrimary, secondary && classes.textSecondary], outlined && [classes.outlined, primary && classes.outlinedPrimary, secondary && classes.outlinedSecondary], contained && [classes.contained, primary && classes.containedPrimary, secondary && classes.containedSecondary], size !== 'medium' && classes["size".concat((0, _helpers.capitalize)(size))], disabled && classes.disabled, fullWidth && classes.fullWidth, {
-    inherit: classes.colorInherit
-  }[color]);
-  return _react.default.createElement(_ButtonBase.default, (0, _extends2.default)({
-    className: className,
-    component: component,
-    disabled: disabled,
-    focusRipple: !disableFocusRipple,
-    focusVisibleClassName: (0, _clsx.default)(classes.focusVisible, focusVisibleClassName),
-    ref: ref,
-    type: type
-  }, other), _react.default.createElement("span", {
-    className: classes.label
-  }, children));
-});
-
-"development" !== "production" ? Button.propTypes = {
-  /**
-   * The content of the button.
-   */
-  children: _propTypes.default.node.isRequired,
-
-  /**
-   * Override or extend the styles applied to the component.
-   * See [CSS API](#css) below for more details.
-   */
-  classes: _propTypes.default.object.isRequired,
-
-  /**
-   * @ignore
-   */
-  className: _propTypes.default.string,
-
-  /**
-   * The color of the component. It supports those theme colors that make sense for this component.
-   */
-  color: _propTypes.default.oneOf(['default', 'inherit', 'primary', 'secondary']),
-
-  /**
-   * The component used for the root node.
-   * Either a string to use a DOM element or a component.
-   */
-  component: _propTypes.default.elementType,
-
-  /**
-   * If `true`, the button will be disabled.
-   */
-  disabled: _propTypes.default.bool,
-
-  /**
-   * If `true`, the  keyboard focus ripple will be disabled.
-   * `disableRipple` must also be true.
-   */
-  disableFocusRipple: _propTypes.default.bool,
-
-  /**
-   * If `true`, the ripple effect will be disabled.
-   *
-   * ⚠️ Without a ripple there is no styling for :focus-visible by default. Be sure
-   * to highlight the element by applying separate styles with the `focusVisibleClassName`.
-   */
-  disableRipple: _propTypes.default.bool,
-
-  /**
-   * @ignore
-   */
-  focusVisibleClassName: _propTypes.default.string,
-
-  /**
-   * If `true`, the button will take up the full width of its container.
-   */
-  fullWidth: _propTypes.default.bool,
-
-  /**
-   * The URL to link to when the button is clicked.
-   * If defined, an `a` element will be used as the root node.
-   */
-  href: _propTypes.default.string,
-
-  /**
-   * The size of the button.
-   * `small` is equivalent to the dense button styling.
-   */
-  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
-
-  /**
-   * @ignore
-   */
-  type: _propTypes.default.string,
-
-  /**
-   * The variant to use.
-   */
-  variant: _propTypes.default.oneOf(['text', 'outlined', 'contained'])
-} : void 0;
-
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiButton'
-})(Button);
-
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../styles/colorManipulator":"../node_modules/@material-ui/core/esm/styles/colorManipulator.js","../ButtonBase":"../node_modules/@material-ui/core/esm/ButtonBase/index.js","../utils/helpers":"../node_modules/@material-ui/core/esm/utils/helpers.js"}],"../node_modules/@material-ui/core/esm/Button/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function () {
-    return _Button.default;
-  }
-});
-
-var _Button = _interopRequireDefault(require("./Button"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Button":"../node_modules/@material-ui/core/esm/Button/Button.js"}],"../node_modules/@material-ui/icons/Delete.js":[function(require,module,exports) {
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
-
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
-  d: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-}), 'Delete');
-
-exports.default = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"../node_modules/@material-ui/icons/CloudUpload.js":[function(require,module,exports) {
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
-
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
-  d: "M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"
-}), 'CloudUpload');
-
-exports.default = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"../node_modules/@material-ui/icons/KeyboardVoice.js":[function(require,module,exports) {
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
-
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
-  d: "M12 15c1.66 0 2.99-1.34 2.99-3L15 6c0-1.66-1.34-3-3-3S9 4.34 9 6v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 15 6.7 12H5c0 3.42 2.72 6.23 6 6.72V22h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"
-}), 'KeyboardVoice');
-
-exports.default = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"../node_modules/@material-ui/core/esm/Icon/Icon.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _clsx = _interopRequireDefault(require("clsx"));
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _helpers = require("../utils/helpers");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      userSelect: 'none',
-      fontSize: theme.typography.pxToRem(24),
-      width: '1em',
-      height: '1em',
-      // Chrome fix for https://bugs.chromium.org/p/chromium/issues/detail?id=820541
-      // To remove at some point.
-      overflow: 'hidden',
-      flexShrink: 0
-    },
-
-    /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {
-      color: theme.palette.primary.main
-    },
-
-    /* Styles applied to the root element if `color="secondary"`. */
-    colorSecondary: {
-      color: theme.palette.secondary.main
-    },
-
-    /* Styles applied to the root element if `color="action"`. */
-    colorAction: {
-      color: theme.palette.action.active
-    },
-
-    /* Styles applied to the root element if `color="error"`. */
-    colorError: {
-      color: theme.palette.error.main
-    },
-
-    /* Styles applied to the root element if `color="disabled"`. */
-    colorDisabled: {
-      color: theme.palette.action.disabled
-    },
-    fontSizeInherit: {
-      fontSize: 'inherit'
-    },
-
-    /* Styles applied to the root element if `fontSize="small"`. */
-    fontSizeSmall: {
-      fontSize: theme.typography.pxToRem(20)
-    },
-
-    /* Styles applied to the root element if `fontSize="large"`. */
-    fontSizeLarge: {
-      fontSize: theme.typography.pxToRem(36)
-    }
-  };
-};
-
-exports.styles = styles;
-
-var Icon = _react.default.forwardRef(function Icon(props, ref) {
-  var classes = props.classes,
-      className = props.className,
-      _props$color = props.color,
-      color = _props$color === void 0 ? 'inherit' : _props$color,
-      _props$component = props.component,
-      Component = _props$component === void 0 ? 'span' : _props$component,
-      _props$fontSize = props.fontSize,
-      fontSize = _props$fontSize === void 0 ? 'default' : _props$fontSize,
-      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "color", "component", "fontSize"]);
-  return _react.default.createElement(Component, (0, _extends2.default)({
-    className: (0, _clsx.default)('material-icons', classes.root, className, color !== 'inherit' && classes["color".concat((0, _helpers.capitalize)(color))], fontSize !== 'default' && classes["fontSize".concat((0, _helpers.capitalize)(fontSize))]),
-    "aria-hidden": true,
-    ref: ref
-  }, other));
-});
-
-"development" !== "production" ? Icon.propTypes = {
-  /**
-   * The name of the icon font ligature.
-   */
-  children: _propTypes.default.node,
-
-  /**
-   * Override or extend the styles applied to the component.
-   * See [CSS API](#css) below for more details.
-   */
-  classes: _propTypes.default.object.isRequired,
-
-  /**
-   * @ignore
-   */
-  className: _propTypes.default.string,
-
-  /**
-   * The color of the component. It supports those theme colors that make sense for this component.
-   */
-  color: _propTypes.default.oneOf(['inherit', 'primary', 'secondary', 'action', 'error', 'disabled']),
-
-  /**
-   * The component used for the root node.
-   * Either a string to use a DOM element or a component.
-   */
-  component: _propTypes.default.elementType,
-
-  /**
-   * The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size.
-   */
-  fontSize: _propTypes.default.oneOf(['inherit', 'default', 'small', 'large'])
-} : void 0;
-Icon.muiName = 'Icon';
-
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiIcon'
-})(Icon);
-
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../utils/helpers":"../node_modules/@material-ui/core/esm/utils/helpers.js"}],"../node_modules/@material-ui/core/esm/Icon/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function () {
-    return _Icon.default;
-  }
-});
-
-var _Icon = _interopRequireDefault(require("./Icon"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Icon":"../node_modules/@material-ui/core/esm/Icon/Icon.js"}],"../node_modules/@material-ui/icons/ArrowBack.js":[function(require,module,exports) {
-"use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
-
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
-  d: "M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
-}), 'ArrowBack');
-
-exports.default = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"Views/Detail/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Paper = _interopRequireDefault(require("@material-ui/core/Paper"));
-
-var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
-
-var _InputBase = _interopRequireDefault(require("@material-ui/core/InputBase"));
-
-var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
-
-var _Search = _interopRequireDefault(require("@material-ui/icons/Search"));
-
-var _MenuItem = _interopRequireDefault(require("@material-ui/core/MenuItem"));
-
-var _FormControl = _interopRequireDefault(require("@material-ui/core/FormControl"));
-
-var _Select = _interopRequireDefault(require("@material-ui/core/Select"));
-
-var _FlagCard = _interopRequireDefault(require("../../Components/FlagCard"));
-
-var _reactLazyload = _interopRequireDefault(require("react-lazyload"));
-
-var _CircularProgress = _interopRequireDefault(require("@material-ui/core/CircularProgress"));
-
-var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
-
-var _effect = require("../../Hooks/Detail/effect");
-
-var _styles = require("@material-ui/core/styles");
-
-var _clsx = _interopRequireDefault(require("clsx"));
-
-var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
-var _Delete = _interopRequireDefault(require("@material-ui/icons/Delete"));
-
-var _CloudUpload = _interopRequireDefault(require("@material-ui/icons/CloudUpload"));
-
-var _KeyboardVoice = _interopRequireDefault(require("@material-ui/icons/KeyboardVoice"));
-
-var _Icon = _interopRequireDefault(require("@material-ui/core/Icon"));
-
-var _ArrowBack = _interopRequireDefault(require("@material-ui/icons/ArrowBack"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-var useStyles = (0, _styles.makeStyles)(function (theme) {
-  return {
-    text: {
-      color: theme.palette.text.textSecondary,
-      marginTop: '6px',
-      fontSize: '14px'
-    },
-    button: {
-      margin: theme.spacing(1)
-    },
-    leftIcon: {
-      marginRight: theme.spacing(1)
-    },
-    rightIcon: {
-      marginLeft: theme.spacing(1)
-    },
-    iconSmall: {
-      fontSize: 20
-    },
-    title: {
-      fontSize: '32px',
-      width: '100%',
-      height: '30px'
-    },
-    card: {
-      backgroundColor: theme.palette.primary.main,
-      paddingBottom: '32px',
-      boxSizing: 'border-box'
-    }
-  };
-});
-
-var Detail = function Detail() {
-  var classes = useStyles();
-  var country = (0, _effect.useEndpoint)({
-    method: "GET",
-    url: 'https://restcountries.eu/rest/v2/name/'
-  });
-
-  if (typeof country !== 'undefined' || country != null) {
-    console.log(country);
-    return _react.default.createElement(_Grid.default, {
-      spacing: 4,
-      container: true,
-      style: {
-        marginTop: '32px'
-      }
-    }, _react.default.createElement(_Grid.default, {
-      item: true,
-      xs: 12,
-      sm: 12
-    }, _react.default.createElement(_Button.default, {
-      variant: "contained",
-      size: "small",
-      className: classes.button,
-      onClick: function onClick() {
-        location.hash = '/';
-      }
-    }, _react.default.createElement(_ArrowBack.default, {
-      className: (0, _clsx.default)(classes.leftIcon, classes.iconSmall)
-    }), "Voltar")), _react.default.createElement(_Grid.default, {
-      item: true,
-      xs: 12,
-      sm: 6
-    }, _react.default.createElement("img", {
-      src: country.flag,
-      width: '100%'
-    })), _react.default.createElement(_Grid.default, {
-      item: true,
-      xs: 12,
-      sm: 6,
-      spacing: 3,
-      container: true,
-      justify: "flex-start"
-    }, _react.default.createElement(_Grid.default, {
-      item: true,
-      xs: 12,
-      sm: 12
-    }, _react.default.createElement(_Typography.default, {
-      component: "h1",
-      className: classes.title
-    }, country.name)), _react.default.createElement(_Grid.default, {
-      item: true,
-      xs: 12,
-      sm: 6
-    }, _react.default.createElement(_Typography.default, {
-      component: "p",
-      className: classes.text
-    }, _react.default.createElement("b", null, "Native Name: "), " ", country.nativeName), _react.default.createElement(_Typography.default, {
-      component: "p",
-      className: classes.text
-    }, _react.default.createElement("b", null, "Population: "), " ", country.population), _react.default.createElement(_Typography.default, {
-      component: "p",
-      className: classes.text
-    }, _react.default.createElement("b", null, "Region: "), " ", country.region), _react.default.createElement(_Typography.default, {
-      component: "p",
-      className: classes.text
-    }, _react.default.createElement("b", null, "Sub Region: "), " ", country.subRegion), _react.default.createElement(_Typography.default, {
-      component: "p",
-      className: classes.text
-    }, _react.default.createElement("b", null, "Capital: "), " ", country.capital)), _react.default.createElement(_Grid.default, {
-      item: true,
-      xs: 12,
-      sm: 6
-    }, _react.default.createElement(_Typography.default, {
-      component: "p",
-      className: classes.text
-    }, _react.default.createElement("b", null, "Top Level Domain:"), " ", country.topLevelDomain), _react.default.createElement(_Typography.default, {
-      component: "p",
-      className: classes.text
-    }, _react.default.createElement("b", null, "Currencies: "), " ", country.currencies.map(function (currencie) {
-      return "".concat(currencie.name, " ");
-    })), _react.default.createElement(_Typography.default, {
-      component: "p",
-      className: classes.text
-    }, _react.default.createElement("b", null, " Languages: "), country.languages.map(function (language) {
-      return "".concat(language.name, " ");
-    })))));
-  }
-
-  return _react.default.createElement("p", null, "Loading...");
-};
-
-var _default = Detail;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","@material-ui/core/Paper":"../node_modules/@material-ui/core/esm/Paper/index.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/InputBase":"../node_modules/@material-ui/core/esm/InputBase/index.js","@material-ui/core/IconButton":"../node_modules/@material-ui/core/esm/IconButton/index.js","@material-ui/icons/Search":"../node_modules/@material-ui/icons/Search.js","@material-ui/core/MenuItem":"../node_modules/@material-ui/core/esm/MenuItem/index.js","@material-ui/core/FormControl":"../node_modules/@material-ui/core/esm/FormControl/index.js","@material-ui/core/Select":"../node_modules/@material-ui/core/esm/Select/index.js","../../Components/FlagCard":"Components/FlagCard.js","react-lazyload":"../node_modules/react-lazyload/lib/index.js","@material-ui/core/CircularProgress":"../node_modules/@material-ui/core/esm/CircularProgress/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","../../Hooks/Detail/effect":"Hooks/Detail/effect.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","@material-ui/icons/Delete":"../node_modules/@material-ui/icons/Delete.js","@material-ui/icons/CloudUpload":"../node_modules/@material-ui/icons/CloudUpload.js","@material-ui/icons/KeyboardVoice":"../node_modules/@material-ui/icons/KeyboardVoice.js","@material-ui/core/Icon":"../node_modules/@material-ui/core/esm/Icon/index.js","@material-ui/icons/ArrowBack":"../node_modules/@material-ui/icons/ArrowBack.js"}],"Hooks/Search/effect.js":[function(require,module,exports) {
+},{"./CircularProgress":"../node_modules/@material-ui/core/esm/CircularProgress/CircularProgress.js"}],"Hooks/Search/effect.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57885,7 +57647,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56746" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52159" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

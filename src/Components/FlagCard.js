@@ -31,7 +31,7 @@ const FlagCard = ( { entry } ) => {
                     <CardMedia
                         component="img"
                         alt={entry.name}
-                        height="150"
+                        height="200"
                         image={entry.flag}
                         title={entry.name}
                     />

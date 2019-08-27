@@ -11,5 +11,11 @@ An litle example coded in react...
  ## Module Builder:
  
  - [Parcel](https://github.com/parcel-bundler/parcel)
+
+  ## How to start?
+ 
+  `$ yarn`
+
+  `$ yarn start` 
  
  
