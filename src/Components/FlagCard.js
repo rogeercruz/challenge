@@ -22,18 +22,16 @@ const useStyles = makeStyles(theme => ({
 const FlagCard = ( { entry } ) => {
     const classes = useStyles();
 
-    console.log(entry)
-
     return (
         <Grid item xs={12} sm={3}>
             <Card className={classes.card}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                        alt="placeholder"
+                        alt={entry.name}
                         height="150"
                         image={entry.flag}
-                        title="Img"
+                        title={entry.name}
                     />
                     <CardContent>
                         <Typography component="p" className={classes.text}>

@@ -83,8 +83,6 @@ useEffect(
 return res;
 }
 
-
-
 const Home = () => {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
@@ -151,16 +149,12 @@ const Home = () => {
         </Grid>
 
         
-      <Grid container spacing={3} style={{ marginTop: '16px'}}>
+      <Grid container spacing={4} style={{ marginTop: '16px'}}>
 			{
 				todo.data.map( country  => <FlagCard entry={country} key={country.numericCode} /> )
 			}
       </Grid>
-	  <Grid container spacing={3} style={{ marginTop: '16px'}}>
-        <Grid item xs={12} sm={3}>
-		
-        </Grid>
-      </Grid>
+	
     </div>
   );
 }

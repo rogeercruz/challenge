@@ -52315,7 +52315,6 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
 var FlagCard = function FlagCard(_ref) {
   var entry = _ref.entry;
   var classes = useStyles();
-  console.log(entry);
   return _react.default.createElement(_Grid.default, {
     item: true,
     xs: 12,
@@ -52324,10 +52323,10 @@ var FlagCard = function FlagCard(_ref) {
     className: classes.card
   }, _react.default.createElement(_CardActionArea.default, null, _react.default.createElement(_CardMedia.default, {
     component: "img",
-    alt: "placeholder",
+    alt: entry.name,
     height: "150",
     image: entry.flag,
-    title: "Img"
+    title: entry.name
   }), _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, {
     component: "p",
     className: classes.text
@@ -52550,7 +52549,7 @@ var Home = function Home() {
     value: 30
   }, "Thirty")))))), _react.default.createElement(_Grid.default, {
     container: true,
-    spacing: 3,
+    spacing: 4,
     style: {
       marginTop: '16px'
     }
@@ -52559,16 +52558,6 @@ var Home = function Home() {
       entry: country,
       key: country.numericCode
     });
-  })), _react.default.createElement(_Grid.default, {
-    container: true,
-    spacing: 3,
-    style: {
-      marginTop: '16px'
-    }
-  }, _react.default.createElement(_Grid.default, {
-    item: true,
-    xs: 12,
-    sm: 3
   })));
 };
 
