@@ -20,6 +20,15 @@ export const useStyles = makeStyles(theme => ({
 	},
   },
 
+  select: {
+    fontSize:'11px', 
+    borderRadius: '4px', 
+    border: 0, 
+    padding: '10px 10px 10px 30px', 
+    borderRadius: '3px', 
+    color: theme.palette.primary.contrastText,
+  },
+
   progress: {
     margin: theme.spacing(2),
   },
@@ -50,7 +59,8 @@ export const useStyles = makeStyles(theme => ({
   },
   
   input: {
-	  fontSize: '11px',
+    fontSize: '11px',
+    color: theme.palette.primary.contrastText,
   }
 
 }));

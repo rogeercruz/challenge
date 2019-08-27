@@ -57,7 +57,7 @@ const Detail = () => {
         return (
             <Grid spacing={4} container style={{marginTop: '32px'}}>
                 <Grid item xs={12} sm={12}>
-                    <Button variant="contained" size="small" className={classes.button} onClick={()=>{location.hash='/'}}>
+                    <Button color="primary" variant="contained" size="small" className={classes.button} onClick={()=>{location.hash='/'}}>
                         <ArrowBack className={clsx(classes.leftIcon, classes.iconSmall)} />
                         Voltar
                     </Button>

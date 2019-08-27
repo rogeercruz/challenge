@@ -65,15 +65,15 @@ const Home = () => {
 						placeholder="Search for a country"
 						inputProps={{ 'aria-label': 'search for a coutry' }}
 						onKeyPress={handleInputChange}
-						style={{color: '#fff'}}
 					/>
                 </Paper>    
             </Grid>
 
             <Grid item xs={12} sm={3}>
-				<FormControl className={classes.formControl}>
+				<FormControl color="primary" className={classes.formControl}>
 					<Select
-						style={{fontSize:'11px', borderRadius: '4px', border: 0, padding: '10px 10px 10px 30px', borderRadius: '3px', color: '#fff'}}
+						color="primary"
+						className={classes.select}
 						open={open}
 						onClose={handleClose}
 						onOpen={handleOpen}

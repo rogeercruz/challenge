@@ -46844,6 +46844,7 @@ var Detail = function Detail() {
       xs: 12,
       sm: 12
     }, _react.default.createElement(_Button.default, {
+      color: "primary",
       variant: "contained",
       size: "small",
       className: classes.button,
@@ -54501,6 +54502,8 @@ var _styles = require("@material-ui/core/styles");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var useStyles = (0, _styles.makeStyles)(function (theme) {
+  var _select;
+
   return {
     button: {
       display: 'block',
@@ -54517,6 +54520,12 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       marginTop: '0px',
       float: 'right'
     }),
+    select: (_select = {
+      fontSize: '11px',
+      borderRadius: '4px',
+      border: 0,
+      padding: '10px 10px 10px 30px'
+    }, _defineProperty(_select, "borderRadius", '3px'), _defineProperty(_select, "color", theme.palette.primary.contrastText), _select),
     progress: {
       margin: theme.spacing(2)
     },
@@ -54542,7 +54551,8 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       backgroundColor: theme.palette.primary.main
     },
     input: {
-      fontSize: '11px'
+      fontSize: '11px',
+      color: theme.palette.primary.contrastText
     }
   };
 });
@@ -54581,13 +54591,11 @@ var _CircularProgress = _interopRequireDefault(require("@material-ui/core/Circul
 
 var _effect = require("../../Hooks/Search/effect");
 
-var _style2 = require("./style");
+var _style = require("./style");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -54598,9 +54606,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Home = function Home() {
-  var _style;
-
-  var classes = (0, _style2.useStyles)();
+  var classes = (0, _style.useStyles)();
   var todosApi = "https://restcountries.eu/rest/v2";
 
   var _useState = (0, _react.useState)(''),
@@ -54668,23 +54674,17 @@ var Home = function Home() {
     inputProps: {
       'aria-label': 'search for a coutry'
     },
-    onKeyPress: handleInputChange,
-    style: {
-      color: '#fff'
-    }
+    onKeyPress: handleInputChange
   }))), _react.default.createElement(_Grid.default, {
     item: true,
     xs: 12,
     sm: 3
   }, _react.default.createElement(_FormControl.default, {
+    color: "primary",
     className: classes.formControl
   }, _react.default.createElement(_Select.default, {
-    style: (_style = {
-      fontSize: '11px',
-      borderRadius: '4px',
-      border: 0,
-      padding: '10px 10px 10px 30px'
-    }, _defineProperty(_style, "borderRadius", '3px'), _defineProperty(_style, "color", '#fff'), _style),
+    color: "primary",
+    className: classes.select,
     open: open,
     onClose: handleClose,
     onOpen: handleOpen,
@@ -57757,7 +57757,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52663" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57300" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
