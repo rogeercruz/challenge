@@ -52279,7 +52279,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
 
@@ -52296,8 +52296,6 @@ var _Typography = _interopRequireDefault(require("@material-ui/core/Typography")
 var _styles = require("@material-ui/core/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
@@ -52420,7 +52418,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
   };
 });
 
-function useEndpoint(req) {
+var useEndpoint = function useEndpoint(req) {
   var _useState = (0, _react.useState)({
     data: [],
     complete: false,
@@ -52455,7 +52453,7 @@ function useEndpoint(req) {
     });
   }, [req.url]);
   return res;
-}
+};
 
 var Home = function Home() {
   var _style;
@@ -52472,17 +52470,23 @@ var Home = function Home() {
       open = _React$useState4[0],
       setOpen = _React$useState4[1];
 
-  var todosApi = "https://restcountries.eu/rest/v2/all";
+  var todosApi = "https://restcountries.eu/rest/v2";
 
-  var _useState3 = (0, _react.useState)(1),
+  var _useState3 = (0, _react.useState)('https://restcountries.eu/rest/v2/all'),
       _useState4 = _slicedToArray(_useState3, 2),
-      count = _useState4[0],
-      setCount = _useState4[1];
+      url = _useState4[0],
+      setUrl = _useState4[1];
 
-  var todo = useEndpoint({
+  var countryList = useEndpoint({
     method: "GET",
-    url: "".concat(todosApi)
+    url: url
   });
+
+  var handleInputChange = function handleInputChange(e) {
+    console.log(event.target.value);
+    if (event.target.value === '') return;
+    setUrl("".concat(todosApi, "/name/").concat(event.target.value));
+  };
 
   var handleChange = function handleChange(event) {
     setAge(event.target.value);
@@ -52496,7 +52500,6 @@ var Home = function Home() {
     setOpen(true);
   };
 
-  console.log(todo);
   return _react.default.createElement("div", {
     className: classes.root
   }, _react.default.createElement(_Grid.default, {
@@ -52518,6 +52521,10 @@ var Home = function Home() {
     placeholder: "Search for a country",
     inputProps: {
       'aria-label': 'search for a coutry'
+    },
+    onChange: handleInputChange,
+    style: {
+      color: '#fff'
     }
   }))), _react.default.createElement(_Grid.default, {
     item: true,
@@ -52553,7 +52560,7 @@ var Home = function Home() {
     style: {
       marginTop: '16px'
     }
-  }, todo.data.map(function (country) {
+  }, countryList.data.map(function (country) {
     return _react.default.createElement(_FlagCard.default, {
       entry: country,
       key: country.numericCode
