@@ -45,54 +45,64 @@ const useStyles = makeStyles(theme => ({
   
 }));
 
-function useEndpoint(req) {
-const [res, setRes] = useState({
-	data: [],
-	complete: false,
-	pending: false,
-	error: false
-});
-useEffect(
-	() => {
-	setRes({
+const useEndpoint = (req) => {
+	const [res, setRes] = useState({
 		data: [],
-		pending: true,
-		error: false,
-		complete: false
+		complete: false,
+		pending: false,
+		error: false
 	});
-	axios(req)
-		.then(res =>
+
+	useEffect(
+		() => {
 		setRes({
-			data: res.data,
-			pending: false,
+			data: [],
+			pending: true,
 			error: false,
-			complete: true
-		})
-		)
-		.catch(() =>
-		setRes({
-			data: null,
-			pending: false,
-			error: true,
-			complete: true
-		})
-		);
-	},
-	[req.url]
-);
-return res;
+			complete: false
+		});
+		axios(req)
+			.then(res =>
+			setRes({
+				data: res.data,
+				pending: false,
+				error: false,
+				complete: true
+			})
+			)
+			.catch(() =>
+			setRes({
+				data: [],
+				pending: false,
+				error: true,
+				complete: true
+			})
+			);
+		},
+		[req.url]
+	);
+	return res;
 }
 
 const Home = () => {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  const todosApi = "https://restcountries.eu/rest/v2/all";
-  const [count, setCount] = useState(1);
-  const todo = useEndpoint({
+  const todosApi = "https://restcountries.eu/rest/v2";
+  const [url, setUrl] = useState('https://restcountries.eu/rest/v2/all');
+  
+  const countryList = useEndpoint({
     method: "GET",
-    url: `${todosApi}`
+    url: url
   });
+
+  const handleInputChange = (e) => {
+	console.log(event.target.value);
+	
+	if (event.target.value === '' || event.target.value === null) return;
+
+	setUrl(`${todosApi}/name/${event.target.value}`)
+  }
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -106,7 +116,6 @@ const Home = () => {
     setOpen(true);
   }
 
-  console.log(todo);
 
   return (
     <div className={classes.root}>
@@ -114,13 +123,16 @@ const Home = () => {
             <Grid item xs={12} sm={3}>
                 <Paper className={classes.paperSearch}>
                 <IconButton className={classes.iconButton} aria-label="search">
-                    <SearchIcon />
+                    <SearchIcon color="secondary"/>
                 </IconButton>
                 <InputBase
                     className={classes.input}
                     placeholder="Search for a country"
                     inputProps={{ 'aria-label': 'search for a coutry' }}
-                />
+					onChange={handleInputChange}
+					style={{color: '#fff'}}
+
+				/>
                 </Paper>    
             </Grid>
 
@@ -151,7 +163,7 @@ const Home = () => {
         
       <Grid container spacing={4} style={{ marginTop: '16px'}}>
 			{
-				todo.data.map( country  => <FlagCard entry={country} key={country.numericCode} /> )
+				countryList.data.map( country  => <FlagCard entry={country} key={country.numericCode} /> )
 			}
       </Grid>
 	
