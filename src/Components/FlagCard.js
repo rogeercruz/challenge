@@ -25,7 +25,7 @@ const FlagCard = ( { entry } ) => {
     const classes = useStyles();
 
     return (
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={3} onClick={()=>{ location.hash=`/detail?name=${entry.name}` }}>
             <Card className={classes.card}>
                 <CardActionArea>
                     <CardMedia

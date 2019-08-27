@@ -17,9 +17,9 @@ import  { useStyles } from './style';
 
 const Home = () => {
   const classes = useStyles();
-  const [region, setRegion] = useState('');
-  const [open, setOpen] = React.useState(false);
   const todosApi = "https://restcountries.eu/rest/v2";
+  const [region, setRegion] = useState('');
+  const [open, setOpen] = useState(false);
   const [url, setUrl] = useState('https://restcountries.eu/rest/v2/all');
   
   const countryList = useEndpoint({

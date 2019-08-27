@@ -12,9 +12,9 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 
 const App = () => (
     <ThemeProvider theme={theme}>
-        <AppBar position="static" color="primary">
+        <AppBar position="static" color="primary" >
             <Container maxWidth="lg">
-                <Toolbar variant="dense">
+                <Toolbar variant="dense" style={{padding: 0}}>
                 <Typography variant="h6" color="inherit">
                     Where in the word?
                 </Typography>
