@@ -52363,7 +52363,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
 
 function useEndpoint(req) {
   var _useState = (0, _react.useState)({
-    data: null,
+    data: [],
     complete: false,
     pending: false,
     error: false
@@ -52374,7 +52374,7 @@ function useEndpoint(req) {
 
   (0, _react.useEffect)(function () {
     setRes({
-      data: null,
+      data: [],
       pending: true,
       error: false,
       complete: false
@@ -52494,22 +52494,24 @@ var Home = function Home() {
     style: {
       marginTop: '16px'
     }
-  }, _react.default.createElement(_Grid.default, {
-    item: true,
-    xs: 12,
-    sm: 3
-  }, _react.default.createElement(_Card.default, {
-    className: classes.card
-  }, _react.default.createElement(_CardActionArea.default, null, _react.default.createElement(_CardMedia.default, {
-    component: "img",
-    alt: "placeholder",
-    height: "150",
-    image: "https://via.placeholder.com/250",
-    title: "Img"
-  }), _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, {
-    component: "p",
-    className: classes.text
-  }, "Lorem")))))), _react.default.createElement(_Grid.default, {
+  }, todo.data.map(function (entry) {
+    return _react.default.createElement(_Grid.default, {
+      item: true,
+      xs: 12,
+      sm: 3
+    }, _react.default.createElement(_Card.default, {
+      className: classes.card
+    }, _react.default.createElement(_CardActionArea.default, null, _react.default.createElement(_CardMedia.default, {
+      component: "img",
+      alt: "placeholder",
+      height: "150",
+      image: entry.flag,
+      title: "Img"
+    }), _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, {
+      component: "p",
+      className: classes.text
+    }, entry.name)))));
+  })), _react.default.createElement(_Grid.default, {
     container: true,
     spacing: 3,
     style: {
@@ -52519,11 +52521,7 @@ var Home = function Home() {
     item: true,
     xs: 12,
     sm: 3
-  }, _react.default.createElement("div", null, _react.default.createElement("button", {
-    onClick: function onClick() {
-      return setCount(count + 1);
-    }
-  }, "Get Data")))));
+  })));
 };
 
 var _default = Home;

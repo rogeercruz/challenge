@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
 
 function useEndpoint(req) {
 const [res, setRes] = useState({
-	data: null,
+	data: [],
 	complete: false,
 	pending: false,
 	error: false
@@ -66,7 +66,7 @@ const [res, setRes] = useState({
 useEffect(
 	() => {
 	setRes({
-		data: null,
+		data: [],
 		pending: true,
 		error: false,
 		complete: false
@@ -163,31 +163,40 @@ const Home = () => {
 
         
       <Grid container spacing={3} style={{ marginTop: '16px'}}>
-        <Grid item xs={12} sm={3}>
-            <Card className={classes.card}>
-                <CardActionArea>
-                    <CardMedia
-                    component="img"
-                    alt="placeholder"
-                    height="150"
-                    image="https://via.placeholder.com/250"
-                    title="Img"
-                    />
-                    <CardContent>
-                    <Typography component="p" className={classes.text}>
-                        Lorem
-                    </Typography>
-                    
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </Grid>
+            
+			{
+				todo.data.map( (entry ) => {
+					return (
+						<Grid item xs={12} sm={3}>
+        
+						<Card className={classes.card}>
+							<CardActionArea>
+								<CardMedia
+								component="img"
+								alt="placeholder"
+								height="150"
+								image={entry.flag}
+								title="Img"
+								/>
+								<CardContent>
+								<Typography component="p" className={classes.text}>
+									{entry.name}
+								</Typography>
+								
+								</CardContent>
+							</CardActionArea>
+						</Card>
+
+						</Grid>
+
+					)	
+				}
+				)
+			}
       </Grid>
 	  <Grid container spacing={3} style={{ marginTop: '16px'}}>
         <Grid item xs={12} sm={3}>
-			<div>
-				<button onClick={() => setCount(count + 1)}>Get Data</button>
-			</div>
+		
         </Grid>
       </Grid>
     </div>
