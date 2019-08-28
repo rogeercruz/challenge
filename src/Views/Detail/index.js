@@ -4,43 +4,10 @@ import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import ArrowBack from '@material-ui/icons/ArrowBack';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { useEndpoint } from "../../Hooks/Detail/effect";
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(theme => ({
-    text: {
-      color: theme.palette.text.textSecondary,
-      marginTop: '6px',
-      fontSize: '14px'
-    },
-
-    button: {
-        margin: theme.spacing(1),
-      },
-      leftIcon: {
-        marginRight: theme.spacing(1),
-      },
-      rightIcon: {
-        marginLeft: theme.spacing(1),
-      },
-      iconSmall: {
-        fontSize: 20,
-    },
-
-    title: {
-        fontSize: '32px',
-        width: '100%',
-        height: '30px',
-    },
-    
-    card: {
-        backgroundColor: theme.palette.primary.main,
-        paddingBottom: '32px',
-        boxSizing: 'border-box',
-    },
-}));
-
+import { useStyles } from './style';
 
 const Detail = () => {
     const classes = useStyles();
@@ -52,10 +19,8 @@ const Detail = () => {
  
     if ( typeof(country) !== 'undefined' || country != null ) {
         
-        console.log(country);
-        
         return (
-            <Grid spacing={4} container style={{marginTop: '32px'}}>
+            <Grid spacing={4} container className={classes.container}>
                 <Grid item xs={12} sm={12}>
                     <Button color="primary" variant="contained" size="small" className={classes.button} onClick={()=>{location.hash='/'}}>
                         <ArrowBack className={clsx(classes.leftIcon, classes.iconSmall)} />
@@ -109,7 +74,7 @@ const Detail = () => {
      }
 
      return (
-         <p>Loading...</p>
+        <div className={classes.progressContainer}> <CircularProgress className={classes.progress} /></div>
      )
      
 };

@@ -5,27 +5,14 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { useStyles } from './style'
 
-
-const useStyles = makeStyles(theme => ({
-    text: {
-      color: theme.palette.text.textSecondary,
-      marginTop: '6px',
-      fontSize: '12px'
-    },
-    card: {
-        backgroundColor: theme.palette.primary.main,
-        paddingBottom: '32px',
-        boxSizing: 'border-box',
-    },
-}));
 
 const FlagCard = ( { entry } ) => {
     const classes = useStyles();
 
     return (
-        <Grid item xs={12} sm={3} onClick={()=>{ location.hash=`/detail?name=${entry.name}` }}>
+        <Grid item xs={12} sm={4} lg={3}  onClick={()=>{ location.hash=`/detail?name=${entry.name}` }}>
             <Card className={classes.card}>
                 <CardActionArea>
                     <CardMedia
@@ -35,18 +22,18 @@ const FlagCard = ( { entry } ) => {
                         image={entry.flag}
                         title={entry.name}
                     />
-                    <CardContent>
-                        <Typography component="p" className={classes.text}>
-                            {entry.name}
+                    <CardContent className={classes.content}>
+                        <Typography component="p" className={classes.title}>
+                            <b>{entry.name}</b>
                         </Typography>
                         <Typography component="p" className={classes.text}>
-                            Population: {entry.population}
+                            <b>Population:</b> {entry.population}
                         </Typography>
                         <Typography component="p" className={classes.text}>
-                            Region: {entry.region}
+                            <b>Region:</b> {entry.region}
                         </Typography> 
                         <Typography component="p" className={classes.text}>
-                            Capital: {entry.capital}
+                            <b>Capital:</b> {entry.capital}
                         </Typography> 
                     </CardContent>
                 </CardActionArea>

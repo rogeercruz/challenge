@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { red } from '@material-ui/core/colors';
 
 export const useStyles = makeStyles(theme => ({
   button: {
@@ -27,6 +28,11 @@ export const useStyles = makeStyles(theme => ({
     padding: '10px 10px 10px 30px', 
     borderRadius: '3px', 
     color: theme.palette.primary.contrastText,
+  },
+
+  menu: {
+    color: theme.palette.primary.contrastText,
+    backgroundColor: theme.palette.primary.main,
   },
 
   progress: {

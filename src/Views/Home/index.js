@@ -70,7 +70,7 @@ const Home = () => {
             </Grid>
 
             <Grid item xs={12} sm={3}>
-				<FormControl color="primary" className={classes.formControl}>
+				<FormControl className={classes.formControl}>
 					<Select
 						color="primary"
 						className={classes.select}
@@ -81,15 +81,15 @@ const Home = () => {
 						onChange={handleChange}
 						displayEmpty
 					>
-						<MenuItem value="" >
+						<MenuItem value="" className={classes.menu} >
 							Filter by Region
 						</MenuItem>
 
-						<MenuItem value={'Africa'}>Africa</MenuItem>
-						<MenuItem value={'Americas'}>Americas</MenuItem>
-						<MenuItem value={'Asia'}>Asia</MenuItem>
-						<MenuItem value={'Europe'}>Europe</MenuItem>
-						<MenuItem value={'Oceania'}>Oceania</MenuItem>
+						<MenuItem value={'Africa'} className={classes.menu}>Africa</MenuItem>
+						<MenuItem value={'Americas'} className={classes.menu}>Americas</MenuItem>
+						<MenuItem value={'Asia'} className={classes.menu}>Asia</MenuItem>
+						<MenuItem value={'Europe'} className={classes.menu}>Europe</MenuItem>
+						<MenuItem value={'Oceania'} className={classes.menu}>Oceania</MenuItem>
 					</Select>
 				</FormControl>
             </Grid>
@@ -97,13 +97,13 @@ const Home = () => {
 
         
       <Grid container spacing={4} style={{ marginTop: '16px'}}>
-			{
-				!countryList.complete  && <div className={classes.progressContainer}> <CircularProgress className={classes.progress} /></div>
-			}
-			
-			{
-				countryList.data.map( country  =>  <LazyLoad key={country.numericCode}><FlagCard entry={country} /></LazyLoad>)
-			}
+		{
+			!countryList.complete  && <div className={classes.progressContainer}> <CircularProgress className={classes.progress} /></div>
+		}
+		
+		{
+			countryList.data.map( country  =>  <LazyLoad key={country.numericCode}><FlagCard entry={country} /></LazyLoad>)
+		}
       </Grid>
 	
     </div>

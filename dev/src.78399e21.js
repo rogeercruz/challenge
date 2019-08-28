@@ -45236,7 +45236,282 @@ var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", 
 }), 'ArrowBack');
 
 exports.default = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"../node_modules/@material-ui/core/esm/CircularProgress/CircularProgress.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.styles = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _clsx = _interopRequireDefault(require("clsx"));
+
+var _utils = require("@material-ui/utils");
+
+var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
+
+var _helpers = require("../utils/helpers");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SIZE = 44;
+
+function getRelativeValue(value, min, max) {
+  var clampedValue = Math.min(Math.max(min, value), max);
+  return (clampedValue - min) / (max - min);
+}
+
+function easeOut(t) {
+  t = getRelativeValue(t, 0, 1); // https://gist.github.com/gre/1650294
+
+  t = (t -= 1) * t * t + 1;
+  return t;
+}
+
+function easeIn(t) {
+  return t * t;
+}
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      display: 'inline-block',
+      lineHeight: 1 // Keep the progress centered
+
+    },
+
+    /* Styles applied to the root element if `variant="static"`. */
+    static: {
+      transition: theme.transitions.create('transform')
+    },
+
+    /* Styles applied to the root element if `variant="indeterminate"`. */
+    indeterminate: {
+      animation: '$mui-progress-circular-rotate 1.4s linear infinite'
+    },
+
+    /* Styles applied to the root element if `color="primary"`. */
+    colorPrimary: {
+      color: theme.palette.primary.main
+    },
+
+    /* Styles applied to the root element if `color="secondary"`. */
+    colorSecondary: {
+      color: theme.palette.secondary.main
+    },
+
+    /* Styles applied to the `svg` element. */
+    svg: {},
+
+    /* Styles applied to the `circle` svg path. */
+    circle: {
+      stroke: 'currentColor' // Use butt to follow the specification, by chance, it's already the default CSS value.
+      // strokeLinecap: 'butt',
+
+    },
+
+    /* Styles applied to the `circle` svg path if `variant="static"`. */
+    circleStatic: {
+      transition: theme.transitions.create('stroke-dashoffset')
+    },
+
+    /* Styles applied to the `circle` svg path if `variant="indeterminate"`. */
+    circleIndeterminate: {
+      animation: '$mui-progress-circular-dash 1.4s ease-in-out infinite',
+      // Some default value that looks fine waiting for the animation to kicks in.
+      strokeDasharray: '80px, 200px',
+      strokeDashoffset: '0px' // Add the unit to fix a Edge 16 and below bug.
+
+    },
+    '@keyframes mui-progress-circular-rotate': {
+      '100%': {
+        transform: 'rotate(360deg)'
+      }
+    },
+    '@keyframes mui-progress-circular-dash': {
+      '0%': {
+        strokeDasharray: '1px, 200px',
+        strokeDashoffset: '0px'
+      },
+      '50%': {
+        strokeDasharray: '100px, 200px',
+        strokeDashoffset: '-15px'
+      },
+      '100%': {
+        strokeDasharray: '100px, 200px',
+        strokeDashoffset: '-125px'
+      }
+    },
+
+    /* Styles applied to the `circle` svg path if `disableShrink={true}`. */
+    circleDisableShrink: {
+      animation: 'none'
+    }
+  };
+};
+/**
+ * ## ARIA
+ *
+ * If the progress bar is describing the loading progress of a particular region of a page,
+ * you should use `aria-describedby` to point to the progress bar, and set the `aria-busy`
+ * attribute to `true` on that region until it has finished loading.
+ */
+
+
+exports.styles = styles;
+
+var CircularProgress = _react.default.forwardRef(function CircularProgress(props, ref) {
+  var classes = props.classes,
+      className = props.className,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'primary' : _props$color,
+      _props$disableShrink = props.disableShrink,
+      disableShrink = _props$disableShrink === void 0 ? false : _props$disableShrink,
+      _props$size = props.size,
+      size = _props$size === void 0 ? 40 : _props$size,
+      style = props.style,
+      _props$thickness = props.thickness,
+      thickness = _props$thickness === void 0 ? 3.6 : _props$thickness,
+      _props$value = props.value,
+      value = _props$value === void 0 ? 0 : _props$value,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'indeterminate' : _props$variant,
+      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "color", "disableShrink", "size", "style", "thickness", "value", "variant"]);
+  var circleStyle = {};
+  var rootStyle = {};
+  var rootProps = {};
+
+  if (variant === 'determinate' || variant === 'static') {
+    var circumference = 2 * Math.PI * ((SIZE - thickness) / 2);
+    circleStyle.strokeDasharray = circumference.toFixed(3);
+    rootProps['aria-valuenow'] = Math.round(value);
+
+    if (variant === 'static') {
+      circleStyle.strokeDashoffset = "".concat(((100 - value) / 100 * circumference).toFixed(3), "px");
+      rootStyle.transform = 'rotate(-90deg)';
+    } else {
+      circleStyle.strokeDashoffset = "".concat((easeIn((100 - value) / 100) * circumference).toFixed(3), "px");
+      rootStyle.transform = "rotate(".concat((easeOut(value / 70) * 270).toFixed(3), "deg)");
+    }
+  }
+
+  return _react.default.createElement("div", (0, _extends2.default)({
+    className: (0, _clsx.default)(classes.root, className, color !== 'inherit' && classes["color".concat((0, _helpers.capitalize)(color))], {
+      indeterminate: classes.indeterminate,
+      static: classes.static
+    }[variant]),
+    style: (0, _extends2.default)({
+      width: size,
+      height: size
+    }, rootStyle, {}, style),
+    ref: ref,
+    role: "progressbar"
+  }, rootProps, other), _react.default.createElement("svg", {
+    className: classes.svg,
+    viewBox: "".concat(SIZE / 2, " ").concat(SIZE / 2, " ").concat(SIZE, " ").concat(SIZE)
+  }, _react.default.createElement("circle", {
+    className: (0, _clsx.default)(classes.circle, disableShrink && classes.circleDisableShrink, {
+      indeterminate: classes.circleIndeterminate,
+      static: classes.circleStatic
+    }[variant]),
+    style: circleStyle,
+    cx: SIZE,
+    cy: SIZE,
+    r: (SIZE - thickness) / 2,
+    fill: "none",
+    strokeWidth: thickness
+  })));
+});
+
+"development" !== "production" ? CircularProgress.propTypes = {
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: _propTypes.default.object.isRequired,
+
+  /**
+   * @ignore
+   */
+  className: _propTypes.default.string,
+
+  /**
+   * The color of the component. It supports those theme colors that make sense for this component.
+   */
+  color: _propTypes.default.oneOf(['primary', 'secondary', 'inherit']),
+
+  /**
+   * If `true`, the shrink animation is disabled.
+   * This only works if variant is `indeterminate`.
+   */
+  disableShrink: (0, _utils.chainPropTypes)(_propTypes.default.bool, function (props) {
+    if (props.disableShrink && props.variant && props.variant !== 'indeterminate') {
+      return new Error('Material-UI: you have provided the `disableShrink` prop ' + 'with a variant other than `indeterminate`. This will have no effect.');
+    }
+
+    return null;
+  }),
+
+  /**
+   * The size of the circle.
+   */
+  size: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
+
+  /**
+   * @ignore
+   */
+  style: _propTypes.default.object,
+
+  /**
+   * The thickness of the circle.
+   */
+  thickness: _propTypes.default.number,
+
+  /**
+   * The value of the progress indicator for the determinate and static variants.
+   * Value between 0 and 100.
+   */
+  value: _propTypes.default.number,
+
+  /**
+   * The variant to use.
+   * Use indeterminate when there is no progress value.
+   */
+  variant: _propTypes.default.oneOf(['determinate', 'indeterminate', 'static'])
+} : void 0;
+
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiCircularProgress',
+  flip: false
+})(CircularProgress);
+
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","@material-ui/utils":"../node_modules/@material-ui/utils/esm/index.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../utils/helpers":"../node_modules/@material-ui/core/esm/utils/helpers.js"}],"../node_modules/@material-ui/core/esm/CircularProgress/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _CircularProgress.default;
+  }
+});
+
+var _CircularProgress = _interopRequireDefault(require("./CircularProgress"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./CircularProgress":"../node_modules/@material-ui/core/esm/CircularProgress/CircularProgress.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -47014,33 +47289,15 @@ var useEndpoint = function useEndpoint(req) {
 };
 
 exports.useEndpoint = useEndpoint;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js"}],"Views/Detail/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js"}],"Views/Detail/style.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
-
-var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
-
-var _clsx = _interopRequireDefault(require("clsx"));
-
-var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
-var _ArrowBack = _interopRequireDefault(require("@material-ui/icons/ArrowBack"));
-
-var _effect = require("../../Hooks/Detail/effect");
+exports.useStyles = void 0;
 
 var _styles = require("@material-ui/core/styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
@@ -47050,7 +47307,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       fontSize: '14px'
     },
     button: {
-      margin: theme.spacing(1)
+      margin: 0
     },
     leftIcon: {
       marginRight: theme.spacing(1)
@@ -47070,25 +47327,65 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       backgroundColor: theme.palette.primary.main,
       paddingBottom: '32px',
       boxSizing: 'border-box'
+    },
+    container: {
+      marginTop: '32px',
+      marginBottom: '32px'
+    },
+    progress: {
+      margin: theme.spacing(2)
+    },
+    progressContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      width: '100%',
+      flexDirection: 'column'
     }
   };
 });
+exports.useStyles = useStyles;
+},{"@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js"}],"Views/Detail/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
+
+var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
+
+var _clsx = _interopRequireDefault(require("clsx"));
+
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
+
+var _ArrowBack = _interopRequireDefault(require("@material-ui/icons/ArrowBack"));
+
+var _CircularProgress = _interopRequireDefault(require("@material-ui/core/CircularProgress"));
+
+var _effect = require("../../Hooks/Detail/effect");
+
+var _style = require("./style");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 var Detail = function Detail() {
-  var classes = useStyles();
+  var classes = (0, _style.useStyles)();
   var country = (0, _effect.useEndpoint)({
     method: "GET",
     url: 'https://restcountries.eu/rest/v2/name/'
   });
 
   if (typeof country !== 'undefined' || country != null) {
-    console.log(country);
     return _react.default.createElement(_Grid.default, {
       spacing: 4,
       container: true,
-      style: {
-        marginTop: '32px'
-      }
+      className: classes.container
     }, _react.default.createElement(_Grid.default, {
       item: true,
       xs: 12,
@@ -47163,12 +47460,16 @@ var Detail = function Detail() {
     })))));
   }
 
-  return _react.default.createElement("p", null, "Loading...");
+  return _react.default.createElement("div", {
+    className: classes.progressContainer
+  }, " ", _react.default.createElement(_CircularProgress.default, {
+    className: classes.progress
+  }));
 };
 
 var _default = Detail;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","@material-ui/icons/ArrowBack":"../node_modules/@material-ui/icons/ArrowBack.js","../../Hooks/Detail/effect":"Hooks/Detail/effect.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js"}],"../node_modules/@material-ui/core/esm/FormControl/formControlState.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","@material-ui/icons/ArrowBack":"../node_modules/@material-ui/icons/ArrowBack.js","@material-ui/core/CircularProgress":"../node_modules/@material-ui/core/esm/CircularProgress/index.js","../../Hooks/Detail/effect":"Hooks/Detail/effect.js","./style":"Views/Detail/style.js"}],"../node_modules/@material-ui/core/esm/FormControl/formControlState.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53535,7 +53836,40 @@ Object.defineProperty(exports, "default", {
 var _CardMedia = _interopRequireDefault(require("./CardMedia"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./CardMedia":"../node_modules/@material-ui/core/esm/CardMedia/CardMedia.js"}],"Components/FlagCard.js":[function(require,module,exports) {
+},{"./CardMedia":"../node_modules/@material-ui/core/esm/CardMedia/CardMedia.js"}],"Components/style.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useStyles = void 0;
+
+var _styles = require("@material-ui/core/styles");
+
+var useStyles = (0, _styles.makeStyles)(function (theme) {
+  return {
+    text: {
+      color: theme.palette.text.textSecondary,
+      marginTop: '8px',
+      fontSize: '14px'
+    },
+    title: {
+      color: theme.palette.text.textSecondary,
+      marginTop: '8px',
+      marginBottom: '16px',
+      fontSize: '16px'
+    },
+    card: {
+      backgroundColor: theme.palette.primary.main,
+      boxSizing: 'border-box'
+    },
+    content: {
+      paddingBottom: '32px'
+    }
+  };
+});
+exports.useStyles = useStyles;
+},{"@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js"}],"Components/FlagCard.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53557,32 +53891,18 @@ var _CardMedia = _interopRequireDefault(require("@material-ui/core/CardMedia"));
 
 var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
 
-var _styles = require("@material-ui/core/styles");
+var _style = require("./style");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var useStyles = (0, _styles.makeStyles)(function (theme) {
-  return {
-    text: {
-      color: theme.palette.text.textSecondary,
-      marginTop: '6px',
-      fontSize: '12px'
-    },
-    card: {
-      backgroundColor: theme.palette.primary.main,
-      paddingBottom: '32px',
-      boxSizing: 'border-box'
-    }
-  };
-});
-
 var FlagCard = function FlagCard(_ref) {
   var entry = _ref.entry;
-  var classes = useStyles();
+  var classes = (0, _style.useStyles)();
   return _react.default.createElement(_Grid.default, {
     item: true,
     xs: 12,
-    sm: 3,
+    sm: 4,
+    lg: 3,
     onClick: function onClick() {
       location.hash = "/detail?name=".concat(entry.name);
     }
@@ -53594,24 +53914,26 @@ var FlagCard = function FlagCard(_ref) {
     height: "200",
     image: entry.flag,
     title: entry.name
-  }), _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, {
+  }), _react.default.createElement(_CardContent.default, {
+    className: classes.content
+  }, _react.default.createElement(_Typography.default, {
+    component: "p",
+    className: classes.title
+  }, _react.default.createElement("b", null, entry.name)), _react.default.createElement(_Typography.default, {
     component: "p",
     className: classes.text
-  }, entry.name), _react.default.createElement(_Typography.default, {
+  }, _react.default.createElement("b", null, "Population:"), " ", entry.population), _react.default.createElement(_Typography.default, {
     component: "p",
     className: classes.text
-  }, "Population: ", entry.population), _react.default.createElement(_Typography.default, {
+  }, _react.default.createElement("b", null, "Region:"), " ", entry.region), _react.default.createElement(_Typography.default, {
     component: "p",
     className: classes.text
-  }, "Region: ", entry.region), _react.default.createElement(_Typography.default, {
-    component: "p",
-    className: classes.text
-  }, "Capital: ", entry.capital)))));
+  }, _react.default.createElement("b", null, "Capital:"), " ", entry.capital)))));
 };
 
 var _default = FlagCard;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/Card":"../node_modules/@material-ui/core/esm/Card/index.js","@material-ui/core/CardActionArea":"../node_modules/@material-ui/core/esm/CardActionArea/index.js","@material-ui/core/CardContent":"../node_modules/@material-ui/core/esm/CardContent/index.js","@material-ui/core/CardMedia":"../node_modules/@material-ui/core/esm/CardMedia/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js"}],"../node_modules/react-lazyload/lib/utils/event.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/Card":"../node_modules/@material-ui/core/esm/Card/index.js","@material-ui/core/CardActionArea":"../node_modules/@material-ui/core/esm/CardActionArea/index.js","@material-ui/core/CardContent":"../node_modules/@material-ui/core/esm/CardContent/index.js","@material-ui/core/CardMedia":"../node_modules/@material-ui/core/esm/CardMedia/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","./style":"Components/style.js"}],"../node_modules/react-lazyload/lib/utils/event.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54160,282 +54482,7 @@ var decorator = function decorator() {
 exports.lazyload = decorator;
 exports.default = LazyLoad;
 exports.forceCheck = lazyLoadHandler;
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","prop-types":"../node_modules/prop-types/index.js","./utils/event":"../node_modules/react-lazyload/lib/utils/event.js","./utils/scrollParent":"../node_modules/react-lazyload/lib/utils/scrollParent.js","./utils/debounce":"../node_modules/react-lazyload/lib/utils/debounce.js","./utils/throttle":"../node_modules/react-lazyload/lib/utils/throttle.js"}],"../node_modules/@material-ui/core/esm/CircularProgress/CircularProgress.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.styles = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _clsx = _interopRequireDefault(require("clsx"));
-
-var _utils = require("@material-ui/utils");
-
-var _withStyles = _interopRequireDefault(require("../styles/withStyles"));
-
-var _helpers = require("../utils/helpers");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SIZE = 44;
-
-function getRelativeValue(value, min, max) {
-  var clampedValue = Math.min(Math.max(min, value), max);
-  return (clampedValue - min) / (max - min);
-}
-
-function easeOut(t) {
-  t = getRelativeValue(t, 0, 1); // https://gist.github.com/gre/1650294
-
-  t = (t -= 1) * t * t + 1;
-  return t;
-}
-
-function easeIn(t) {
-  return t * t;
-}
-
-var styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      display: 'inline-block',
-      lineHeight: 1 // Keep the progress centered
-
-    },
-
-    /* Styles applied to the root element if `variant="static"`. */
-    static: {
-      transition: theme.transitions.create('transform')
-    },
-
-    /* Styles applied to the root element if `variant="indeterminate"`. */
-    indeterminate: {
-      animation: '$mui-progress-circular-rotate 1.4s linear infinite'
-    },
-
-    /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {
-      color: theme.palette.primary.main
-    },
-
-    /* Styles applied to the root element if `color="secondary"`. */
-    colorSecondary: {
-      color: theme.palette.secondary.main
-    },
-
-    /* Styles applied to the `svg` element. */
-    svg: {},
-
-    /* Styles applied to the `circle` svg path. */
-    circle: {
-      stroke: 'currentColor' // Use butt to follow the specification, by chance, it's already the default CSS value.
-      // strokeLinecap: 'butt',
-
-    },
-
-    /* Styles applied to the `circle` svg path if `variant="static"`. */
-    circleStatic: {
-      transition: theme.transitions.create('stroke-dashoffset')
-    },
-
-    /* Styles applied to the `circle` svg path if `variant="indeterminate"`. */
-    circleIndeterminate: {
-      animation: '$mui-progress-circular-dash 1.4s ease-in-out infinite',
-      // Some default value that looks fine waiting for the animation to kicks in.
-      strokeDasharray: '80px, 200px',
-      strokeDashoffset: '0px' // Add the unit to fix a Edge 16 and below bug.
-
-    },
-    '@keyframes mui-progress-circular-rotate': {
-      '100%': {
-        transform: 'rotate(360deg)'
-      }
-    },
-    '@keyframes mui-progress-circular-dash': {
-      '0%': {
-        strokeDasharray: '1px, 200px',
-        strokeDashoffset: '0px'
-      },
-      '50%': {
-        strokeDasharray: '100px, 200px',
-        strokeDashoffset: '-15px'
-      },
-      '100%': {
-        strokeDasharray: '100px, 200px',
-        strokeDashoffset: '-125px'
-      }
-    },
-
-    /* Styles applied to the `circle` svg path if `disableShrink={true}`. */
-    circleDisableShrink: {
-      animation: 'none'
-    }
-  };
-};
-/**
- * ## ARIA
- *
- * If the progress bar is describing the loading progress of a particular region of a page,
- * you should use `aria-describedby` to point to the progress bar, and set the `aria-busy`
- * attribute to `true` on that region until it has finished loading.
- */
-
-
-exports.styles = styles;
-
-var CircularProgress = _react.default.forwardRef(function CircularProgress(props, ref) {
-  var classes = props.classes,
-      className = props.className,
-      _props$color = props.color,
-      color = _props$color === void 0 ? 'primary' : _props$color,
-      _props$disableShrink = props.disableShrink,
-      disableShrink = _props$disableShrink === void 0 ? false : _props$disableShrink,
-      _props$size = props.size,
-      size = _props$size === void 0 ? 40 : _props$size,
-      style = props.style,
-      _props$thickness = props.thickness,
-      thickness = _props$thickness === void 0 ? 3.6 : _props$thickness,
-      _props$value = props.value,
-      value = _props$value === void 0 ? 0 : _props$value,
-      _props$variant = props.variant,
-      variant = _props$variant === void 0 ? 'indeterminate' : _props$variant,
-      other = (0, _objectWithoutProperties2.default)(props, ["classes", "className", "color", "disableShrink", "size", "style", "thickness", "value", "variant"]);
-  var circleStyle = {};
-  var rootStyle = {};
-  var rootProps = {};
-
-  if (variant === 'determinate' || variant === 'static') {
-    var circumference = 2 * Math.PI * ((SIZE - thickness) / 2);
-    circleStyle.strokeDasharray = circumference.toFixed(3);
-    rootProps['aria-valuenow'] = Math.round(value);
-
-    if (variant === 'static') {
-      circleStyle.strokeDashoffset = "".concat(((100 - value) / 100 * circumference).toFixed(3), "px");
-      rootStyle.transform = 'rotate(-90deg)';
-    } else {
-      circleStyle.strokeDashoffset = "".concat((easeIn((100 - value) / 100) * circumference).toFixed(3), "px");
-      rootStyle.transform = "rotate(".concat((easeOut(value / 70) * 270).toFixed(3), "deg)");
-    }
-  }
-
-  return _react.default.createElement("div", (0, _extends2.default)({
-    className: (0, _clsx.default)(classes.root, className, color !== 'inherit' && classes["color".concat((0, _helpers.capitalize)(color))], {
-      indeterminate: classes.indeterminate,
-      static: classes.static
-    }[variant]),
-    style: (0, _extends2.default)({
-      width: size,
-      height: size
-    }, rootStyle, {}, style),
-    ref: ref,
-    role: "progressbar"
-  }, rootProps, other), _react.default.createElement("svg", {
-    className: classes.svg,
-    viewBox: "".concat(SIZE / 2, " ").concat(SIZE / 2, " ").concat(SIZE, " ").concat(SIZE)
-  }, _react.default.createElement("circle", {
-    className: (0, _clsx.default)(classes.circle, disableShrink && classes.circleDisableShrink, {
-      indeterminate: classes.circleIndeterminate,
-      static: classes.circleStatic
-    }[variant]),
-    style: circleStyle,
-    cx: SIZE,
-    cy: SIZE,
-    r: (SIZE - thickness) / 2,
-    fill: "none",
-    strokeWidth: thickness
-  })));
-});
-
-"development" !== "production" ? CircularProgress.propTypes = {
-  /**
-   * Override or extend the styles applied to the component.
-   * See [CSS API](#css) below for more details.
-   */
-  classes: _propTypes.default.object.isRequired,
-
-  /**
-   * @ignore
-   */
-  className: _propTypes.default.string,
-
-  /**
-   * The color of the component. It supports those theme colors that make sense for this component.
-   */
-  color: _propTypes.default.oneOf(['primary', 'secondary', 'inherit']),
-
-  /**
-   * If `true`, the shrink animation is disabled.
-   * This only works if variant is `indeterminate`.
-   */
-  disableShrink: (0, _utils.chainPropTypes)(_propTypes.default.bool, function (props) {
-    if (props.disableShrink && props.variant && props.variant !== 'indeterminate') {
-      return new Error('Material-UI: you have provided the `disableShrink` prop ' + 'with a variant other than `indeterminate`. This will have no effect.');
-    }
-
-    return null;
-  }),
-
-  /**
-   * The size of the circle.
-   */
-  size: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
-
-  /**
-   * @ignore
-   */
-  style: _propTypes.default.object,
-
-  /**
-   * The thickness of the circle.
-   */
-  thickness: _propTypes.default.number,
-
-  /**
-   * The value of the progress indicator for the determinate and static variants.
-   * Value between 0 and 100.
-   */
-  value: _propTypes.default.number,
-
-  /**
-   * The variant to use.
-   * Use indeterminate when there is no progress value.
-   */
-  variant: _propTypes.default.oneOf(['determinate', 'indeterminate', 'static'])
-} : void 0;
-
-var _default = (0, _withStyles.default)(styles, {
-  name: 'MuiCircularProgress',
-  flip: false
-})(CircularProgress);
-
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","clsx":"../node_modules/clsx/dist/clsx.m.js","@material-ui/utils":"../node_modules/@material-ui/utils/esm/index.js","../styles/withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","../utils/helpers":"../node_modules/@material-ui/core/esm/utils/helpers.js"}],"../node_modules/@material-ui/core/esm/CircularProgress/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function () {
-    return _CircularProgress.default;
-  }
-});
-
-var _CircularProgress = _interopRequireDefault(require("./CircularProgress"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./CircularProgress":"../node_modules/@material-ui/core/esm/CircularProgress/CircularProgress.js"}],"Hooks/Search/effect.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","prop-types":"../node_modules/prop-types/index.js","./utils/event":"../node_modules/react-lazyload/lib/utils/event.js","./utils/scrollParent":"../node_modules/react-lazyload/lib/utils/scrollParent.js","./utils/debounce":"../node_modules/react-lazyload/lib/utils/debounce.js","./utils/throttle":"../node_modules/react-lazyload/lib/utils/throttle.js"}],"Hooks/Search/effect.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54495,7 +54542,550 @@ var useEndpoint = function useEndpoint(req) {
 };
 
 exports.useEndpoint = useEndpoint;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js"}],"Views/Home/style.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js"}],"../node_modules/@material-ui/core/esm/colors/purple.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var purple = {
+  50: '#f3e5f5',
+  100: '#e1bee7',
+  200: '#ce93d8',
+  300: '#ba68c8',
+  400: '#ab47bc',
+  500: '#9c27b0',
+  600: '#8e24aa',
+  700: '#7b1fa2',
+  800: '#6a1b9a',
+  900: '#4a148c',
+  A100: '#ea80fc',
+  A200: '#e040fb',
+  A400: '#d500f9',
+  A700: '#aa00ff'
+};
+var _default = purple;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/deepPurple.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var deepPurple = {
+  50: '#ede7f6',
+  100: '#d1c4e9',
+  200: '#b39ddb',
+  300: '#9575cd',
+  400: '#7e57c2',
+  500: '#673ab7',
+  600: '#5e35b1',
+  700: '#512da8',
+  800: '#4527a0',
+  900: '#311b92',
+  A100: '#b388ff',
+  A200: '#7c4dff',
+  A400: '#651fff',
+  A700: '#6200ea'
+};
+var _default = deepPurple;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/blue.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var blue = {
+  50: '#e3f2fd',
+  100: '#bbdefb',
+  200: '#90caf9',
+  300: '#64b5f6',
+  400: '#42a5f5',
+  500: '#2196f3',
+  600: '#1e88e5',
+  700: '#1976d2',
+  800: '#1565c0',
+  900: '#0d47a1',
+  A100: '#82b1ff',
+  A200: '#448aff',
+  A400: '#2979ff',
+  A700: '#2962ff'
+};
+var _default = blue;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/lightBlue.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var lightBlue = {
+  50: '#e1f5fe',
+  100: '#b3e5fc',
+  200: '#81d4fa',
+  300: '#4fc3f7',
+  400: '#29b6f6',
+  500: '#03a9f4',
+  600: '#039be5',
+  700: '#0288d1',
+  800: '#0277bd',
+  900: '#01579b',
+  A100: '#80d8ff',
+  A200: '#40c4ff',
+  A400: '#00b0ff',
+  A700: '#0091ea'
+};
+var _default = lightBlue;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/cyan.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var cyan = {
+  50: '#e0f7fa',
+  100: '#b2ebf2',
+  200: '#80deea',
+  300: '#4dd0e1',
+  400: '#26c6da',
+  500: '#00bcd4',
+  600: '#00acc1',
+  700: '#0097a7',
+  800: '#00838f',
+  900: '#006064',
+  A100: '#84ffff',
+  A200: '#18ffff',
+  A400: '#00e5ff',
+  A700: '#00b8d4'
+};
+var _default = cyan;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/teal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var teal = {
+  50: '#e0f2f1',
+  100: '#b2dfdb',
+  200: '#80cbc4',
+  300: '#4db6ac',
+  400: '#26a69a',
+  500: '#009688',
+  600: '#00897b',
+  700: '#00796b',
+  800: '#00695c',
+  900: '#004d40',
+  A100: '#a7ffeb',
+  A200: '#64ffda',
+  A400: '#1de9b6',
+  A700: '#00bfa5'
+};
+var _default = teal;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/green.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var green = {
+  50: '#e8f5e9',
+  100: '#c8e6c9',
+  200: '#a5d6a7',
+  300: '#81c784',
+  400: '#66bb6a',
+  500: '#4caf50',
+  600: '#43a047',
+  700: '#388e3c',
+  800: '#2e7d32',
+  900: '#1b5e20',
+  A100: '#b9f6ca',
+  A200: '#69f0ae',
+  A400: '#00e676',
+  A700: '#00c853'
+};
+var _default = green;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/lightGreen.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var lightGreen = {
+  50: '#f1f8e9',
+  100: '#dcedc8',
+  200: '#c5e1a5',
+  300: '#aed581',
+  400: '#9ccc65',
+  500: '#8bc34a',
+  600: '#7cb342',
+  700: '#689f38',
+  800: '#558b2f',
+  900: '#33691e',
+  A100: '#ccff90',
+  A200: '#b2ff59',
+  A400: '#76ff03',
+  A700: '#64dd17'
+};
+var _default = lightGreen;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/lime.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var lime = {
+  50: '#f9fbe7',
+  100: '#f0f4c3',
+  200: '#e6ee9c',
+  300: '#dce775',
+  400: '#d4e157',
+  500: '#cddc39',
+  600: '#c0ca33',
+  700: '#afb42b',
+  800: '#9e9d24',
+  900: '#827717',
+  A100: '#f4ff81',
+  A200: '#eeff41',
+  A400: '#c6ff00',
+  A700: '#aeea00'
+};
+var _default = lime;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/yellow.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var yellow = {
+  50: '#fffde7',
+  100: '#fff9c4',
+  200: '#fff59d',
+  300: '#fff176',
+  400: '#ffee58',
+  500: '#ffeb3b',
+  600: '#fdd835',
+  700: '#fbc02d',
+  800: '#f9a825',
+  900: '#f57f17',
+  A100: '#ffff8d',
+  A200: '#ffff00',
+  A400: '#ffea00',
+  A700: '#ffd600'
+};
+var _default = yellow;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/amber.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var amber = {
+  50: '#fff8e1',
+  100: '#ffecb3',
+  200: '#ffe082',
+  300: '#ffd54f',
+  400: '#ffca28',
+  500: '#ffc107',
+  600: '#ffb300',
+  700: '#ffa000',
+  800: '#ff8f00',
+  900: '#ff6f00',
+  A100: '#ffe57f',
+  A200: '#ffd740',
+  A400: '#ffc400',
+  A700: '#ffab00'
+};
+var _default = amber;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/orange.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var orange = {
+  50: '#fff3e0',
+  100: '#ffe0b2',
+  200: '#ffcc80',
+  300: '#ffb74d',
+  400: '#ffa726',
+  500: '#ff9800',
+  600: '#fb8c00',
+  700: '#f57c00',
+  800: '#ef6c00',
+  900: '#e65100',
+  A100: '#ffd180',
+  A200: '#ffab40',
+  A400: '#ff9100',
+  A700: '#ff6d00'
+};
+var _default = orange;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/deepOrange.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var deepOrange = {
+  50: '#fbe9e7',
+  100: '#ffccbc',
+  200: '#ffab91',
+  300: '#ff8a65',
+  400: '#ff7043',
+  500: '#ff5722',
+  600: '#f4511e',
+  700: '#e64a19',
+  800: '#d84315',
+  900: '#bf360c',
+  A100: '#ff9e80',
+  A200: '#ff6e40',
+  A400: '#ff3d00',
+  A700: '#dd2c00'
+};
+var _default = deepOrange;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/brown.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var brown = {
+  50: '#efebe9',
+  100: '#d7ccc8',
+  200: '#bcaaa4',
+  300: '#a1887f',
+  400: '#8d6e63',
+  500: '#795548',
+  600: '#6d4c41',
+  700: '#5d4037',
+  800: '#4e342e',
+  900: '#3e2723',
+  A100: '#d7ccc8',
+  A200: '#bcaaa4',
+  A400: '#8d6e63',
+  A700: '#5d4037'
+};
+var _default = brown;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/blueGrey.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var blueGrey = {
+  50: '#eceff1',
+  100: '#cfd8dc',
+  200: '#b0bec5',
+  300: '#90a4ae',
+  400: '#78909c',
+  500: '#607d8b',
+  600: '#546e7a',
+  700: '#455a64',
+  800: '#37474f',
+  900: '#263238',
+  A100: '#cfd8dc',
+  A200: '#b0bec5',
+  A400: '#78909c',
+  A700: '#455a64'
+};
+var _default = blueGrey;
+exports.default = _default;
+},{}],"../node_modules/@material-ui/core/esm/colors/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "common", {
+  enumerable: true,
+  get: function () {
+    return _common.default;
+  }
+});
+Object.defineProperty(exports, "red", {
+  enumerable: true,
+  get: function () {
+    return _red.default;
+  }
+});
+Object.defineProperty(exports, "pink", {
+  enumerable: true,
+  get: function () {
+    return _pink.default;
+  }
+});
+Object.defineProperty(exports, "purple", {
+  enumerable: true,
+  get: function () {
+    return _purple.default;
+  }
+});
+Object.defineProperty(exports, "deepPurple", {
+  enumerable: true,
+  get: function () {
+    return _deepPurple.default;
+  }
+});
+Object.defineProperty(exports, "indigo", {
+  enumerable: true,
+  get: function () {
+    return _indigo.default;
+  }
+});
+Object.defineProperty(exports, "blue", {
+  enumerable: true,
+  get: function () {
+    return _blue.default;
+  }
+});
+Object.defineProperty(exports, "lightBlue", {
+  enumerable: true,
+  get: function () {
+    return _lightBlue.default;
+  }
+});
+Object.defineProperty(exports, "cyan", {
+  enumerable: true,
+  get: function () {
+    return _cyan.default;
+  }
+});
+Object.defineProperty(exports, "teal", {
+  enumerable: true,
+  get: function () {
+    return _teal.default;
+  }
+});
+Object.defineProperty(exports, "green", {
+  enumerable: true,
+  get: function () {
+    return _green.default;
+  }
+});
+Object.defineProperty(exports, "lightGreen", {
+  enumerable: true,
+  get: function () {
+    return _lightGreen.default;
+  }
+});
+Object.defineProperty(exports, "lime", {
+  enumerable: true,
+  get: function () {
+    return _lime.default;
+  }
+});
+Object.defineProperty(exports, "yellow", {
+  enumerable: true,
+  get: function () {
+    return _yellow.default;
+  }
+});
+Object.defineProperty(exports, "amber", {
+  enumerable: true,
+  get: function () {
+    return _amber.default;
+  }
+});
+Object.defineProperty(exports, "orange", {
+  enumerable: true,
+  get: function () {
+    return _orange.default;
+  }
+});
+Object.defineProperty(exports, "deepOrange", {
+  enumerable: true,
+  get: function () {
+    return _deepOrange.default;
+  }
+});
+Object.defineProperty(exports, "brown", {
+  enumerable: true,
+  get: function () {
+    return _brown.default;
+  }
+});
+Object.defineProperty(exports, "grey", {
+  enumerable: true,
+  get: function () {
+    return _grey.default;
+  }
+});
+Object.defineProperty(exports, "blueGrey", {
+  enumerable: true,
+  get: function () {
+    return _blueGrey.default;
+  }
+});
+
+var _common = _interopRequireDefault(require("./common"));
+
+var _red = _interopRequireDefault(require("./red"));
+
+var _pink = _interopRequireDefault(require("./pink"));
+
+var _purple = _interopRequireDefault(require("./purple"));
+
+var _deepPurple = _interopRequireDefault(require("./deepPurple"));
+
+var _indigo = _interopRequireDefault(require("./indigo"));
+
+var _blue = _interopRequireDefault(require("./blue"));
+
+var _lightBlue = _interopRequireDefault(require("./lightBlue"));
+
+var _cyan = _interopRequireDefault(require("./cyan"));
+
+var _teal = _interopRequireDefault(require("./teal"));
+
+var _green = _interopRequireDefault(require("./green"));
+
+var _lightGreen = _interopRequireDefault(require("./lightGreen"));
+
+var _lime = _interopRequireDefault(require("./lime"));
+
+var _yellow = _interopRequireDefault(require("./yellow"));
+
+var _amber = _interopRequireDefault(require("./amber"));
+
+var _orange = _interopRequireDefault(require("./orange"));
+
+var _deepOrange = _interopRequireDefault(require("./deepOrange"));
+
+var _brown = _interopRequireDefault(require("./brown"));
+
+var _grey = _interopRequireDefault(require("./grey"));
+
+var _blueGrey = _interopRequireDefault(require("./blueGrey"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./common":"../node_modules/@material-ui/core/esm/colors/common.js","./red":"../node_modules/@material-ui/core/esm/colors/red.js","./pink":"../node_modules/@material-ui/core/esm/colors/pink.js","./purple":"../node_modules/@material-ui/core/esm/colors/purple.js","./deepPurple":"../node_modules/@material-ui/core/esm/colors/deepPurple.js","./indigo":"../node_modules/@material-ui/core/esm/colors/indigo.js","./blue":"../node_modules/@material-ui/core/esm/colors/blue.js","./lightBlue":"../node_modules/@material-ui/core/esm/colors/lightBlue.js","./cyan":"../node_modules/@material-ui/core/esm/colors/cyan.js","./teal":"../node_modules/@material-ui/core/esm/colors/teal.js","./green":"../node_modules/@material-ui/core/esm/colors/green.js","./lightGreen":"../node_modules/@material-ui/core/esm/colors/lightGreen.js","./lime":"../node_modules/@material-ui/core/esm/colors/lime.js","./yellow":"../node_modules/@material-ui/core/esm/colors/yellow.js","./amber":"../node_modules/@material-ui/core/esm/colors/amber.js","./orange":"../node_modules/@material-ui/core/esm/colors/orange.js","./deepOrange":"../node_modules/@material-ui/core/esm/colors/deepOrange.js","./brown":"../node_modules/@material-ui/core/esm/colors/brown.js","./grey":"../node_modules/@material-ui/core/esm/colors/grey.js","./blueGrey":"../node_modules/@material-ui/core/esm/colors/blueGrey.js"}],"Views/Home/style.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54504,6 +55094,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.useStyles = void 0;
 
 var _styles = require("@material-ui/core/styles");
+
+var _colors = require("@material-ui/core/colors");
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -54532,6 +55124,10 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       border: 0,
       padding: '10px 10px 10px 30px'
     }, _defineProperty(_select, "borderRadius", '3px'), _defineProperty(_select, "color", theme.palette.primary.contrastText), _select),
+    menu: {
+      color: theme.palette.primary.contrastText,
+      backgroundColor: theme.palette.primary.main
+    },
     progress: {
       margin: theme.spacing(2)
     },
@@ -54563,7 +55159,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
   };
 });
 exports.useStyles = useStyles;
-},{"@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js"}],"Views/Home/index.js":[function(require,module,exports) {
+},{"@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/colors":"../node_modules/@material-ui/core/esm/colors/index.js"}],"Views/Home/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54688,7 +55284,6 @@ var Home = function Home() {
     xs: 12,
     sm: 3
   }, _react.default.createElement(_FormControl.default, {
-    color: "primary",
     className: classes.formControl
   }, _react.default.createElement(_Select.default, {
     color: "primary",
@@ -54700,17 +55295,23 @@ var Home = function Home() {
     onChange: handleChange,
     displayEmpty: true
   }, _react.default.createElement(_MenuItem.default, {
-    value: ""
+    value: "",
+    className: classes.menu
   }, "Filter by Region"), _react.default.createElement(_MenuItem.default, {
-    value: 'Africa'
+    value: 'Africa',
+    className: classes.menu
   }, "Africa"), _react.default.createElement(_MenuItem.default, {
-    value: 'Americas'
+    value: 'Americas',
+    className: classes.menu
   }, "Americas"), _react.default.createElement(_MenuItem.default, {
-    value: 'Asia'
+    value: 'Asia',
+    className: classes.menu
   }, "Asia"), _react.default.createElement(_MenuItem.default, {
-    value: 'Europe'
+    value: 'Europe',
+    className: classes.menu
   }, "Europe"), _react.default.createElement(_MenuItem.default, {
-    value: 'Oceania'
+    value: 'Oceania',
+    className: classes.menu
   }, "Oceania"))))), _react.default.createElement(_Grid.default, {
     container: true,
     spacing: 4,
@@ -57802,7 +58403,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64032" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51709" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
