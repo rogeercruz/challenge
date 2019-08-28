@@ -1,6 +1,6 @@
 # challenge
 
-An litle example coded in react...  
+A little code exercice in react JS.  
 
 ## Tools:
 
