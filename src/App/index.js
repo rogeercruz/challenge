@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 
 import AppBar from '@material-ui/core/AppBar';
+import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import theme from '../Themes/theme';
@@ -11,6 +12,9 @@ import Container from '@material-ui/core/Container';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Content  from './content'
+
+import InvertColors from '@material-ui/icons/InvertColors';
+
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -24,10 +28,8 @@ const useStyles = makeStyles(theme => ({
 
 
 const App = () => {
-
     const [darkmode, setDarkmode] = useState(false);
     const classes = useStyles();
-    console.log(darkmode);
 
     return(
         <ThemeProvider theme={darkmode ? dark : theme }>
@@ -37,9 +39,14 @@ const App = () => {
                     <Typography variant="h6" color="inherit">
                         Where in the word?
                     </Typography>
-                    <Typography variant="h6" color="inherit" onClick={()=>{setDarkmode(!darkmode)}}>
+                    <div style={{display: 'flex'}} onClick={()=>{setDarkmode(!darkmode)}}>
+                        <IconButton className={classes.iconButton} aria-label="search">
+                            <InvertColors color="secondary"/>   
+                        </IconButton>
+                        <Typography variant="h6" color="inherit" style={{lineHeight: 2.5}}>
                         Dark Mode
-                    </Typography>
+                        </Typography>
+                    </div>
                     </Toolbar>
                 </Container>
             </AppBar>

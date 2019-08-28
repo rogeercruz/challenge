@@ -58,7 +58,7 @@ const Home = () => {
             <Grid item xs={12} sm={4}>
                 <Paper className={classes.paperSearch}>
 					<IconButton className={classes.iconButton} aria-label="search">
-						<SearchIcon/>
+						<SearchIcon color="secondary"/>
 					</IconButton>
 					<InputBase
 						className={classes.input}

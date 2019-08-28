@@ -17,6 +17,9 @@ const dark = createMuiTheme({
 			veryDark: 'hsl(207, 26%, 17%)',
 			wrapper: 'hsl(200, 15%, 8%)',
 		},
+		secondary: {
+			main: '#fff',
+		},
 	},
 });
 export default responsiveFontSizes(dark);

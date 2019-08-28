@@ -21,7 +21,7 @@ export const useStyles = makeStyles(theme => ({
   },
 
   select: {
-    fontSize:'11px', 
+    fontSize:'14px', 
     borderRadius: '4px', 
     border: 0, 
     padding: '10px 10px 10px 30px', 
@@ -34,7 +34,7 @@ export const useStyles = makeStyles(theme => ({
   },
 
   progressContainer: {
-	display: 'flex',
+	  display: 'flex',
     alignItems: 'center',
     width: '100%',
     flexDirection: 'column',
@@ -42,9 +42,9 @@ export const useStyles = makeStyles(theme => ({
   
   root: {
     flexGrow: 1,
-	marginTop: '32px',
-	overflow: 'hidden',
-	paddingBottom: '32px'
+	  marginTop: '32px',
+	  overflow: 'hidden',
+	  paddingBottom: '32px'
   },
 
   paper: {
@@ -59,7 +59,7 @@ export const useStyles = makeStyles(theme => ({
   },
   
   input: {
-    fontSize: '11px',
+    fontSize: '14px',
     color: theme.palette.primary.contrastText,
   }
 
